@@ -272,6 +272,43 @@ body.light-mode .sheikh{background:#fff}
 .sheikh a{text-decoration:none}
 .linkbtn{display:inline-block;background:rgba(232,184,74,.18);border:1px solid var(--gold-accent);color:var(--gold-light);padding:6px 12px;border-radius:10px;font-size:.85rem;font-weight:700}
 .player-frame{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;background:#000}
+
+.kres{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-top:14px}
+.kitem{background:rgba(255,255,255,.06);border:1px solid var(--border-light);border-radius:14px;overflow:hidden;cursor:pointer;display:flex;flex-direction:column;transition:transform .2s,border-color .2s}
+body.light-mode .kitem{background:#fff}
+.kitem:hover{transform:translateY(-3px);border-color:var(--gold-accent)}
+.kitem img{width:100%;aspect-ratio:16/9;object-fit:cover;background:#000}
+.kitem .kt{padding:10px 12px;font-size:.9rem;line-height:1.6;font-weight:600}
+.kitem .km{padding:0 12px 10px;font-size:.78rem;color:var(--text-muted)}
+details.kset{margin-top:14px;color:var(--text-muted);font-size:.88rem;line-height:1.9}
+details.kset summary{cursor:pointer;color:var(--gold-light);font-weight:700}
+
+/* ===== وضع القراءة: شاشة كاملة نظيفة ===== */
+body.reading .header,body.reading .nav-tabs,body.reading footer,body.reading #stars,body.reading .hero{display:none!important}
+body.reading{padding:0;display:block}
+body.reading .main-container{max-width:none;width:100%}
+body.reading #quran,body.reading #quran.tab-content.active{animation:none!important;transform:none!important;filter:none!important}
+body.reading #quran .card{z-index:200;height:100dvh;border-top:none;box-shadow:none;transform:none}
+body.reading #quran .quran-controls{margin-bottom:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+body.reading #quran .quran-controls .input-select{min-width:140px;padding:9px 12px;font-size:.85rem}
+body.reading #quran .surah-box{scrollbar-width:thin;scrollbar-color:var(--gold-accent) transparent;margin:0 auto;text-align:justify;text-align-last:center;color:var(--text-main)}
+body.reading #quran .surah-box::-webkit-scrollbar{width:6px;background:transparent}
+body.reading #quran .surah-box::-webkit-scrollbar-thumb{background:var(--gold-accent);border-radius:6px}
+body.reading #quran .surah-box::-webkit-scrollbar-track{background:transparent}
+body.reading #qStatus{min-height:0;margin:0}
+body.reading #quran .player{margin:6px auto 0;padding:8px 14px}
+body.reading #quran .pctl{margin-top:4px}
+body.reading #quran .pbtn{width:38px;height:38px}
+body.reading #quran .pbtn.main{width:50px;height:50px}
+.surah-box{scrollbar-width:thin;scrollbar-color:var(--gold-accent) transparent}
+.surah-box::-webkit-scrollbar{width:6px;background:transparent}
+.surah-box::-webkit-scrollbar-thumb{background:var(--gold-accent);border-radius:6px}
+.surah-box::-webkit-scrollbar-track{background:transparent}
+.ayah{-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:0 2px}
+.ayah:hover{background:transparent}
+.ayah.read{color:var(--text-main)}
+.ayah.active{background:rgba(56,211,159,.14);color:var(--emerald-green)}
+@media(max-width:700px){body.reading #quran .card{padding:10px 12px}body.reading #quran .surah-box{font-size:calc(var(--q-size) + .1rem);line-height:2.5}}
 </style>
 </head>
 <body>
@@ -303,10 +340,12 @@ body.light-mode .sheikh{background:#fff}
 <div class="ret-text font-quran" id="retText"></div>
 <div class="src" id="retSrc" style="text-align:center"></div>
 <div class="ret-dyn" id="retDyn"></div>
+<div id="retPlayer" style="margin-top:10px"></div>
 <div class="row" style="justify-content:center;margin-top:12px">
 <button class="btn-action" onclick="document.querySelector('.prayer-grid').scrollIntoView({behavior:'smooth',block:'center'})">🕌 سجّل صلاتك</button>
 <button class="btn-action" onclick="retIstighfar()">🤲 استغفر الآن</button>
-<button class="btn-action" onclick="retClip()">🎧 مقطع قصير يرجّعك (أقل من 5 د)</button>
+<button class="btn-action" onclick="retLib()">▶ شغّل مقطع من مكتبتي</button>
+<button class="btn-action" onclick="retClip()">🎧 مقاطع جديدة (يوتيوب)</button>
 <button class="mini" onclick="retNext()">التالية ›</button></div>
 </div>
 <div class="card">
@@ -481,9 +520,20 @@ body.light-mode .sheikh{background:#fff}
 <div class="chips" id="kTopics"></div>
 </div>
 <div class="card">
+<div class="card-header"><span class="card-title">🔎 دوّر واسمع هنا (من غير ما تخرج من التطبيق)</span></div>
+<div class="quran-controls"><input class="input-select" id="kQ" placeholder="اكتب اسم شيخ أو موضوع (مثال: سمير مصطفى التوبة)" onkeydown="if(event.key==='Enter')kGo()"><button class="btn-action" onclick="kGo()">🔎 بحث</button></div>
+<div id="kStatus" style="color:var(--sky-blue);min-height:22px"></div>
+<div id="kPlayer" style="margin-top:10px"></div>
+<div class="kres" id="kRes"></div>
+<details class="kset"><summary>⚙️ إعدادات البحث (اختياري)</summary>
+<div>البحث بيشتغل تلقائيًا عن طريق خدمات مجانية، وممكن تقف أحيانًا. لو ماظهرتش نتايج، ضيف مفتاح <b>YouTube Data API v3</b> (مجاني من Google Cloud Console) وهيشتغل ثابت.</div>
+<div class="quran-controls" style="margin-top:8px"><input class="input-select" id="kKey" type="password" placeholder="API key (بيتحفظ على جهازك بس)"><button class="mini" onclick="ls.set('ytKey',$('kKey').value.trim());toast('اتحفظ المفتاح ✅')">حفظ</button><button class="mini" onclick="ls.del('ytKey');$('kKey').value='';toast('اتمسح المفتاح')">مسح</button></div>
+</details>
+</div>
+<div class="card">
 <div class="card-header"><span class="card-title">👳 الشيوخ</span></div>
 <div class="sheikh-grid" id="sheikhGrid"></div>
-<div style="color:var(--text-muted);font-size:.8rem;margin-top:12px">الأزرار بتفتح نتايج يوتيوب متفلترة على المقاطع القصيرة (أقل من 4 دقايق) في تبويب جديد، فاختار اللي يناسبك. التطبيق مش بيستضيف أي محتوى صوتي.</div>
+<div style="color:var(--text-muted);font-size:.8rem;margin-top:12px">المقاطع بتتشغّل جوه التطبيق نفسه من يوتيوب (متفلترة على أقل من 4-5 دقايق). التطبيق مش بيستضيف أي محتوى صوتي، والنتايج بتيجي من خدمات بحث خارجية، فبص على اسم القناة قبل ما تحفظ المقطع.</div>
 </div>
 <div class="card">
 <div class="card-header"><span class="card-title">📚 مكتبتي (مقاطع قصيرة أحبها)</span></div>
@@ -1050,7 +1100,7 @@ let retI=Math.floor(Math.random()*RET.length);
 const prayKey=k=>'pr_'+dayKey()+'_'+k;
 function retShow(){const r=RET[retI],e=$('retText');e.style.opacity=0;setTimeout(()=>{e.textContent=r.t;e.classList.toggle('plain',!!r.p);e.classList.toggle('font-quran',!r.p);$('retSrc').textContent=r.s?'— '+r.s:'';e.style.opacity=1},350)}
 function retNext(){retI=(retI+1)%RET.length;retShow()}
-function retClip(){window.open(ytS(rnd(SHEIKHS)[0]+' '+rnd(KTOPICS)),'_blank','noopener')}
+function retLib(){if(!KL.length){toast('ضيف مقاطع لمكتبتك الأول');goTab('khutab');return}klPlay(Math.floor(Math.random()*KL.length),'retPlayer')}
 function retIstighfar(){goTab('azkar');T.cur='ist';$('tsbSel').value='ist';tsbSelect();$('tsbText').scrollIntoView({behavior:'smooth',block:'center'})}
 function goTab(id){const b=[...document.querySelectorAll('.nav-tabs .tab-btn')].find(x=>(x.getAttribute('onclick')||'').includes("'"+id+"'"));switchTab(id,{currentTarget:b});window.scrollTo({top:0,behavior:'smooth'})}
 function retDynamic(){
@@ -1079,8 +1129,8 @@ let KL=[];
 const klSave=()=>ls.set('khutabLib',JSON.stringify(KL));
 function ytId(u){const m=u.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/|\/live\/)([A-Za-z0-9_-]{11})/);return m?m[1]:null}
 function ytList(u){const m=u.match(/[?&]list=([A-Za-z0-9_-]+)/);return m?m[1]:null}
-function klPlay(i){
-  const x=KL[i],box=$('klPlayer');box.innerHTML='';const id=ytId(x.u),li=ytList(x.u);
+function klPlay(i,boxId='klPlayer'){
+  const x=KL[i],box=$(boxId);box.innerHTML='';const id=ytId(x.u),li=ytList(x.u);
   if(id||li){const f=document.createElement('iframe');f.className='player-frame';f.src=id?`https://www.youtube-nocookie.com/embed/${id}?rel=0`:`https://www.youtube-nocookie.com/embed/videoseries?list=${li}`;f.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;box.appendChild(f)}
   else if(/\.(mp3|m4a|ogg|wav|aac)(\?|$)/i.test(x.u)){const a=document.createElement('audio');a.controls=true;a.style.width='100%';a.src=x.u;box.appendChild(a);a.addEventListener('loadedmetadata',()=>{if(a.duration>300)toast('المقطع ده أطول من 5 دقايق ⏱️')});a.play().catch(()=>{})}
   else window.open(x.u,'_blank');
@@ -1104,17 +1154,68 @@ function klAdd(){
   const d=+($('klDur')?$('klDur').value:0)||0;if(d>5){toast('المقاطع القصيرة بس: لحد 5 دقايق ⏱');return}
   KL.unshift({t:$('klTitle').value.trim()||'مقطع '+(KL.length+1).toLocaleString('ar-EG'),u,d});klSave();$('klUrl').value='';$('klTitle').value='';if($('klDur'))$('klDur').value='';klRender();toast('اتضاف لمكتبتك ✅');
 }
+/* ===== بحث وتشغيل المقاطع القصيرة داخل التطبيق ===== */
+const INV=['https://inv.nadeko.net','https://yewtu.be','https://invidious.nerdvpn.de','https://invidious.privacyredirect.com'];
+let kInst=null;
+const decH=t=>{const x=document.createElement('textarea');x.innerHTML=t;return x.value};
+async function fetchT(u,ms=7000){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);try{return await fetch(u,{signal:c.signal})}finally{clearTimeout(t)}}
+async function kFind(q){
+  const key=ls.get('ytKey');
+  if(key){
+    const r=await fetchT(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoDuration=short&videoEmbeddable=true&maxResults=15&q=${encodeURIComponent(q)}&key=${encodeURIComponent(key)}`,10000);
+    const j=await r.json();if(j.error)throw new Error(j.error.message||'api');
+    return j.items.map(x=>({id:x.id.videoId,title:decH(x.snippet.title),author:decH(x.snippet.channelTitle),sec:0}));
+  }
+  for(const base of INV){
+    try{const r=await fetchT(`${base}/api/v1/search?q=${encodeURIComponent(q)}&type=video&duration=short`);if(!r.ok)continue;const j=await r.json();
+      if(Array.isArray(j)){kInst=base;return j.filter(x=>x.videoId&&x.lengthSeconds>0&&x.lengthSeconds<=300).map(x=>({id:x.videoId,title:x.title,author:x.author,sec:x.lengthSeconds}))}}catch(e){}
+  }
+  throw new Error('none');
+}
+const kDur=s=>s?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`:'أقل من 4 د';
+function kCard(it){
+  const d=document.createElement('div');d.className='kitem';
+  const im=document.createElement('img');im.loading='lazy';im.src=`https://i.ytimg.com/vi/${it.id}/mqdefault.jpg`;im.alt='';
+  const t=document.createElement('div');t.className='kt';t.textContent=it.title;
+  const m=document.createElement('div');m.className='km';m.textContent=`${it.author} • ⏱ ${kDur(it.sec)}`;
+  d.append(im,t,m);d.onclick=()=>kPlay(it);return d;
+}
+function kPlay(it){
+  const box=$('kPlayer');box.innerHTML='';
+  const f=document.createElement('iframe');f.className='player-frame';f.src=`https://www.youtube-nocookie.com/embed/${it.id}?autoplay=1&rel=0`;f.allow='autoplay; encrypted-media; picture-in-picture';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;box.appendChild(f);
+  const t=document.createElement('div');t.style.cssText='margin:8px 0;font-weight:700;color:var(--gold-light)';t.textContent=`${it.title} — ${it.author}`;box.appendChild(t);
+  const r=document.createElement('div');r.className='row';
+  const mk=(l,fn)=>{const b=document.createElement('button');b.className='mini';b.textContent=l;b.onclick=fn;r.appendChild(b)};
+  if(kInst)mk('🔊 صوت فقط',()=>{const a=document.createElement('audio');a.controls=true;a.autoplay=true;a.style.width='100%';a.src=`${kInst}/latest_version?id=${it.id}&itag=140&local=true`;a.onerror=()=>toast('الصوت المباشر مش متاح، استخدم الفيديو');f.replaceWith(a)});
+  mk('➕ حفظ في مكتبتي',()=>{KL.unshift({t:it.title,u:'https://www.youtube.com/watch?v='+it.id,d:it.sec?Math.ceil(it.sec/60):0});klSave();klRender();toast('اتحفظ في مكتبتك ✅')});
+  const a=document.createElement('a');a.className='mini';a.href='https://www.youtube.com/watch?v='+it.id;a.target='_blank';a.rel='noopener';a.textContent='🔗 فتح في يوتيوب';a.style.cssText='text-decoration:none;color:var(--text-main)';r.appendChild(a);
+  box.appendChild(r);box.scrollIntoView({behavior:'smooth',block:'center'});
+}
+async function kSearch(q,autoplay){
+  const st=$('kStatus'),box=$('kRes');$('kQ').value=q;box.innerHTML='';st.textContent='جاري البحث عن مقاطع قصيرة...';
+  try{
+    const items=await kFind(q+' موعظة');
+    if(!items.length){st.textContent='مفيش نتايج، جرّب كلمة تانية';return}
+    st.textContent=`لقيت ${items.length.toLocaleString('ar-EG')} مقطع قصير — اضغط على أي واحد يشتغل هنا`;
+    items.forEach(it=>box.appendChild(kCard(it)));if(autoplay)kPlay(items[0]);
+  }catch(e){
+    st.innerHTML='';st.append('تعذر البحث دلوقتي (الخدمات المجانية مش متاحة). جرّب تضيف مفتاح YouTube API من «إعدادات البحث» تحت، أو ');
+    const a=document.createElement('a');a.href=ytS(q);a.target='_blank';a.rel='noopener';a.textContent='افتح النتايج على يوتيوب';a.style.color='var(--gold-light)';st.appendChild(a);
+  }
+}
+function kGo(){const q=$('kQ').value.trim();if(q)kSearch(q)}
+function retClip(){goTab('khutab');kSearch(rnd(SHEIKHS)[0]+' '+rnd(KTOPICS),true)}
 function initKhutab(){
   try{KL=JSON.parse(ls.get('khutabLib')||'[]')}catch(e){KL=[]}
-  KTOPICS.forEach(t=>{const a=document.createElement('a');a.className='cbtn';a.href=ytS('مقطع قصير '+t);a.target='_blank';a.rel='noopener';a.textContent='🎧 '+t;a.style.textDecoration='none';$('kTopics').appendChild(a)});
-  SHEIKHS.forEach(([n,d,link])=>{
+  $('kKey').value=ls.get('ytKey')||'';
+  KTOPICS.forEach(t=>{const b=document.createElement('button');b.className='cbtn';b.textContent='🎧 '+t;b.onclick=()=>kSearch(t);$('kTopics').appendChild(b)});
+  SHEIKHS.forEach(([n,d])=>{
     const c=document.createElement('div');c.className='sheikh';
-    c.innerHTML=`<div class="ic">🎙️</div><b></b><div style="color:var(--text-muted);font-size:.85rem"></div><div class="row" style="margin-top:4px"></div>`;
+    c.innerHTML='<div class="ic">🎙️</div><b></b><div style="color:var(--text-muted);font-size:.85rem"></div><div class="row" style="margin-top:4px"></div>';
     c.querySelector('b').textContent=n;c.children[2].textContent=d;
-    const r=c.querySelector('.row');
-    const mk=(h,l)=>{const a=document.createElement('a');a.className='linkbtn';a.href=h;a.target='_blank';a.rel='noopener';a.textContent=l;r.appendChild(a)};
-    mk(ytS(n+' موعظة'),'▶️ مقاطع قصيرة (أقل من 4 د)');mk(ytS(n+' التوبة والرجوع إلى الله'),'🤍 رجوع لربنا');
-    $('sheikhGrid').appendChild(c);
+    const r=c.querySelector('.row'),b1=document.createElement('button');b1.className='linkbtn';b1.style.cursor='pointer';b1.textContent='▶️ مقاطع قصيرة هنا';b1.onclick=()=>{kSearch(n);$('kQ').scrollIntoView({behavior:'smooth',block:'center'})};
+    const b2=document.createElement('button');b2.className='linkbtn';b2.style.cursor='pointer';b2.textContent='🤍 رجوع لربنا';b2.onclick=()=>{kSearch(n+' التوبة والرجوع إلى الله');$('kQ').scrollIntoView({behavior:'smooth',block:'center'})};
+    r.append(b1,b2);$('sheikhGrid').appendChild(c);
   });
   klRender();
 }
