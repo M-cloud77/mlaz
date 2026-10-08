@@ -309,6 +309,10 @@ body.reading #quran .pbtn.main{width:50px;height:50px}
 .ayah.read{color:var(--text-main)}
 .ayah.active{background:rgba(56,211,159,.14);color:var(--emerald-green)}
 @media(max-width:700px){body.reading #quran .card{padding:10px 12px}body.reading #quran .surah-box{font-size:calc(var(--q-size) + .1rem);line-height:2.5}}
+
+.ksug{display:flex;gap:8px;flex-wrap:wrap;max-height:130px;overflow-y:auto;margin:-4px 0 10px;scrollbar-width:thin;scrollbar-color:var(--gold-accent) transparent}
+.ksug .cbtn{font-size:.82rem;padding:5px 12px}
+.ksug-t{font-size:.82rem;color:var(--text-muted);margin-bottom:6px}
 </style>
 </head>
 <body>
@@ -521,12 +525,16 @@ body.reading #quran .pbtn.main{width:50px;height:50px}
 </div>
 <div class="card">
 <div class="card-header"><span class="card-title">🔎 دوّر واسمع هنا (من غير ما تخرج من التطبيق)</span></div>
-<div class="quran-controls"><input class="input-select" id="kQ" placeholder="اكتب اسم شيخ أو موضوع (مثال: سمير مصطفى التوبة)" onkeydown="if(event.key==='Enter')kGo()"><button class="btn-action" onclick="kGo()">🔎 بحث</button></div>
+<div class="quran-controls"><input class="input-select" id="kQ" placeholder="اكتب اسم شيخ أو موضوع (مثال: سمير مصطفى)" oninput="kSug()" onkeydown="if(event.key==='Enter')kGo()"><button class="btn-action" onclick="kGo()">🔎 بحث</button></div>
+<div class="ksug-t">👳 مش عارف تدوّر على مين؟ اختار شيخ (أو اكتب جزء من اسمه وهتتصفّى القايمة):</div>
+<div class="ksug" id="kSug"></div>
+<label style="font-size:.88rem;color:var(--text-muted);display:block;margin:-6px 0 8px"><input type="checkbox" id="kShort" onchange="kGo()"> المقاطع القصيرة بس (أقل من 5 دقايق)</label>
 <div id="kStatus" style="color:var(--sky-blue);min-height:22px"></div>
 <div id="kPlayer" style="margin-top:10px"></div>
 <div class="kres" id="kRes"></div>
+<button class="refresh-btn" id="kMore" onclick="kRenderMore()" style="display:none">عرض المزيد ⬇</button>
 <details class="kset"><summary>⚙️ إعدادات البحث (اختياري)</summary>
-<div>البحث بيشتغل تلقائيًا عن طريق خدمات مجانية، وممكن تقف أحيانًا. لو ماظهرتش نتايج، ضيف مفتاح <b>YouTube Data API v3</b> (مجاني من Google Cloud Console) وهيشتغل ثابت.</div>
+<div>البحث الأساسي في بودكاست صوتي (Apple Podcasts) بيشتغل من غير أي إعداد، والصوت بيتشغّل هنا مباشرة. ولو عاوز نتايج يوتيوب كمان، ضيف مفتاح <b>YouTube Data API v3</b> (مجاني من Google Cloud Console).</div>
 <div class="quran-controls" style="margin-top:8px"><input class="input-select" id="kKey" type="password" placeholder="API key (بيتحفظ على جهازك بس)"><button class="mini" onclick="ls.set('ytKey',$('kKey').value.trim());toast('اتحفظ المفتاح ✅')">حفظ</button><button class="mini" onclick="ls.del('ytKey');$('kKey').value='';toast('اتمسح المفتاح')">مسح</button></div>
 </details>
 </div>
@@ -1159,55 +1167,95 @@ const INV=['https://inv.nadeko.net','https://yewtu.be','https://invidious.nerdvp
 let kInst=null;
 const decH=t=>{const x=document.createElement('textarea');x.innerHTML=t;return x.value};
 async function fetchT(u,ms=7000){const c=new AbortController(),t=setTimeout(()=>c.abort(),ms);try{return await fetch(u,{signal:c.signal})}finally{clearTimeout(t)}}
-async function kFind(q){
+async function kPod1(q){
+  const r=await fetchT(`https://itunes.apple.com/search?term=${encodeURIComponent(q)}&media=podcast&entity=podcastEpisode&limit=200`,12000);
+  const j=await r.json();
+  return (j.results||[]).filter(x=>x.episodeUrl).map(x=>({type:'a',url:x.episodeUrl,id:'p'+x.trackId,title:x.trackName,author:x.collectionName||x.artistName||'',sec:Math.round((x.trackTimeMillis||0)/1000),img:x.artworkUrl160||x.artworkUrl600||''}));
+}
+async function kPod(q){
+  const vs=[q,q+' موعظة',q+' خطبة',q+' رقائق',q+' محاضرة'];
+  const res=await Promise.allSettled(vs.map(kPod1)),seen=new Set(),out=[];
+  res.forEach(r=>{if(r.status==='fulfilled')r.value.forEach(x=>{if(!seen.has(x.id)){seen.add(x.id);out.push(x)}})});
+  if(!out.length&&res.every(r=>r.status==='rejected'))throw new Error('pod');
+  return out;
+}
+async function kYT(q){
   const key=ls.get('ytKey');
   if(key){
     const r=await fetchT(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoDuration=short&videoEmbeddable=true&maxResults=15&q=${encodeURIComponent(q)}&key=${encodeURIComponent(key)}`,10000);
     const j=await r.json();if(j.error)throw new Error(j.error.message||'api');
-    return j.items.map(x=>({id:x.id.videoId,title:decH(x.snippet.title),author:decH(x.snippet.channelTitle),sec:0}));
+    return j.items.map(x=>({type:'y',id:x.id.videoId,title:decH(x.snippet.title),author:decH(x.snippet.channelTitle),sec:0,img:`https://i.ytimg.com/vi/${x.id.videoId}/mqdefault.jpg`}));
   }
   for(const base of INV){
-    try{const r=await fetchT(`${base}/api/v1/search?q=${encodeURIComponent(q)}&type=video&duration=short`);if(!r.ok)continue;const j=await r.json();
-      if(Array.isArray(j)){kInst=base;return j.filter(x=>x.videoId&&x.lengthSeconds>0&&x.lengthSeconds<=300).map(x=>({id:x.videoId,title:x.title,author:x.author,sec:x.lengthSeconds}))}}catch(e){}
+    try{const r=await fetchT(`${base}/api/v1/search?q=${encodeURIComponent(q)}&type=video&duration=short`,6000);if(!r.ok)continue;const j=await r.json();
+      if(Array.isArray(j)){kInst=base;return j.filter(x=>x.videoId&&x.lengthSeconds>0&&x.lengthSeconds<=300).map(x=>({type:'y',id:x.videoId,title:x.title,author:x.author,sec:x.lengthSeconds,img:`https://i.ytimg.com/vi/${x.videoId}/mqdefault.jpg`}))}}catch(e){}
   }
   throw new Error('none');
 }
-const kDur=s=>s?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`:'أقل من 4 د';
+const kDur=s=>s?`${Math.floor(s/60)}:${String(s%60).padStart(2,'0')}`:'—';
 function kCard(it){
   const d=document.createElement('div');d.className='kitem';
-  const im=document.createElement('img');im.loading='lazy';im.src=`https://i.ytimg.com/vi/${it.id}/mqdefault.jpg`;im.alt='';
-  const t=document.createElement('div');t.className='kt';t.textContent=it.title;
+  if(it.img){const im=document.createElement('img');im.loading='lazy';im.src=it.img;im.alt='';im.onerror=()=>im.remove();d.appendChild(im)}
+  const t=document.createElement('div');t.className='kt';t.textContent=(it.type==='a'?'🎧 ':'▶️ ')+it.title;
   const m=document.createElement('div');m.className='km';m.textContent=`${it.author} • ⏱ ${kDur(it.sec)}`;
-  d.append(im,t,m);d.onclick=()=>kPlay(it);return d;
+  d.append(t,m);d.onclick=()=>kPlay(it);return d;
 }
 function kPlay(it){
-  const box=$('kPlayer');box.innerHTML='';
-  const f=document.createElement('iframe');f.className='player-frame';f.src=`https://www.youtube-nocookie.com/embed/${it.id}?autoplay=1&rel=0`;f.allow='autoplay; encrypted-media; picture-in-picture';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;box.appendChild(f);
+  const box=$('kPlayer');box.innerHTML='';let main;
+  if(it.type==='a'){
+    main=document.createElement('audio');main.controls=true;main.autoplay=true;main.preload='auto';main.style.width='100%';main.src=it.url;
+    main.onerror=()=>toast('تعذر تشغيل الصوت ده، جرّب مقطع تاني');
+    main.play().catch(()=>{});
+  }else{
+    main=document.createElement('iframe');main.className='player-frame';main.src=`https://www.youtube-nocookie.com/embed/${it.id}?autoplay=1&rel=0`;main.allow='autoplay; encrypted-media; picture-in-picture';main.referrerPolicy='strict-origin-when-cross-origin';main.allowFullscreen=true;
+  }
+  box.appendChild(main);
   const t=document.createElement('div');t.style.cssText='margin:8px 0;font-weight:700;color:var(--gold-light)';t.textContent=`${it.title} — ${it.author}`;box.appendChild(t);
   const r=document.createElement('div');r.className='row';
   const mk=(l,fn)=>{const b=document.createElement('button');b.className='mini';b.textContent=l;b.onclick=fn;r.appendChild(b)};
-  if(kInst)mk('🔊 صوت فقط',()=>{const a=document.createElement('audio');a.controls=true;a.autoplay=true;a.style.width='100%';a.src=`${kInst}/latest_version?id=${it.id}&itag=140&local=true`;a.onerror=()=>toast('الصوت المباشر مش متاح، استخدم الفيديو');f.replaceWith(a)});
-  mk('➕ حفظ في مكتبتي',()=>{KL.unshift({t:it.title,u:'https://www.youtube.com/watch?v='+it.id,d:it.sec?Math.ceil(it.sec/60):0});klSave();klRender();toast('اتحفظ في مكتبتك ✅')});
-  const a=document.createElement('a');a.className='mini';a.href='https://www.youtube.com/watch?v='+it.id;a.target='_blank';a.rel='noopener';a.textContent='🔗 فتح في يوتيوب';a.style.cssText='text-decoration:none;color:var(--text-main)';r.appendChild(a);
+  const u=it.type==='a'?it.url:'https://www.youtube.com/watch?v='+it.id;
+  mk('➕ حفظ في مكتبتي',()=>{KL.unshift({t:it.title,u,d:it.sec?Math.ceil(it.sec/60):0});klSave();klRender();toast('اتحفظ في مكتبتك ✅')});
+  if(it.type==='y'&&kInst)mk('🔊 صوت فقط',()=>{const a=document.createElement('audio');a.controls=true;a.autoplay=true;a.style.width='100%';a.src=`${kInst}/latest_version?id=${it.id}&itag=140&local=true`;a.onerror=()=>toast('الصوت المباشر مش متاح، استخدم الفيديو');main.replaceWith(a);main=a});
+  if(it.type==='y'){const a=document.createElement('a');a.className='mini';a.href=u;a.target='_blank';a.rel='noopener';a.textContent='🔗 فتح في يوتيوب';a.style.cssText='text-decoration:none;color:var(--text-main)';r.appendChild(a)}
   box.appendChild(r);box.scrollIntoView({behavior:'smooth',block:'center'});
 }
+let kList=[],kShown=0;
+function kRenderMore(){const box=$('kRes');kList.slice(kShown,kShown+24).forEach(it=>box.appendChild(kCard(it)));kShown=Math.min(kList.length,kShown+24);$('kMore').style.display=kShown<kList.length?'block':'none';$('kMore').textContent=`عرض المزيد ⬇ (${(kList.length-kShown).toLocaleString('ar-EG')} متبقي)`}
 async function kSearch(q,autoplay){
-  const st=$('kStatus'),box=$('kRes');$('kQ').value=q;box.innerHTML='';st.textContent='جاري البحث عن مقاطع قصيرة...';
-  try{
-    const items=await kFind(q+' موعظة');
-    if(!items.length){st.textContent='مفيش نتايج، جرّب كلمة تانية';return}
-    st.textContent=`لقيت ${items.length.toLocaleString('ar-EG')} مقطع قصير — اضغط على أي واحد يشتغل هنا`;
-    items.forEach(it=>box.appendChild(kCard(it)));if(autoplay)kPlay(items[0]);
-  }catch(e){
-    st.innerHTML='';st.append('تعذر البحث دلوقتي (الخدمات المجانية مش متاحة). جرّب تضيف مفتاح YouTube API من «إعدادات البحث» تحت، أو ');
-    const a=document.createElement('a');a.href=ytS(q);a.target='_blank';a.rel='noopener';a.textContent='افتح النتايج على يوتيوب';a.style.color='var(--gold-light)';st.appendChild(a);
+  const st=$('kStatus'),box=$('kRes');$('kQ').value=q;box.innerHTML='';$('kMore').style.display='none';st.textContent='جاري البحث...';kSug();
+  const onlyShort=$('kShort').checked;let items=[],err=0;
+  const jobs=[kPod(q).then(x=>items.push(...x)).catch(()=>err++),kYT(q).then(x=>items.push(...x)).catch(()=>err++)];
+  await Promise.all(jobs);
+  const isAr=t=>((t||'').match(/[\u0621-\u064A]/g)||[]).length>=3;
+  items=items.filter(x=>isAr(x.title));
+  {const seen=new Set();items=items.filter(x=>{const k=nrm2(x.title)+'|'+x.sec;if(seen.has(k))return false;seen.add(k);return true})}
+  const total=items.length;
+  if(onlyShort)items=items.filter(x=>x.sec===0||x.sec<=300);
+  items.sort((a,b)=>(a.type==='a'?0:1)-(b.type==='a'?0:1)||(a.sec||999)-(b.sec||999));
+  if(!items.length){
+    st.innerHTML='';
+    if(err>=2&&!total){st.append('تعذر البحث دلوقتي، اتأكد من الإنترنت. أو ')}
+    else if(total&&onlyShort){st.append(`لقيت ${total.toLocaleString('ar-EG')} مقطع لكن كلهم أطول من 5 دقايق. شيل علامة «القصيرة بس» فوق علشان يظهروا، أو `)}
+    else st.append('مفيش نتايج، جرّب كلمة تانية، أو ');
+    const a=document.createElement('a');a.href=ytS(q);a.target='_blank';a.rel='noopener';a.textContent='افتح النتايج على يوتيوب';a.style.color='var(--gold-light)';st.appendChild(a);return;
   }
+  st.textContent=`لقيت ${items.length.toLocaleString('ar-EG')} مقطع — اضغط على أي واحد يشتغل هنا`+(onlyShort?' (قصيرة فقط)':' • الأقصر الأول');
+  kList=items;kShown=0;kRenderMore();
+  if(autoplay)kPlay(items[0]);
+}
+const SHEIKH_NAMES=['سمير مصطفى','أحمد العرب','أمجد سمير','محمد متولي الشعراوي','محمد حسان','عمر عبد الكافي','مصطفى حسني','محمد راتب النابلسي','عمرو خالد','خالد الجندي','وجدي غنيم','أبو إسحاق الحويني','محمد حسين يعقوب','مصطفى العدوي','محمود المصري','صالح المغامسي','عائض القرني','نبيل العوضي','طارق السويدان','إياد قنيبي','عثمان الخميس','مشاري الخراز','ياسر الحزيمي','بدر المشاري','محمد العريفي','سعد العتيق','عبد الله بن بيه','علي الجفري','أحمد الشقيري','محمد الغزالي','عبد الحميد كشك','يوسف القرضاوي','محمد الشعراوي','هاني حلمي','رمضان عبد الرازق','سعيد الكملي','أحمد ديدات','محمد سعيد رسلان','عبد الرزاق البدر','ابن عثيمين','أحمد الطيب','علي جمعة','أسامة الأزهري'];
+const nrm2=t=>rn(String(t));
+function kSug(){
+  const q=nrm2($('kQ').value),box=$('kSug');box.innerHTML='';
+  const list=SHEIKH_NAMES.filter(n=>!q||nrm2(n).includes(q)||q.split(' ').every(w=>nrm2(n).includes(w)));
+  if(!list.length){box.innerHTML='<span style="color:var(--text-muted);font-size:.85rem">مفيش اسم مطابق في القايمة، بس تقدر تدوّر بأي اسم أو موضوع بنفسك 🔎</span>';return}
+  list.forEach(n=>{const b=document.createElement('button');b.className='cbtn';b.textContent=n;b.onclick=()=>kSearch(n);box.appendChild(b)});
 }
 function kGo(){const q=$('kQ').value.trim();if(q)kSearch(q)}
 function retClip(){goTab('khutab');kSearch(rnd(SHEIKHS)[0]+' '+rnd(KTOPICS),true)}
 function initKhutab(){
   try{KL=JSON.parse(ls.get('khutabLib')||'[]')}catch(e){KL=[]}
-  $('kKey').value=ls.get('ytKey')||'';
+  $('kKey').value=ls.get('ytKey')||'';kSug();
   KTOPICS.forEach(t=>{const b=document.createElement('button');b.className='cbtn';b.textContent='🎧 '+t;b.onclick=()=>kSearch(t);$('kTopics').appendChild(b)});
   SHEIKHS.forEach(([n,d])=>{
     const c=document.createElement('div');c.className='sheikh';
