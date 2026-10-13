@@ -527,12 +527,23 @@ body.light-mode .rd-verses,body.light-mode .rd-hero{background:rgba(184,134,11,.
 
 .zk-f{display:flex;justify-content:space-between;align-items:center;gap:8px;margin:6px 0;font-size:.9rem}.zk-f input,.zk-f select{max-width:128px;padding:6px 8px;font-size:.9rem;border-radius:10px;text-align:center}
 .zk-out{margin-top:10px;padding:12px;border-radius:14px;border:1px solid var(--border-gold);background:rgba(232,184,74,.1);line-height:1.9;font-size:.95rem}.zk-out b.big{display:block;font-size:1.5rem;color:var(--gold-light,#e0b85a);margin:2px 0}
-#imgCv{width:100%;height:auto;border-radius:14px;border:1px solid var(--border-gold);background:#111;max-height:52vh;object-fit:contain}
+#imgCv{display:block;margin:0 auto;width:auto;height:auto;max-width:100%;max-height:52vh;border-radius:14px;box-shadow:0 8px 28px rgba(0,0,0,.4);background:transparent}
 .th-dot{width:34px;height:34px;border-radius:50%;border:2px solid var(--border-gold);cursor:pointer;padding:0}.th-dot.on{outline:3px solid var(--gold-accent,#e8b84a);outline-offset:2px}
-.credit{margin:16px auto 6px;padding:12px 18px;max-width:340px;border-radius:18px;border:1px solid var(--border-gold);background:linear-gradient(160deg,rgba(232,184,74,.14),rgba(255,255,255,.03));display:flex;flex-direction:column;align-items:center;gap:4px}
-.credit .cr-l{font-size:.78rem;color:var(--text-muted)}.credit .cr-n{font-family:'Reem Kufi',sans-serif;font-size:1.35rem;letter-spacing:2px;color:var(--gold-light,#e0b85a)}
-.credit a{color:var(--text-main);text-decoration:none;font-size:.95rem;padding:2px 8px;border-radius:10px}.credit .cr-w{font-size:.85rem;color:var(--emerald-green)}
-body.light-mode .credit .cr-n{color:#7d5300}
+.credit{margin:14px auto 4px;padding:6px 8px 6px 12px;width:fit-content;max-width:calc(100% - 16px);display:flex;align-items:center;justify-content:center;gap:10px;border-radius:999px;border:1px solid transparent;background:linear-gradient(var(--card-bg,#0f1b2d),var(--card-bg,#0f1b2d)) padding-box,linear-gradient(120deg,#e8c36a,#8a6a1f 45%,#e8c36a) border-box;box-shadow:0 4px 16px rgba(0,0,0,.28);box-sizing:border-box;white-space:nowrap}
+.credit .cr-id{display:flex;flex-direction:column;align-items:flex-start;line-height:1.15}
+.credit .cr-l{font-size:.6rem;color:var(--text-muted);letter-spacing:.5px}
+.credit .cr-n{font-family:'Reem Kufi',sans-serif;font-size:.95rem;font-weight:700;letter-spacing:1.6px;background:linear-gradient(90deg,#f6dc8e,#d9a93f);-webkit-background-clip:text;background-clip:text;color:transparent}
+.credit .cr-s{width:1px;height:26px;background:linear-gradient(transparent,var(--border-gold,#b8933f),transparent);opacity:.8}
+.credit a{display:inline-flex;align-items:center;gap:6px;text-decoration:none;font-size:.74rem;font-weight:600;padding:6px 12px;border-radius:999px;transition:transform .15s,filter .15s}
+.credit a:active{transform:scale(.96)}.credit a svg{width:14px;height:14px;fill:currentColor;flex:none}
+.credit .cr-p{color:var(--text-main);background:rgba(255,255,255,.07);border:1px solid var(--border-light)}
+.credit .cr-w{color:#fff;background:linear-gradient(135deg,#25c97f,#128c5a);box-shadow:0 2px 8px rgba(18,140,90,.45)}
+@media(max-width:390px){.credit{gap:6px;padding:5px 6px 5px 9px}.credit a{padding:6px 9px;font-size:.7rem}.credit .cr-s{display:none}.credit .cr-n{font-size:.85rem}}
+body.light-mode .credit{background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#d6a935,#8a6a1f 45%,#d6a935) border-box;box-shadow:0 3px 12px rgba(120,90,20,.18)}
+body.light-mode .credit .cr-n{background:linear-gradient(90deg,#8a5d00,#b8860b);-webkit-background-clip:text;background-clip:text;color:transparent}
+body.light-mode .credit .cr-p{background:#f4efe3;color:#3b2f10}
+.rd-listen2{margin-top:16px;text-align:center}.rd-top{flex:none;margin:2px 0 8px}.rd-top .rd-real{margin-top:8px;max-height:30vh;overflow:auto}.rd-big{width:100%;padding:10px 16px;border-radius:16px;border:0;cursor:pointer;font-family:inherit;font-size:1.05rem;font-weight:800;background:linear-gradient(135deg,var(--gold-accent,#e8b84a),#c8921c);color:#1a1200;box-shadow:0 6px 18px rgba(200,146,28,.28)}.rd-big:active{transform:scale(.985)}
+body.light-mode .rd-big,#rdSheet.rd-t-sepia .rd-big,#rdSheet.rd-t-paper .rd-big{background:linear-gradient(135deg,#a8740a,#7d5300);color:#fff}
 </style>
 </head>
 <body>
@@ -591,6 +602,15 @@ body.light-mode .credit .cr-n{color:#7d5300}
 <label>🔊 <input type="range" id="adhanVol" min="20" max="100" value="100" oninput="adhanVolume()"></label>
 <label>⏰ تنبيه قبل الأذان <select id="preSel" onchange="ls.set('pre',this.value)"><option value="0">بدون</option><option value="5">5 دقايق</option><option value="10">10 دقايق</option><option value="15">15 دقيقة</option></select></label>
 </div>
+<div class="q-tools" style="margin-top:10px;justify-content:center" id="ntfBox">
+<label>🔔 تنبيهات الأذكار والورد <select id="ntfSel" onchange="ntfSet(this.value)"><option value="0">متوقفة</option><option value="1">مفعّلة</option></select></label>
+<label>🌅 صباح <input type="checkbox" id="ntfM" checked onchange="ntfSave()"></label>
+<label>🌇 مساء <input type="checkbox" id="ntfE" checked onchange="ntfSave()"></label>
+<label>📖 ورد <input type="checkbox" id="ntfW" checked onchange="ntfSave()"></label>
+<label>⏱ وقت الورد <input type="time" id="ntfWT" value="21:00" onchange="ntfSave()"></label>
+<button class="btn-action" onclick="ntfTest()">جرّب تنبيه الآن</button>
+</div>
+<div id="ntfStat" style="text-align:center;font-size:.78rem;color:var(--text-muted);margin-top:6px"></div>
 <div class="row" style="justify-content:center;margin-top:10px">
 <label class="btn-action" style="cursor:pointer">📁 أذان من جهازك<input type="file" id="adhanFile" accept="audio/*" hidden onchange="uploadAdhan(this)"></label>
 <button class="btn-action" onclick="testTiming()">⏱ اختبر التوقيت (بعد 10 ثواني)</button>
@@ -633,22 +653,12 @@ body.light-mode .credit .cr-n{color:#7d5300}
 <div class="rd-set" id="rdSet" style="display:none"><button class="mini" onclick="rdSetSize(-.1)">A−</button><button class="mini" onclick="rdSetSize(.1)">A+</button><button class="mini" id="rdFontB" onclick="rdSetFont()"></button><span style="font-size:.8rem;color:var(--text-muted)">الخلفية:</span><button class="mini" data-t="auto" onclick="rdSetTheme('auto')">تلقائي</button><button class="mini" data-t="sepia" onclick="rdSetTheme('sepia')">ورقي</button><button class="mini" data-t="paper" onclick="rdSetTheme('paper')">أبيض</button><button class="mini" data-t="dark" onclick="rdSetTheme('dark')">ليلي</button></div>
 <div class="rd-meta"><span id="rdTag" class="rd-tag"></span><span id="rdTime" class="rd-time"></span></div>
 <div class="rd-bar"><i id="rdBar"></i></div>
+<div class="rd-top"><button class="rd-big" id="rdListenBtn" onclick="rdReal()">🎧 استمع للقصة كاملة</button><div id="rdRealBox" class="rd-real" style="display:none"></div></div>
 <div class="rd-body" id="rdBody" onscroll="rdProg()">
 <div class="rd-text" id="rdText"></div>
 <div class="rd-lw"><b>💡 الدرس المستفاد</b><div class="rd-less" id="rdLess"></div></div>
 <div class="as-src" id="rdSrc"></div>
-<details class="rd-listen" id="rdListen"><summary>🎧 استمع للقصة</summary>
-<div class="row" style="justify-content:center;margin-top:10px;gap:8px;flex-wrap:wrap"><button class="mini on" onclick="rdReal()">🎙️ اسمع بصوت شيخ (تسجيل حقيقي)</button></div>
-<div id="rdRealBox" class="rd-real" style="display:none"></div>
-<div class="rd-tts"><button class="mini" id="rdPlay" onclick="ttsToggle()">🤖 قراءة آلية</button><button class="mini" onclick="ttsPreview()">🔈 جرّب الصوت</button>
-<label>الراوي:<select class="input-select" id="ttsVoice" onchange="ttsSetVoice()"></select></label>
-<label>السرعة:<select class="input-select" id="ttsRate" onchange="ttsSetRate()"><option value="0.75">بطيء</option><option value="0.9">هادئ</option><option value="1.05">أسرع</option></select></label>
-<label>النبرة:<select class="input-select" id="ttsPitch" onchange="ttsSetPitch()"><option value="0.85">رخيمة</option><option value="1">عادية</option><option value="1.12">خفيفة</option></select></label>
-<label><input type="checkbox" id="ttsAuto" onchange="ttsSetAuto()"> كمّل اللي بعدها تلقائياً</label></div>
-<div class="hij-note" id="ttsNote" style="display:none"></div>
-<div class="hij-note" style="margin-top:6px">🤖 «القراءة الآلية» صوت الجهاز نفسه (صناعي)، وجودته حسب الصوت المثبّت عندك. للصوت البشري الحقيقي استخدم «اسمع بصوت شيخ».</div>
-<div class="row" style="justify-content:center;margin-top:8px;gap:8px"><button class="mini" onclick="rdCopy(this)">📋 نسخ</button><button class="mini" onclick="rdShare()">📤 مشاركة</button></div>
-</details>
+<div class="row" style="justify-content:center;margin-top:16px;gap:8px"><button class="mini" onclick="rdCopy(this)">📋 نسخ</button><button class="mini" onclick="rdShare()">📤 مشاركة</button></div>
 </div>
 <div class="rd-foot"><button class="mini" onclick="rdMove(-1)">‹ السابق</button><button class="mini on" id="rdDone" onclick="rdMark()">✓ تمّت القراءة</button><button class="mini" onclick="rdMove(1)">التالي ›</button></div>
 </div>
@@ -993,7 +1003,7 @@ body.light-mode .credit .cr-n{color:#7d5300}
 <div class="toast" id="toast"></div>
 <audio id="adhanAudio" preload="none"></audio>
 <footer><p>صُنِع بـ ❤️ ليكون مساحتك الخاصة للسكينة وراحة البال.</p>
-<div class="credit"><span class="cr-l">تصميم وتطوير</span><b class="cr-n" dir="ltr">M KHODRY</b><a class="cr-p" dir="ltr" href="tel:+201021904453">📞 +20 102 190 4453</a><a class="cr-w" href="https://wa.me/201021904453" target="_blank" rel="noopener">💬 واتساب</a></div>
+<div class="credit"><div class="cr-id"><span class="cr-l">تصميم وتطوير</span><b class="cr-n" dir="ltr">M KHODRY</b></div><i class="cr-s"></i><a class="cr-w" href="https://wa.me/201021904453" target="_blank" rel="noopener" aria-label="واتساب"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.2-4.600-4-4.700-4.200-.1-.2-1.100-1.500-1.100-2.800s.7-2 1-2.300c.2-.3.500-.3.700-.3h.5c.2 0 .4 0 .6.500l.8 2c.1.200.1.300 0 .500l-.4.600-.3.300c-.1.100-.3.300-.1.600.2.300.8 1.300 1.700 2.100 1.100 1 2 1.300 2.300 1.400.3.100.4.100.6-.1l.8-1c.2-.3.400-.2.700-.1l1.900.9c.3.100.5.200.5.300.1.200.1.800-.1 1.400z"/></svg>واتساب</a><a class="cr-p" dir="ltr" href="tel:+201021904453" aria-label="اتصال"><svg viewBox="0 0 24 24"><path d="M6.6 10.800a15 15 0 0 0 6.600 6.600l2.200-2.200a1 1 0 0 1 1-.25 11.500 11.500 0 0 0 3.600.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.500a1 1 0 0 1 1 1c0 1.300.2 2.500.57 3.600a1 1 0 0 1-.25 1z"/></svg>+20 102 190 4453</a></div>
 <div class="row" style="justify-content:center;margin-top:12px">
 <button class="mini" onclick="backupAll()">💾 نسخة احتياطية لكل بياناتي</button>
 <label class="mini" style="cursor:pointer">⬆️ استرجاع نسخة<input type="file" accept=".json" hidden onchange="restoreAll(this)"></label></div>
@@ -1606,12 +1616,56 @@ function playAdhan(){
   else fail();
 }
 function testTiming(){preloadAdhan();testAt=Date.now()+10000;toggleAdhanUnlock()}
+/* ===== تنبيهات الأذكار والورد والأذان ===== */
+function ntfOK(){return 'Notification' in window&&Notification.permission==='granted'}
+async function notify(title,body,tag){
+  if(!ntfOK())return false;
+  const o={body:body||'',tag:tag||undefined,icon:'icon-192.png',badge:'icon-192.png',dir:'rtl',lang:'ar'};
+  try{const r=await navigator.serviceWorker?.getRegistration();if(r&&r.showNotification){await r.showNotification(title,o);return true}}catch(e){}
+  try{new Notification(title,o);return true}catch(e){return false}
+}
+function ntfCfg(){try{return JSON.parse(ls.get('ntfCfg')||'{}')}catch(e){return{}}}
+function ntfSave(){ls.set('ntfCfg',JSON.stringify({on:$('ntfSel').value==='1',m:$('ntfM').checked,e:$('ntfE').checked,w:$('ntfW').checked,wt:$('ntfWT').value||'21:00'}));ntfStatus()}
+async function ntfSet(v){
+  if(v==='1'){
+    if(!('Notification' in window)){$('ntfSel').value='0';ntfStatus('المتصفح ده مابيدعمش التنبيهات');return}
+    let p=Notification.permission;if(p==='default')p=await Notification.requestPermission();
+    if(p!=='granted'){$('ntfSel').value='0';ntfSave();ntfStatus('التنبيهات مقفولة من إعدادات المتصفح — فعّلها من هناك وجرّب تاني');return}
+  }
+  ntfSave();
+}
+function ntfStatus(m){
+  const c=ntfCfg(),el=$('ntfStat');if(!el)return;
+  if(m){el.textContent=m;return}
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent),stand=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+  el.textContent=c.on?('شغّالة طول ما التطبيق مفتوح أو شغّال في الخلفية'+(ios&&!stand?' — على الآيفون ثبّته الأول على الشاشة الرئيسية':'')+'. لو قفلته تمامًا ممكن ماتوصلش.'):'';
+}
+async function ntfTest(){
+  if(!('Notification' in window)){ntfStatus('المتصفح ده مابيدعمش التنبيهات');return}
+  let p=Notification.permission;if(p==='default')p=await Notification.requestPermission();
+  if(p!=='granted'){ntfStatus('التنبيهات مقفولة — فعّلها من إعدادات المتصفح/الموقع');return}
+  const ok=await notify('ملاذ 🌿','ده تنبيه تجريبي — لو شايفه يبقى التنبيهات شغّالة ✅','ntf_test');
+  ntfStatus(ok?'اتبعت تنبيه تجريبي. لو ماظهرش، راجع إعدادات الإشعارات للجهاز.':'ماقدرتش أبعت التنبيه');
+}
+function ntfTick(now){
+  const c=ntfCfg();if(!c.on||!ntfOK()||!times||!times.Fajr)return;
+  const day=now.toDateString(),fire=(key,at,title,body,win)=>{
+    const id=`ntf_${day}_${key}`,d=now-at;
+    if(d>=0&&d<(win||600000)&&!ls.get(id)){ls.set(id,'1');notify(title,body,id)}};
+  if(c.m)fire('m',toDate(times.Sunrise),'🌅 أذكار الصباح','وقت أذكار الصباح — افتح ملاذ واقرأها');
+  if(c.e)fire('e',toDate(times.Asr),'🌇 أذكار المساء','وقت أذكار المساء — حصّن نفسك');
+  if(c.w){const[h,m]=(c.wt||'21:00').split(':').map(Number),t=new Date();t.setHours(h,m,0,0);fire('w',t,'📖 وِردك اليومي','فاضل وقت بسيط على وردك — ولو صفحة واحدة','' )}
+  if(now.getDay()===5&&c.w){const t=new Date();t.setHours(10,0,0,0);fire('kahf',t,'📿 يوم الجمعة','سورة الكهف والصلاة على النبي ﷺ')}
+}
+function ntfInit(){try{const c=ntfCfg();$('ntfSel').value=c.on?'1':'0';$('ntfM').checked=c.m!==false;$('ntfE').checked=c.e!==false;$('ntfW').checked=c.w!==false;$('ntfWT').value=c.wt||'21:00';if(c.on&&!ntfOK()){c.on=false;$('ntfSel').value='0'}ntfStatus()}catch(e){}}
+setTimeout(ntfInit,0);
+
 function toggleAdhanUnlock(){initAudioContext()}
-function extraTick(now){try{ramTick(now)}catch(e){}
+function extraTick(now){try{ramTick(now)}catch(e){}try{ntfTick(now)}catch(e){}
   if(testAt){const l=testAt-now.getTime();if(l<=0){testAt=0;playAdhan();aStat('اشتغل الأذان في الميعاد ✅')}else aStat(`الأذان هيشتغل بعد ${Math.ceil(l/1000)} ثانية...`)}
   const pre=+(ls.get('pre')||0);
   if(pre&&adhanOn)PRAYERS.forEach(([k,n])=>{if(k==='Sunrise')return;const d=toDate(times[k]),diff=d-now,id=`pre_${now.toDateString()}_${k}`;
-    if(diff>0&&diff<=pre*60000&&!ls.get(id)){ls.set(id,'1');if('Notification' in window&&Notification.permission==='granted')new Notification(`باقي ${pre} دقيقة على أذان ${n} ⏰`)}});
+    if(diff>0&&diff<=pre*60000&&!ls.get(id)){ls.set(id,'1');notify(`باقي ${pre} دقيقة على أذان ${n} ⏰`,'','pre_'+id)}});
 }
 async function initAdhanUI(){
   const s=$('adhanSel');ADH.forEach((a,i)=>{const o=document.createElement('option');o.value=i;o.textContent=a[0];s.appendChild(o)});{const o=document.createElement('option');o.value='chime';o.textContent='🔔 نغمة تنبيه (بدون أذان)';s.appendChild(o)}
@@ -1640,7 +1694,7 @@ function tick(){
     if(k!=='Sunrise'&&adhanOn){
       const diff=now-d,id=`fired_${now.toDateString()}_${k}`;
       if(diff>=0&&diff<120000&&!ls.get(id)){ls.set(id,'1');playAdhan();
-        if('Notification' in window&&Notification.permission==='granted')new Notification(`حان الآن موعد أذان ${n} 🕌`)}
+        notify(`حان الآن موعد أذان ${n} 🕌`,'',id)}
     }
   });
   if(!next)next={k:'Fajr',n:'الفجر',d:toDate(times.Fajr,1)};
@@ -2083,7 +2137,7 @@ function initPWA(){
   }
   openFromHash();window.addEventListener('hashchange',openFromHash);
 }
-const BK_SKIP=/^(pt\d*_|v2s|surahList$|hdl_|fired_|ramf_|pre_|r\d+$|ytKey$|geo$|lastPos$)/;
+const BK_SKIP=/^(pt\d*_|v2s|surahList$|hdl_|fired_|ramf_|pre_|ntf_|r\d+$|ytKey$|geo$|lastPos$)/;
 const BK_MERGE={journal2:x=>x.id,favH:x=>x.b+'_'+x.n,khutabLib:x=>x.u};
 function backupAll(){
   const o={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(!BK_SKIP.test(k))o[k]=localStorage.getItem(k)}
@@ -2803,10 +2857,10 @@ function stRender(){
   if(stM==='q'){[['all','الكل'],['p','الأنبياء'],['c','الصحابة'],['q','من القرآن'],['f','⭐ المفضلة']].forEach(([k,l])=>{const b=document.createElement('button');b.className='cbtn'+(stF===k?' on':'');b.textContent=l;b.onclick=()=>{stF=k;stRender()};fl.appendChild(b)})}
   const ft=$('stFeat');
   if(stM==='q'){const x=STORIES[stIdx()];ft.innerHTML=`<div class="st-feat"><small>✨ قصة اليوم</small><h4>${x.t}</h4><p>${stSnip(x)}</p></div>`;
-    const b=document.createElement('button');b.className='mini on';b.textContent=rd.has(x.id)?'اقرأها تاني':'اقرأ القصة';b.onclick=()=>rdOpen('q',STORIES.indexOf(x));ft.firstChild.appendChild(b);const pa=document.createElement('button');pa.className='mini';pa.style.marginInlineStart='8px';pa.textContent='🎧 اسمع القصص بالترتيب';pa.onclick=stPlayAll;ft.firstChild.appendChild(pa)}
+    const b=document.createElement('button');b.className='mini on';b.textContent=rd.has(x.id)?'اقرأها تاني':'اقرأ القصة';b.onclick=()=>rdOpen('q',STORIES.indexOf(x));ft.firstChild.appendChild(b)}
   else{const nx=SEERAH.find(x=>!rd.has(x.id));
     ft.innerHTML=`<div class="st-feat"><small>🕌 رحلة السيرة</small><h4>${nx?'الموقف الجاي: '+nx.t:'ما شاء الله، ختمت السيرة 🌿'}</h4><div class="as-prog" style="margin:8px 0"><i style="width:${Math.round(done/list.length*100)}%"></i></div></div>`;
-    if(nx){const b=document.createElement('button');b.className='mini on';b.textContent=done?'كمّل السيرة':'ابدأ السيرة';b.onclick=()=>rdOpen('s',SEERAH.indexOf(nx));ft.firstChild.appendChild(b);const pa=document.createElement('button');pa.className='mini';pa.style.marginInlineStart='8px';pa.textContent='🎧 اسمع السيرة بالترتيب';pa.onclick=stPlayAll;ft.firstChild.appendChild(pa)}}
+    if(nx){const b=document.createElement('button');b.className='mini on';b.textContent=done?'كمّل السيرة':'ابدأ السيرة';b.onclick=()=>rdOpen('s',SEERAH.indexOf(nx));ft.firstChild.appendChild(b)}}
   const L=$('stList');L.innerHTML='';
   const sq=($('stSearch')||{value:''}).value.trim().replace(/[\u064B-\u0652\u0640]/g,'');let shown=0;
   const fav=stFavGet();
@@ -2908,36 +2962,81 @@ function rdRender(){
 const RDV={tok:0,au:null};
 const RDV_STOP=new Set(['بن','ابن','بنت','قصه','غزوه','عليه','عليهما','عليهم','السلام','الله','رضي','عنه','عنها','عنهما','ال','و','في','من']);
 function rdRealName(x){return x.t.replace(/ﷺ/g,'').replace(/\(.*?\)/g,'').replace(/عليه(?:ما|م)? السلام|رضي الله عن(?:ه|ها|هما|هم)/g,'').replace(/\s+/g,' ').trim()}
-function rdRealStop(clear){try{if(RDV.au){RDV.au.pause();RDV.au.removeAttribute('src');RDV.au.load()}}catch(e){}RDV.au=null;RDV.tok++;if(clear){const b=$('rdRealBox');if(b){b.style.display='none';b.innerHTML=''}}}
+function rdRealStop(clear){try{if(RDV.au){RDV.au.pause();RDV.au.removeAttribute('src');RDV.au.load()}}catch(e){}RDV.au=null;try{if(RDV.fr){RDV.fr.src='about:blank';RDV.fr.remove()}}catch(e){}RDV.fr=null;RDV.tok++;try{rdBtn(false)}catch(e){}if(clear){const b=$('rdRealBox');if(b){b.style.display='none';b.innerHTML=''}}}
 function stFavGet(){try{return new Set(JSON.parse(ls.get('stFav')||'[]'))}catch(e){return new Set()}}
 function rdFav(){const x=RD.list[RD.i],f=stFavGet();if(f.has(x.id)){f.delete(x.id)}else{f.add(x.id);toast('اتضافت للمفضلة ⭐')}ls.set('stFav',JSON.stringify([...f]));rdRender();stRender()}
-async function rdReal(){
-  const x=RD.list[RD.i],name=rdRealName(x),box=$('rdRealBox');try{ttsStop()}catch(e){}rdRealStop();
-  const tok=RDV.tok;box.style.display='';box.innerHTML='';
-  const note=t=>{const d=document.createElement('div');d.className='hij-note';d.style.margin='6px 0';d.textContent=t;return d};
-  box.appendChild(note('⏳ بدوّر على تسجيلات بصوت شيوخ…'));
-  const qs=x.k==='s'?['السيرة النبوية '+name,name+' السيرة النبوية','غزوة '+name]:x.k==='c'?[name,'قصة '+name,'من سير الصحابة '+name]:['قصة '+name,'قصص الأنبياء '+name,name+' قصة'];
-  const rs=await Promise.allSettled(qs.flatMap(q=>['','EG','SA'].map(c=>kPod1(q,c))));
-  if(tok!==RDV.tok)return;
-  let items=[];rs.forEach(r=>{if(r.status==='fulfilled')items.push(...r.value)});
-  const cores=nrm2(name).split(/\s+/).filter(w=>w&&!RDV_STOP.has(w)).map(shCore).filter(w=>w.length>=2);
-  const need=Math.min(2,cores.length)||1,dd=kDeadSet(),seen=new Set();
-  items=items.filter(it=>{if(seen.has(it.id)||dd.has(it.id)||!kIsAr(it.title)||!it.sec||it.sec<90)return false;seen.add(it.id);
-    const w=shWords(it.title+' '+it.author);it._m=cores.filter(c=>w.includes(c)).length;return it._m>=need});
-  items.forEach(it=>{it._s=it._m*10+(it.sec>=240&&it.sec<=3000?5:0)+(/شيخ|دكتور|د\./.test(it.author+it.title)?1:0)});
-  items.sort((a,b)=>b._s-a._s||(b.date||'').localeCompare(a.date||''));items=items.slice(0,10);
-  box.innerHTML='';
-  const yt='https://www.youtube.com/results?search_query='+encodeURIComponent((x.k==='s'?'السيرة النبوية ':x.k==='c'?'':'قصة ')+name+' للشيخ');
-  if(!items.length){box.appendChild(note('ما لقيتش تسجيل مطابق للقصة دي في المصادر المتاحة.'));const a=document.createElement('a');a.href=yt;a.target='_blank';a.rel='noopener';a.textContent='🔎 دوّر عليها في يوتيوب';a.style.color='var(--gold-light)';box.appendChild(a);return}
-  box.appendChild(note('🎙️ تسجيلات حقيقية بأصوات شيوخ (من بودكاستات). اضغط على أي واحد يشتغل هنا:'));
-  const pl=document.createElement('div');box.appendChild(pl);
-  items.forEach(it=>{const b=document.createElement('button');b.className='mini';b.style.cssText='display:block;width:100%;text-align:right;margin:4px 0';b.textContent=`▶ ${it.title.slice(0,70)} — ${it.author.slice(0,28)} • ${Math.round(it.sec/60)} د`;
-    b.onclick=()=>{rdRealStop();const tk=RDV.tok;const a=document.createElement('audio');a.controls=true;a.autoplay=true;a.style.cssText='width:100%;margin:6px 0';a.src=it.url;RDV.au=a;
-      let ok=false;a.addEventListener('loadedmetadata',()=>{ok=true});a.onerror=()=>{if(tk!==RDV.tok)return;kDeadAdd(it.id);b.remove();toast('التسجيل ده مش شغال، جرّب غيره')};
-      pl.querySelectorAll('audio').forEach(e=>e.remove());pl.prepend(a);a.play().catch(()=>{})};pl.appendChild(b)});
-  const a=document.createElement('a');a.href=yt;a.target='_blank';a.rel='noopener';a.textContent='🔎 مقاطع أكتر على يوتيوب';a.style.cssText='color:var(--gold-light);font-size:.85rem';box.appendChild(a);
+function rdVGet(){try{return JSON.parse(ls.get('rdVoice2')||'{}')}catch(e){return{}}}
+function rdVSet(o){try{ls.set('rdVoice2',JSON.stringify(o))}catch(e){}}
+function rdBtn(playing){const b=$('rdListenBtn');if(b)b.textContent=playing?'⏹ إيقاف الاستماع':'🎧 استمع للقصة كاملة'}
+/* بحث يوتيوب عن تسجيلات طويلة (احتياطي لما البودكاست مايلاقيش) */
+async function rdYT(q){
+  const key=ls.get('ytKey');
+  if(key){
+    const r=await fetchT(`https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&videoEmbeddable=true&videoDuration=long&maxResults=10&q=${encodeURIComponent(q)}&key=${encodeURIComponent(key)}`,10000);const j=await r.json();if(j.error)throw new Error('api');
+    return (j.items||[]).filter(x=>x.id&&x.id.videoId).map(x=>({type:'y',id:'y'+x.id.videoId,vid:x.id.videoId,title:decH(x.snippet.title),author:decH(x.snippet.channelTitle),sec:0}));
+  }
+  const dyn=await kInstDyn().catch(()=>({inv:[],pip:[]}));
+  const inv=[...new Set([kInst,...INV,...(dyn.inv||[])].filter(Boolean))].slice(0,7).map(base=>async()=>{const r=await fetchT(`${base}/api/v1/search?q=${encodeURIComponent(q)}&type=video&duration=long`,5500);if(!r.ok)throw 0;const j=await r.json();if(!Array.isArray(j))throw 0;return j.filter(x=>x.videoId&&x.lengthSeconds>=240).map(x=>({type:'y',id:'y'+x.videoId,vid:x.videoId,title:x.title,author:x.author,sec:x.lengthSeconds}))});
+  const pip=[...new Set([...PIP,...(dyn.pip||[])])].slice(0,5).map(base=>async()=>{const r=await fetchT(`${base}/search?q=${encodeURIComponent(q)}&filter=videos`,6000);if(!r.ok)throw 0;const j=await r.json();if(!j||!Array.isArray(j.items))throw 0;return j.items.map(x=>({vid:String(x.url||'').split('v=')[1],title:x.title,author:x.uploaderName,sec:x.duration})).filter(x=>x.vid&&x.sec>=240).map(x=>({type:'y',id:'y'+x.vid,vid:x.vid,title:x.title,author:x.author||'',sec:x.sec}))});
+  return await Promise.any([...inv,...pip].map(f=>f()));
 }
-
+async function rdReal(){
+  if(RDV.au||RDV.fr){rdRealStop(true);return}
+  const x=RD.list[RD.i],name=rdRealName(x),box=$('rdRealBox');rdRealStop();
+  const tok=RDV.tok;box.style.display='';box.innerHTML='';
+  const note=t=>{const d=document.createElement('div');d.className='hij-note';d.style.margin='8px 0';d.textContent=t;return d};
+  const pre=x.k==='s'?'السيرة النبوية ':x.k==='c'?'':'قصة ';
+  const yt='https://www.youtube.com/results?search_query='+encodeURIComponent(pre+name+' للشيخ');
+  const fail=()=>{box.innerHTML='';box.appendChild(note('ما لقيتش تسجيل مطابق للقصة دي بالظبط، ومش هشغّل قصة تانية بالغلط (أو النت ضعيف). جرّب تاني، أو افتحها في يوتيوب.'));const b=document.createElement('button');b.className='mini on';b.textContent='↻ حاول تاني';b.onclick=()=>{rdRealStop(true);rdReal()};box.appendChild(b);const a=document.createElement('a');a.href=yt;a.target='_blank';a.rel='noopener';a.textContent=' 🔎 أو افتحها في يوتيوب';a.style.color='var(--gold-light)';box.appendChild(a);rdBtn(false)};
+  box.appendChild(note('⏳ بجهّز لك التسجيل…'));rdBtn(true);
+  let cands=[];const cache=rdVGet();if(cache[x.id]&&(cache[x.id].url||cache[x.id].vid))cands.push(cache[x.id]);
+  const rdW=t=>nrm2(t).split(/\s+/).filter(w=>w&&!RDV_STOP.has(w)).map(shCore).filter(w=>w.length>=2);
+  const contig=(t,w)=>{for(let i=0;i+t.length<=w.length;i++){let ok=1;for(let j=0;j<t.length;j++)if(w[i+j]!==t[j]){ok=0;break}if(ok)return true}return false};
+  const toks=rdW(name);
+  const others=RD.list.filter(s=>s.id!==x.id).map(s=>rdW(rdRealName(s))).filter(t=>t.length>=2);
+  const CTX=x.k==='s'?/السيره|غزوه|النبي|رسول|الهجره|فتح مكه/:x.k==='c'?/الصحابي|الصحابه|رضي الله|سيره|قصه|حياه|اسلام/:/قصه|قصص|سيدنا|نبي|الانبياء|عليه السلام|عليهما السلام|القران/;
+  const BAD=/الكاظم|زياره|اهل البيت|ال البيت|الرضا|الجعفري|الحسيني/;
+  /* مطابقة دقيقة: اسم القصة كامل ورا بعض + سياق قصصي + مش قصة تانية + مش شخص بنفس الاسم */
+  const rank=(items,len)=>{const dd=kDeadSet(),seen=new Set(),pref=ls.get('rdAuthor')||'',out=[];
+    items.forEach(it=>{if(seen.has(it.id)||dd.has(it.id)||!kIsAr(it.title))return;seen.add(it.id);if(it.type!=='y'&&(!it.sec||it.sec<120))return;
+      const wt=rdW(it.title);if(!toks.length)return;
+      const mine=toks.length>=2?contig(toks,wt):wt.includes(toks[0]);if(!mine)return;
+      const nt=nrm2(it.title+' '+it.author);if(!CTX.test(nt)||BAD.test(nt))return;
+      if(others.some(o=>o.every(k=>wt.includes(k))&&(o.length>toks.length||!toks.every(k=>o.includes(k)))))return;
+      it._s=20+(it.sec>=300?6:0)+(it.sec>=300&&it.sec<=3600?3:0)+(/كامله|كاملة|قصه/.test(nt)?2:0)+(pref&&it.author===pref?8:0)+(/شيخ|دكتور/.test(it.author+it.title)?1:0);out.push(it)});
+    out.sort((a,b)=>b._s-a._s||(b.date||'').localeCompare(a.date||''));return out.slice(0,6)};
+  const pod=async()=>{
+    const qs=x.k==='s'?[pre+name,name+' السيرة النبوية',name,'غزوة '+name]:x.k==='c'?[name,'قصة '+name,'من سير الصحابة '+name,'الصحابي '+name,name+' رضي الله عنه']:['قصة '+name,'قصص الأنبياء '+name,'قصة سيدنا '+name,name+' عليه السلام',name];
+    const rs=await Promise.allSettled(qs.flatMap(q=>['','EG','SA'].map(c=>kPod1(q,c))));
+    let items=[];rs.forEach(r=>{if(r.status==='fulfilled')items.push(...r.value)});
+    return rank(items).map(it=>({id:it.id,url:it.url,title:it.title,author:it.author,sec:it.sec,_s:it._s}));
+  };
+  const ytc=async()=>{let r=[];try{r=await rdYT(pre+name+' للشيخ')}catch(e){}
+    if(r.length<2){try{r=r.concat(await rdYT(pre+name))}catch(e){}}
+    return rank(r,true).map(it=>({id:it.id,vid:it.vid,title:it.title,author:it.author,sec:it.sec}))};
+  let stage=0,weak=[];
+  const play=async i=>{
+    if(tok!==RDV.tok)return;
+    if(i>=cands.length){
+      if(stage===0){stage=1;try{const s=await pod();if(tok!==RDV.tok)return;weak=s.filter(c=>c._s<10);cands=cands.concat(s.filter(c=>c._s>=10&&!cands.some(k=>k.id===c.id)))}catch(e){}if(cands.length>i)return play(i)}
+      if(stage===1){stage=2;try{const s=await ytc();if(tok!==RDV.tok)return;cands=cands.concat(s.filter(c=>!cands.some(k=>k.id===c.id)))}catch(e){}if(cands.length>i)return play(i)}
+      if(stage===2){stage=3;cands=cands.concat(weak.filter(c=>!cands.some(k=>k.id===c.id)));if(cands.length>i)return play(i)}
+      fail();return}
+    const it=cands[i];
+    const save=()=>{const c=rdVGet();c[x.id]={id:it.id,url:it.url,vid:it.vid,title:it.title,author:it.author,sec:it.sec};rdVSet(c);if(it.author)ls.set('rdAuthor',it.author)};
+    const info=()=>{const t=document.createElement('div');t.className='hij-note';t.style.margin='2px 0 0';t.textContent='🎙️ '+(it.author||'تسجيل صوتي')+' — '+it.title.slice(0,70);box.appendChild(t);const nb=document.createElement('button');nb.className='mini';nb.style.marginTop='6px';nb.textContent='↻ مش القصة دي؟ جرّب تسجيل تاني';nb.onclick=()=>{kDeadAdd(it.id);const c=rdVGet();delete c[x.id];rdVSet(c);try{rdRealStop()}catch(e){}RDV.tok=tok;box.innerHTML='';box.appendChild(note('⏳ بدوّر على تسجيل تاني…'));rdBtn(true);play(i+1)};box.appendChild(nb)};
+    if(it.vid){
+      const f=document.createElement('iframe');f.className='player-frame';f.style.cssText='width:100%;height:210px;border:0;border-radius:14px';f.src=`https://www.youtube-nocookie.com/embed/${it.vid}?autoplay=1&rel=0`;f.allow='autoplay; encrypted-media; picture-in-picture';f.referrerPolicy='strict-origin-when-cross-origin';f.allowFullscreen=true;
+      RDV.fr=f;box.innerHTML='';box.appendChild(f);info();save();return}
+    const a=document.createElement('audio');a.controls=true;a.autoplay=true;a.preload='auto';a.style.cssText='width:100%;margin:6px 0';a.src=it.url;
+    let ok=false,gone=false;const bad=()=>{if(ok||gone||tok!==RDV.tok)return;gone=true;kDeadAdd(it.id);const c=rdVGet();if(c[x.id]&&c[x.id].id===it.id){delete c[x.id];rdVSet(c)}try{a.pause()}catch(e){}play(i+1)};
+    a.addEventListener('loadedmetadata',()=>{if(tok!==RDV.tok)return;ok=true;save()});
+    a.onerror=bad;setTimeout(()=>{if(!ok&&a.readyState===0)bad()},20000);
+    a.onended=()=>{rdBtn(false);RDV.au=null;toast('انتهت القصة 🌿')};
+    RDV.au=a;box.innerHTML='';box.appendChild(a);info();a.play().catch(()=>{});
+  };
+  play(0);
+}
 /* ===== آيات القصة من المصحف (بتتحمل من نفس مصدر المصحف) ===== */
 const VERSES={"آدم عليه السلام":[[2,30,39]],"إدريس عليه السلام":[[19,56,57]],"نوح عليه السلام":[[11,25,49]],"هود عليه السلام":[[7,65,72],[11,50,60]],"صالح والناقة":[[7,73,79],[11,61,68]],"إبراهيم عليه السلام":[[21,51,70],[37,83,98]],"لوط عليه السلام":[[11,77,83]],"إسماعيل عليه السلام":[[37,100,111]],"إسحاق ويعقوب عليهما السلام":[[19,49,50],[2,132,133]],"يوسف عليه السلام":[[12,4,35]],"أيوب عليه السلام":[[21,83,84],[38,41,44]],"شعيب عليه السلام":[[7,85,93]],"موسى عليه السلام":[[28,3,43]],"هارون عليه السلام":[[20,90,94]],"داود وطالوت وجالوت":[[2,246,251]],"سليمان والنملة":[[27,15,19]],"ذو الكفل وإلياس واليسع عليهم السلام":[[37,123,132]],"يونس عليه السلام":[[37,139,148],[21,87,88]],"زكريا ويحيى عليهما السلام":[[19,1,15]],"عيسى ومريم عليهما السلام":[[19,16,36]],"أصحاب الكهف":[[18,9,26]],"ذو القرنين":[[18,83,98]],"موسى والخضر":[[18,60,82]],"آسية امرأة فرعون":[[66,11,11]],"قارون":[[28,76,82]],"أصحاب الأخدود":[[85,1,9]],"أصحاب الفيل":[[105,1,5]],"صاحب الجنتين":[[18,32,44]],"لقمان الحكيم":[[31,12,19]],"سليمان وبلقيس والهدهد":[[27,20,44]],"قوم سبأ":[[34,15,21]],"ابنا آدم":[[5,27,31]],"الرجل المؤمن من أقصى المدينة":[[36,13,29]],"بقرة بني إسرائيل":[[2,67,73]],"أصحاب السبت":[[7,163,166]],"سحرة فرعون":[[7,113,126]],"موسى والسامري والعجل":[[20,83,98]],"الذي مرّ على قرية":[[2,259,259]],"إبراهيم والطيور الأربعة":[[2,260,260]],"أصحاب المائدة":[[5,112,115]],"مؤمن آل فرعون":[[40,28,45]],"موسى وابنتا شعيب":[[28,22,28]],"كعب بن مالك وتوبته":[[9,117,119]],"بداية الوحي":[[96,1,5]],"فترة الوحي ونزول المدثر":[[74,1,7],[93,1,5]],"الجهر بالدعوة":[[26,214,216]],"الطفولة والنشأة":[[93,6,8]],"الإسراء والمعراج":[[17,1,1],[53,1,18]],"الهجرة إلى المدينة":[[9,40,40]],"دار الندوة والتآمر على النبي ﷺ":[[8,30,30]],"غار ثور وسراقة":[[9,40,40]],"تحويل القبلة":[[2,142,150]],"فرض صيام رمضان":[[2,183,185]],"سرية عبد الله بن جحش (نخلة)":[[2,217,217]],"غزوة بدر":[[8,5,19]],"غزوة أحد":[[3,121,129],[3,139,143]],"غزوة حمراء الأسد":[[3,172,174]],"بنو قينقاع وبنو النضير":[[59,1,5]],"غزوة الخندق":[[33,9,20]],"غزوة بني قريظة":[[33,26,27]],"غزوة بني المصطلق وحادثة الإفك":[[24,11,20]],"صلح الحديبية":[[48,1,10]],"بيعة الرضوان":[[48,18,18]],"فتح مكة":[[110,1,3]],"غزوة حنين":[[9,25,27]],"غزوة تبوك":[[9,38,42]],"وفد نجران والمباهلة":[[3,59,64]],"عام الوفود":[[110,1,3]],"حجة الوداع":[[5,3,3]],"وفاة النبي ﷺ":[[3,144,144],[39,30,31]],"بيت النبوة: أزواجه وأولاده":[[33,28,34]],"شمائل النبي ﷺ وعبادته":[[33,21,21]],"أخلاق النبي ﷺ":[[68,4,4],[9,128,129]]};
 const SURC={};
@@ -2964,7 +3063,7 @@ const SEERAH_PH=[['نسب النبي ﷺ','🌅 قبل البعثة'],['بداي
 
 /* ===== بطاقات المشاركة كصورة ===== */
 const IMG={vars:[],vi:0,title:'',theme:+(ls.get('imgTheme')||0),fmt:ls.get('imgFmt')||'p'};
-const IMG_TH=[{n:'ليلي ذهبي',a:'#0b1224',b:'#1c2c52',t:'#f6edd2',g:'#e8b84a'},{n:'زمردي',a:'#052a21',b:'#0f5c46',t:'#f1fff7',g:'#f0d27a'},{n:'ورقي',a:'#f8f1de',b:'#ecdcb4',t:'#2b2112',g:'#8a5f00'},{n:'بنفسجي',a:'#160d33',b:'#3b2078',t:'#f4eeff',g:'#f2c75c'}];
+const IMG_TH=[{n:'ليلي ذهبي',a:'#070d1c',b:'#1b2a55',t:'#fbf3dc',g:'#e9bd57',g2:'#a9781f'},{n:'زمردي',a:'#031c16',b:'#0e5a43',t:'#f4fff9',g:'#f2d680',g2:'#b8913a'},{n:'ورقي',a:'#fbf5e4',b:'#ead9ac',t:'#2a1f0c',g:'#8f6200',g2:'#5e4000'},{n:'بنفسجي',a:'#120a2b',b:'#43267f',t:'#f7f1ff',g:'#f4cd68',g2:'#b98c2c'},{n:'أزرق ملكي',a:'#06162e',b:'#0f4c81',t:'#eef7ff',g:'#f1d58a',g2:'#b48a33'},{n:'عنّابي',a:'#240812',b:'#6d1c35',t:'#fff3ee',g:'#f0c777',g2:'#b78635'}];
 function imgOpen(title,vars){IMG.title=title;IMG.vars=vars.filter(v=>v&&v.text);IMG.vi=0;if(!IMG.vars.length){toast('مفيش نص أعمله بطاقة');return}
   const vb=$('imgVar');vb.innerHTML='';if(IMG.vars.length>1)IMG.vars.forEach((v,i)=>{const b=document.createElement('button');b.className='mini'+(i===0?' on':'');b.textContent=v.label;b.onclick=()=>{IMG.vi=i;[...vb.children].forEach((c,k)=>c.classList.toggle('on',k===i));imgDraw()};vb.appendChild(b)});
   const tb=$('imgTh');tb.innerHTML='';IMG_TH.forEach((t,i)=>{const b=document.createElement('button');b.className='th-dot'+(i===IMG.theme?' on':'');b.style.background=`linear-gradient(135deg,${t.a},${t.b})`;b.title=t.n;b.onclick=()=>{IMG.theme=i;ls.set('imgTheme',i);[...tb.children].forEach((c,k)=>c.classList.toggle('on',k===i));imgDraw()};tb.appendChild(b)});
@@ -2973,24 +3072,32 @@ function imgFmt(f){IMG.fmt=f;ls.set('imgFmt',f);$('imgF1').classList.toggle('on'
 async function imgDraw(){
   const cv=$('imgCv'),W=1080,H=IMG.fmt==='s'?1920:1350;cv.width=W;cv.height=H;const c=cv.getContext('2d'),th=IMG_TH[IMG.theme],v=IMG.vars[IMG.vi];
   try{await Promise.all([document.fonts.load('700 40px Amiri'),document.fonts.load('700 40px "Reem Kufi"')])}catch(e){}
-  const g=c.createLinearGradient(0,0,W,H);g.addColorStop(0,th.a);g.addColorStop(1,th.b);c.fillStyle=g;c.fillRect(0,0,W,H);
-  // وهج وزخرفة خفيفة
-  const rg=c.createRadialGradient(W/2,H*.12,10,W/2,H*.12,W*.7);rg.addColorStop(0,th.g+'33');rg.addColorStop(1,'transparent');c.fillStyle=rg;c.fillRect(0,0,W,H);
-  c.fillStyle=th.g+'22';for(let i=0;i<46;i++){const x=(i*397)%W,y=(i*613)%H,r=2+(i%4);c.beginPath();c.arc(x,y,r,0,7);c.fill()}
-  c.strokeStyle=th.g;c.lineWidth=4;c.strokeRect(34,34,W-68,H-68);c.lineWidth=1.5;c.strokeRect(54,54,W-108,H-108);
+  const light=th.a[1]==='f'||th.a[1]==='e';
+  const g=c.createLinearGradient(0,0,W*.4,H);g.addColorStop(0,th.a);g.addColorStop(1,th.b);c.fillStyle=g;c.fillRect(0,0,W,H);
+  // زخرفة نجمة ثمانية متكررة خفيفة
+  {c.save();c.strokeStyle=th.g;c.globalAlpha=light?.10:.07;c.lineWidth=1.6;const S=120;
+   const star=(x,y,r)=>{c.beginPath();for(let k=0;k<16;k++){const rr=k%2?r*.62:r,an=Math.PI*k/8;c.lineTo(x+rr*Math.cos(an),y+rr*Math.sin(an))}c.closePath();c.stroke()};
+   for(let x=0;x<=W+S;x+=S)for(let y=0;y<=H+S;y+=S){star(x,y,S*.46);star(x+S/2,y+S/2,S*.2)}c.restore()}
+  // وهج علوي وسفلي
+  let rg=c.createRadialGradient(W/2,H*.1,10,W/2,H*.1,W*.8);rg.addColorStop(0,th.g+(light?'30':'40'));rg.addColorStop(1,'transparent');c.fillStyle=rg;c.fillRect(0,0,W,H);
+  rg=c.createRadialGradient(W/2,H,10,W/2,H,W*.7);rg.addColorStop(0,th.g+'22');rg.addColorStop(1,'transparent');c.fillStyle=rg;c.fillRect(0,0,W,H);
+  // إطار مزدوج بتدرّج ذهبي وزوايا
+  const gg=c.createLinearGradient(0,0,W,H);gg.addColorStop(0,th.g);gg.addColorStop(.5,th.g2);gg.addColorStop(1,th.g);
+  c.strokeStyle=gg;c.lineWidth=5;c.strokeRect(36,36,W-72,H-72);c.lineWidth=1.5;c.strokeRect(58,58,W-116,H-116);
+  [[58,58],[W-58,58],[58,H-58],[W-58,H-58]].forEach(([x,y])=>{c.save();c.translate(x,y);c.fillStyle=th.g;c.rotate(Math.PI/4);c.fillRect(-9,-9,18,18);c.fillStyle=th.a;c.fillRect(-4,-4,8,8);c.restore()});
   // هلال
   {const o=document.createElement('canvas');o.width=120;o.height=120;const q=o.getContext('2d');q.fillStyle=th.g;q.beginPath();q.arc(60,60,46,0,7);q.fill();q.globalCompositeOperation='destination-out';q.beginPath();q.arc(82,48,38,0,7);q.fill();c.drawImage(o,W/2-60,90)}
   c.direction='rtl';c.textAlign='center';c.textBaseline='alphabetic';
-  c.fillStyle=th.g;c.font='700 50px Amiri, serif';c.fillText(IMG.vars.length>1?v.label:IMG.title,W/2,285);
-  c.font='34px Amiri, serif';c.fillStyle=th.g+'cc';c.fillText('✦  ✦  ✦',W/2,340);
+  c.fillStyle=gg;c.font='700 52px Amiri, serif';c.fillText(IMG.vars.length>1?v.label:IMG.title,W/2,290);
+  {const ly=332;c.strokeStyle=th.g;c.globalAlpha=.7;c.lineWidth=2;c.beginPath();c.moveTo(W/2-230,ly);c.lineTo(W/2-34,ly);c.moveTo(W/2+34,ly);c.lineTo(W/2+230,ly);c.stroke();c.globalAlpha=1;c.fillStyle=th.g;c.save();c.translate(W/2,ly);c.rotate(Math.PI/4);c.fillRect(-8,-8,16,16);c.restore()}
   // النص مع ضبط الحجم تلقائياً
   const top=390,bottom=H-330,maxW=W-220;let size=70,lines=[];const raw=String(v.text).replace(/[\u{1F300}-\u{1FAFF}\u{2600}-\u{27BF}]/gu,'').replace(/[ \t]+/g,' ').trim();
   const wrap=s=>{c.font=`700 ${s}px Amiri, serif`;const out=[];raw.split('\n').forEach(p=>{p=p.trim();if(!p){out.push('');return}let line='';p.split(' ').forEach(w=>{const t=line?line+' '+w:w;if(c.measureText(t).width>maxW&&line){out.push(line);line=w}else line=t});if(line)out.push(line)});return out};
   for(;size>=30;size-=2){lines=wrap(size);if(lines.length*size*1.9<=bottom-top)break}
   const lh=size*1.9,maxL=Math.floor((bottom-top)/lh);if(lines.length>maxL){lines=lines.slice(0,maxL);lines[maxL-1]=lines[maxL-1].replace(/\s*\S*$/,'')+' …'}
   c.fillStyle=th.t;c.font=`700 ${size}px Amiri, serif`;const bh=lines.length*lh;let y=top+Math.max(0,(bottom-top-bh)/2)+size;lines.forEach(l=>{c.fillText(l,W/2,y);y+=lh});
-  if(v.src){c.fillStyle=th.g;c.font='700 40px Amiri, serif';const s=v.src.length>60?v.src.slice(0,58)+'…':v.src;c.fillText(s,W/2,bottom+75)}
-  c.fillStyle=th.g;c.font='700 64px "Reem Kufi", sans-serif';c.fillText('مَلاذ',W/2,H-175);c.font='28px Cairo, sans-serif';c.fillStyle=th.t+'aa';c.fillText('تطبيق ملاذ • راحة النفس والقرآن',W/2,H-120);
+  if(v.src){c.fillStyle=gg;c.font='700 40px Amiri, serif';const s=v.src.length>60?v.src.slice(0,58)+'…':v.src;c.fillText(s,W/2,bottom+75)}
+  c.fillStyle=gg;c.font='700 64px "Reem Kufi", sans-serif';c.fillText('مَلاذ',W/2,H-175);c.font='28px Cairo, sans-serif';c.fillStyle=th.t+'bb';c.fillText('تطبيق ملاذ • راحة النفس والقرآن',W/2,H-120);
 }
 function imgBlob(){return new Promise(r=>$('imgCv').toBlob(r,'image/png'))}
 async function imgShare(){const b=await imgBlob();if(!b){toast('تعذر إنشاء الصورة');return}const f=new File([b],'malaaz.png',{type:'image/png'});
@@ -3050,6 +3157,7 @@ function zkCalc(){
   }
   o.innerHTML=h;n.innerHTML=nt;
 }
+
 function rdMove(d){const n=RD.list.length;RD.i=(RD.i+d+n)%n;rdRender()}
 function rdMark(){const x=RD.list[RD.i],rd=stRead();
   if(rd.has(x.id)){rd.delete(x.id)}else{rd.add(x.id);statAdd('st');toast('تقبّل الله منك 🌿')}
