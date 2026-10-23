@@ -1,5 +1,5 @@
 /* ملاذ — Service Worker: يخلّي التطبيق يفتح بسرعة وبدون إنترنت. غيّر VERSION لما تحدّث الملفات. */
-const VERSION = 'malaaz-v24';
+const VERSION = 'malaaz-v39';
 const RUNTIME = 'malaaz-runtime-v1';
 const CORE = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './apple-touch-icon.png'];
 
