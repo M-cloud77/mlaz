@@ -867,6 +867,114 @@ body.light-mode .st-seg{background:rgba(0,0,0,.05)}body.light-mode .st-ft{backgr
 .snd-card>div:first-child{flex-direction:column;gap:8px;align-items:flex-start!important}.snd-card .sound-play-btn{width:100%;padding:6px}
 body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background:#fff;color:#222}
 .br-t:last-child:nth-child(odd){grid-column:1/-1;align-items:center;text-align:center}
+
+/* v43 ختمة + بدون إنترنت */
+.ask-br{display:flex;flex-wrap:wrap;gap:6px;max-height:55vh;overflow:auto}
+.srch-res{display:flex;flex-wrap:wrap;gap:6px;flex-basis:100%;order:5}.srch-res:empty,body.reading .srch-res{display:none}.srch-none{color:var(--text-muted);font-size:.85rem}
+.kh-sum{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+.kh-sum div{background:rgba(255,255,255,.05);border:1px solid var(--border-light);border-radius:12px;padding:8px 6px;text-align:center}
+.kh-sum b{display:block;font-size:1.05rem;color:var(--gold-light)}.kh-sum small{color:var(--text-muted);font-size:.72rem}
+.kh-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin-top:10px;direction:rtl}
+.kh-j{position:relative;height:30px;border-radius:7px;background:rgba(255,255,255,.07);border:1px solid var(--border-light);overflow:hidden;font-size:.7rem;display:flex;align-items:center;justify-content:center;color:var(--text-muted)}
+.kh-j i{position:absolute;inset:0 0 0 auto;background:linear-gradient(90deg,#d4af37,#10b981);opacity:.55;right:0;left:auto}
+.kh-j span{position:relative}
+.kh-j.full{color:#fff;border-color:var(--emerald-green)}
+.kh-in{width:84px;flex:none;padding:6px 8px;text-align:center}
+.off-bar{height:8px;border-radius:6px;background:rgba(255,255,255,.1);overflow:hidden;margin:8px 0}
+.off-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#d4af37,#10b981);transition:width .2s}
+.off-row{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 0;border-top:1px solid var(--border-light);font-size:.88rem}
+.off-note{color:var(--text-muted);font-size:.8rem;line-height:1.8;margin-top:6px}
+.off-ok{color:var(--emerald-green)}
+/* ===== اختبر نفسك في دينك ===== */
+.qz-entry{display:flex;align-items:center;gap:14px;width:100%;text-align:right;cursor:pointer;position:relative;overflow:hidden;padding:15px 16px;border-radius:20px;border:1px solid rgba(232,200,120,.38);color:var(--text-main);font-family:inherit;background:radial-gradient(120% 140% at 0% 0%,rgba(61,220,151,.14),transparent 55%),radial-gradient(120% 140% at 100% 100%,rgba(232,200,120,.16),transparent 55%),linear-gradient(135deg,#0b1a33,#0a2a2e);box-shadow:0 10px 30px -12px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,255,255,.07);transition:transform .18s,box-shadow .18s}
+.qz-entry:active{transform:scale(.985)}
+.qz-entry:hover{box-shadow:0 14px 34px -12px rgba(232,200,120,.28),inset 0 1px 0 rgba(255,255,255,.1)}
+.qz-entry .qe-ic{flex:none;width:52px;height:52px;border-radius:16px;display:grid;place-items:center;color:#2b1d03;background:linear-gradient(135deg,#f6e3a1,#c9a24a);box-shadow:0 6px 16px -6px rgba(232,200,120,.6)}
+.qz-entry .qe-t{flex:1;min-width:0}.qz-entry b{display:block;font-family:'Reem Kufi','Cairo',sans-serif;font-size:1.12rem;letter-spacing:.2px;color:#f6e7b8}
+.qz-entry small{display:block;color:#a9bad2;font-size:.78rem;line-height:1.6;margin-top:2px}
+.qz-entry .qe-go{flex:none;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.07);color:#f1d98f;border:1px solid rgba(232,200,120,.3)}
+body.light-mode .qz-entry{background:radial-gradient(120% 140% at 0% 0%,rgba(16,185,129,.12),transparent 55%),linear-gradient(135deg,#fffaf0,#eef7f1);border-color:rgba(180,130,20,.4)}
+body.light-mode .qz-entry b{color:#7a5a12}body.light-mode .qz-entry small{color:#4b5d6e}
+#qzView{--qz-bg1:#050a16;--qz-bg2:#0b1a30;--qz-bg3:#0c2a2c;--qz-surf:rgba(255,255,255,.045);--qz-surf2:rgba(255,255,255,.08);--qz-line:rgba(255,255,255,.1);--qz-gold:#e8c878;--qz-gold2:#c9a24a;--qz-em:#3ddc97;--qz-rose:#ff7d8d;--qz-tx:#f4efe3;--qz-mut:#9fb0c8;--qz-ink:#2b1d03;display:none;position:fixed;inset:0;z-index:99999;overflow-y:auto;overflow-x:hidden;color:var(--qz-tx);font-family:'Cairo',sans-serif;background:radial-gradient(90% 60% at 100% 0%,rgba(61,220,151,.1),transparent 60%),radial-gradient(80% 60% at 0% 100%,rgba(232,200,120,.1),transparent 60%),linear-gradient(160deg,var(--qz-bg1),var(--qz-bg2) 55%,var(--qz-bg3));-webkit-overflow-scrolling:touch}
+#qzView.open{display:block;animation:qzIn .28s ease}
+@keyframes qzIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+body.light-mode #qzView{--qz-bg1:#fbf7ec;--qz-bg2:#f2f4ea;--qz-bg3:#e6f0ea;--qz-surf:rgba(255,255,255,.75);--qz-surf2:rgba(255,255,255,.95);--qz-line:rgba(60,50,20,.14);--qz-gold:#9a7418;--qz-gold2:#b4871e;--qz-em:#0d9a63;--qz-rose:#d6334b;--qz-tx:#1b2433;--qz-mut:#5a6779;--qz-ink:#fff}
+.qz-wrap{max-width:560px;margin:0 auto;padding:max(14px,env(safe-area-inset-top)) 16px 120px}
+.qz-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0 14px}
+.qz-x{width:40px;height:40px;border-radius:12px;border:1px solid var(--qz-line);background:var(--qz-surf);color:var(--qz-tx);display:grid;place-items:center;cursor:pointer;flex:none}
+.qz-ttl{font-family:'Reem Kufi','Cairo',sans-serif;font-size:1.12rem;color:var(--qz-gold);letter-spacing:.3px;text-align:center;flex:1}
+.qz-sp{width:40px;flex:none}
+.qz-streak{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:999px;border:1px solid var(--qz-line);background:var(--qz-surf);color:var(--qz-mut);font-size:.85rem;flex:none;transition:.25s}
+.qz-streak.hot{color:#ffb24d;border-color:rgba(255,178,77,.5);background:rgba(255,178,77,.1);box-shadow:0 0 18px -4px rgba(255,178,77,.5)}
+.qz-hero{display:flex;align-items:center;gap:18px;padding:18px;border-radius:22px;border:1px solid rgba(232,200,120,.25);background:linear-gradient(135deg,var(--qz-surf2),var(--qz-surf));box-shadow:0 18px 40px -22px rgba(0,0,0,.7)}
+.qz-hl{flex:none}.qz-hr{flex:1;min-width:0}
+.qz-rk span{display:block;color:var(--qz-mut);font-size:.78rem}.qz-rk b{display:block;font-family:'Reem Kufi','Cairo',sans-serif;font-size:1.45rem;color:var(--qz-gold);line-height:1.5}
+.qz-pb{height:7px;border-radius:99px;background:var(--qz-line);overflow:hidden;margin:8px 0}
+.qz-pb i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#f3dc93,#3ddc97);transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.qz-rn{color:var(--qz-mut);font-size:.76rem;line-height:1.7}
+.qz-ring{position:relative;display:grid;place-items:center}.qz-rf{transition:stroke-dashoffset 1.1s cubic-bezier(.2,.8,.2,1)}
+.qz-rc{position:absolute;inset:0;display:grid;place-content:center;text-align:center}.qz-rc b{font-family:'Reem Kufi','Cairo',sans-serif;font-size:1.35rem;color:var(--qz-tx);line-height:1.2}.qz-rc small{color:var(--qz-mut);font-size:.68rem;margin-top:2px}
+.qz-st{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:12px 0 4px}.qz-st.three{grid-template-columns:repeat(3,1fr)}
+.qz-st div{text-align:center;padding:11px 4px;border-radius:14px;background:var(--qz-surf);border:1px solid var(--qz-line)}
+.qz-st b{display:block;font-size:1.02rem;color:var(--qz-tx)}.qz-st small{display:block;color:var(--qz-mut);font-size:.66rem;margin-top:3px;line-height:1.4}
+.qz-lbl{margin:20px 2px 10px;color:var(--qz-mut);font-size:.82rem;letter-spacing:.3px;display:flex;align-items:center;gap:10px}
+.qz-lbl:after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--qz-line),transparent)}
+.qz-cats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.qz-cat{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:right;padding:14px;border-radius:18px;border:1px solid var(--qz-line);background:var(--qz-surf);color:var(--qz-tx);font-family:inherit;cursor:pointer;transition:.2s;position:relative}
+.qz-cat b{font-size:.95rem}.qz-cat small{color:var(--qz-mut);font-size:.7rem;line-height:1.55}
+.qz-ci{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;margin-bottom:6px;color:var(--qz-gold);background:rgba(232,200,120,.1);border:1px solid rgba(232,200,120,.22)}
+.qz-cat:hover{border-color:rgba(232,200,120,.45);transform:translateY(-1px)}
+.qz-cat.on{border-color:var(--qz-gold);background:linear-gradient(135deg,rgba(232,200,120,.16),rgba(61,220,151,.07));box-shadow:0 10px 26px -14px rgba(232,200,120,.55)}
+.qz-cat.on .qz-ci{background:linear-gradient(135deg,#f6e3a1,#c9a24a);color:var(--qz-ink);border-color:transparent}
+.qz-cat.on:after{content:'';position:absolute;top:12px;left:12px;width:9px;height:9px;border-radius:50%;background:var(--qz-em);box-shadow:0 0 0 4px rgba(61,220,151,.18)}
+.qz-cat:first-child,.qz-cat:last-child{grid-column:1/-1;flex-direction:row;align-items:center;gap:12px;flex-wrap:wrap}.qz-cat:first-child .qz-ci,.qz-cat:last-child .qz-ci{margin:0}.qz-cat:first-child b,.qz-cat:last-child b{flex:1}.qz-cat:first-child small,.qz-cat:last-child small{width:100%;padding-right:50px;margin-top:-4px}
+.qz-seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:4px;border-radius:15px;background:var(--qz-surf);border:1px solid var(--qz-line)}
+.qz-seg button{padding:11px 4px;border:0;border-radius:11px;background:transparent;color:var(--qz-mut);font:600 .88rem 'Cairo',sans-serif;cursor:pointer;transition:.2s}
+.qz-seg button.on{background:linear-gradient(135deg,#f6e3a1,#c9a24a);color:var(--qz-ink);box-shadow:0 6px 14px -6px rgba(232,200,120,.6)}
+.qz-cta{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:20px;padding:16px;border:0;border-radius:16px;cursor:pointer;font:700 1.05rem 'Cairo',sans-serif;color:var(--qz-ink);background:linear-gradient(135deg,#f8e8ad,#d4ab4d 60%,#bd9137);box-shadow:0 14px 30px -14px rgba(232,200,120,.7),inset 0 1px 0 rgba(255,255,255,.5);transition:transform .15s,opacity .2s,filter .2s}
+.qz-cta:active{transform:scale(.985)}.qz-cta:disabled{opacity:.35;filter:grayscale(.6);cursor:not-allowed;box-shadow:none}
+.qz-cta.ghost{background:var(--qz-surf);color:var(--qz-gold);border:1px solid rgba(232,200,120,.4);box-shadow:none}
+.qz-note{margin:14px 4px 0;color:var(--qz-mut);font-size:.74rem;line-height:1.85;text-align:center}
+.qz-prog{display:flex;align-items:center;gap:12px;color:var(--qz-mut);font-size:.82rem;margin-bottom:12px}.qz-prog>span{flex:none}.qz-prog .qz-pb{flex:1;margin:0}
+.qz-card{padding:20px 18px 18px;border-radius:24px;border:1px solid rgba(232,200,120,.22);background:linear-gradient(160deg,var(--qz-surf2),var(--qz-surf));box-shadow:0 22px 50px -26px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.06);animation:qzCard .4s cubic-bezier(.2,.8,.2,1)}
+@keyframes qzCard{from{opacity:0;transform:translateY(16px) scale(.98)}to{opacity:1;transform:none}}
+.qz-chip{display:inline-block;padding:5px 12px;border-radius:99px;font-size:.72rem;color:var(--qz-gold);background:rgba(232,200,120,.1);border:1px solid rgba(232,200,120,.25)}
+.qz-q{margin:12px 0 4px;font-size:1.12rem;line-height:1.8;font-weight:700;color:var(--qz-tx)}
+.qz-tx{margin:12px 0 4px;padding:14px 14px;border-radius:16px;background:rgba(0,0,0,.18);border:1px solid var(--qz-line);line-height:2;font-size:.98rem;color:var(--qz-tx)}
+body.light-mode .qz-tx{background:rgba(255,255,255,.7)}
+.qz-tx.qz-v{font-size:1.5rem;line-height:2.2;text-align:center;color:#f6e7b8;border-color:rgba(232,200,120,.25)}body.light-mode .qz-tx.qz-v{color:#6b4d0b}
+.qz-tx.qz-h{font-size:1.28rem;line-height:2.1;text-align:center}
+.qz-opts{display:flex;flex-direction:column;gap:10px;margin-top:16px}
+.qz-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:right;padding:13px 14px;border-radius:16px;border:1px solid var(--qz-line);background:var(--qz-surf);color:var(--qz-tx);font:600 .95rem/1.7 'Cairo',sans-serif;cursor:pointer;transition:border-color .2s,background .2s,transform .12s,opacity .25s;animation:qzOpt .4s both cubic-bezier(.2,.8,.2,1)}
+@keyframes qzOpt{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.qz-opt:hover:not(:disabled){border-color:rgba(232,200,120,.5);background:var(--qz-surf2)}.qz-opt:active:not(:disabled){transform:scale(.985)}
+.qz-opt .font-quran{font-size:1.18rem;line-height:2}
+.qz-lt{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;font:700 .9rem 'Cairo',sans-serif;color:var(--qz-gold);background:rgba(232,200,120,.1);border:1px solid rgba(232,200,120,.25)}
+.qz-ot{flex:1;min-width:0}.qz-mk{flex:none;width:24px;display:grid;place-items:center}
+.qz-opt.ok{border-color:var(--qz-em);background:linear-gradient(135deg,rgba(61,220,151,.2),rgba(61,220,151,.06));color:var(--qz-tx)}.qz-opt.ok .qz-lt{background:var(--qz-em);color:#04281a;border-color:transparent}.qz-opt.ok .qz-mk{color:var(--qz-em)}
+.qz-opt.bad{border-color:var(--qz-rose);background:linear-gradient(135deg,rgba(255,125,141,.2),rgba(255,125,141,.06));animation:qzShake .4s}.qz-opt.bad .qz-lt{background:var(--qz-rose);color:#3a0710;border-color:transparent}.qz-opt.bad .qz-mk{color:var(--qz-rose)}
+.qz-opt.dim{opacity:.45}
+@keyframes qzShake{0%,100%{transform:none}25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.qz-fb{display:none;margin-top:16px;padding:14px;border-radius:16px;border:1px solid var(--qz-line);line-height:1.9}
+.qz-fb.show{display:block;animation:qzOpt .35s both}
+.qz-fb.ok{background:rgba(61,220,151,.08);border-color:rgba(61,220,151,.35)}.qz-fb.bad{background:rgba(255,125,141,.08);border-color:rgba(255,125,141,.35)}
+.qz-fh{display:flex;align-items:center;gap:8px}.qz-fh b{font-size:.98rem}.qz-fb.ok .qz-fi{color:var(--qz-em)}.qz-fb.bad .qz-fi{color:var(--qz-rose)}
+.qz-ca{margin:6px 0 2px;font-weight:700;color:var(--qz-em)}.qz-ca.font-quran{font-size:1.2rem;line-height:2}
+.qz-full{margin:8px 0;padding:10px 12px;border-radius:12px;background:rgba(0,0,0,.15);font-size:1.15rem;line-height:2.1;color:var(--qz-gold)}
+.qz-ex{color:var(--qz-mut);font-size:.85rem;margin-top:6px}
+.qz-lnk{margin-top:8px;padding:8px 14px;border-radius:12px;border:1px solid rgba(232,200,120,.4);background:transparent;color:var(--qz-gold);font:600 .82rem 'Cairo',sans-serif;cursor:pointer}
+.qz-foot{position:fixed;left:0;right:0;bottom:0;padding:12px 16px max(14px,env(safe-area-inset-bottom));background:linear-gradient(0deg,var(--qz-bg1) 55%,transparent);z-index:2}
+.qz-foot .qz-cta{max-width:528px;margin:0 auto}.qz-foot.static{position:static;background:none;padding:0}
+.qz-res{text-align:center;padding:8px 0 4px}.qz-rg{display:flex;justify-content:center}
+.qz-gt{margin:12px 0 2px;font-family:'Reem Kufi','Cairo',sans-serif;font-size:1.7rem;color:var(--qz-gold)}.qz-gs{color:var(--qz-mut);font-size:.88rem;line-height:1.8;max-width:34ch;margin:0 auto}
+.qz-brs{display:flex;flex-direction:column;gap:12px;padding:14px;border-radius:18px;background:var(--qz-surf);border:1px solid var(--qz-line)}
+.qz-br{display:grid;grid-template-columns:96px 1fr 44px;align-items:center;gap:10px;font-size:.82rem}.qz-br .qz-pb{margin:0}.qz-br b{text-align:left;color:var(--qz-mut);font-weight:600}
+.qz-acts{margin-top:6px}.qz-two{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.qz-sm{padding:13px;border-radius:14px;border:1px solid var(--qz-line);background:var(--qz-surf);color:var(--qz-tx);font:600 .9rem 'Cairo',sans-serif;cursor:pointer}
+.qz-card.rv{margin-bottom:12px}.qz-rv{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid var(--qz-line);display:flex;flex-direction:column;gap:2px}.qz-rv small{color:var(--qz-mut);font-size:.7rem}.qz-rv.ok{border-color:rgba(61,220,151,.4);background:rgba(61,220,151,.07)}.qz-rv.bad{border-color:rgba(255,125,141,.4);background:rgba(255,125,141,.07)}
+.qz-rv .font-quran{font-size:1.15rem;line-height:2}
+@media(max-width:380px){.qz-hero{flex-direction:column;text-align:center}.qz-st b{font-size:.9rem}.qz-cat{padding:12px}.qz-br{grid-template-columns:80px 1fr 40px}}
+@media(prefers-reduced-motion:reduce){#qzView *{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -925,6 +1033,7 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 </div>
 <div class="card today-card" id="todayCard"><div class="card-header"><span class="card-title">مهامي النهارده</span><span class="td-sum" id="todaySum"></span></div><div id="todayRows"></div></div>
 <button class="env-card" id="envCard" onclick="envOpenSheet()" aria-label="رسالة لقلبك الآن"><span class="env-ic"><i class="env-seal"></i></span><span class="env-tt"><b>رسالة لقلبك الآن</b><small id="envSub">مستنياك النهارده</small></span><span class="env-go" id="envGo">افتحها</span></button>
+<button class="qz-entry" id="qzEntry" onclick="qzOpen()" aria-label="اختبر نفسك في دينك"><span class="qe-ic"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.8V16c0 1.2 2.5 2.5 5.5 2.5s5.5-1.3 5.5-2.5v-4.2"/><path d="M21.5 9.5V15"/></svg></span><span class="qe-t"><b>اختبر نفسك في دينك</b><small id="qzEntrySub">أسئلة متجددة من القرآن والحديث والفقه والسيرة</small></span><span class="qe-go"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></span></button>
 <div class="sec-lbl" id="toolLbl">أدوات سريعة</div>
 <div class="tool-strip" id="toolStrip">
 <button class="tool-btn" onclick="openSheet('qiblaCard')"><span class="ti">🧭</span><span class="tn">القبلة</span><span class="tv" id="tvQ">اضغط للفتح</span></button>
@@ -936,6 +1045,7 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 <button class="tool-btn wide2" onclick="openChal()"><span class="ti">🏆</span><span class="tn">التحديات</span><span class="tv" id="tvC">ابدأ تحدي</span></button>
 <button class="tool-btn radio-btn" onclick="openRadio()"><span class="ti">📻</span><span class="rb-t"><span class="tn">راديو القرآن الكريم</span><span class="tv" id="tvR">بث مباشر ٢٤ ساعة — اضغط للتشغيل</span></span><span class="rb-live" id="rbLive"></span></button>
 </div>
+<div id="qzView" role="dialog" aria-modal="true" aria-label="اختبر نفسك في دينك"><div class="qz-wrap" id="qzBody"></div></div>
 <div id="sheetBg" onclick="closeSheet()"></div>
 <div class="card ret-card" id="retCard">
 <div class="card-header"><span class="card-title">ارجع لربنا</span><span class="chip" id="prayCount"></span></div>
@@ -1042,7 +1152,8 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 <div class="card-header"><span class="card-title">📖 المصحف الشريف</span><button class="mini" id="rmBtn" onclick="toggleReading()">⛶ وضع القراءة</button></div>
 <div class="quran-controls">
 <input class="input-select" id="surahSearch" placeholder="🔍 ابحث عن سورة" oninput="filterSurahs()" style="max-width:190px;min-width:140px;flex:none">
-<select class="input-select" id="surahSelect" onchange="fetchSurah()"><option value="">جاري تحميل السور...</option></select>
+<select class="input-select" id="surahSelect" onchange="$('surahSearch').value='';$('surahRes').innerHTML='';buildSurahs();fetchSurah()"><option value="">جاري تحميل السور...</option></select>
+<div id="surahRes" class="srch-res"></div>
 <select class="input-select" id="reciterSelect" onchange="changeReciter()">
 <option value="ar.alafasy">مشاري العفاسي</option>
 <option value="ar.abdulbasitmurattal">عبد الباسط عبد الصمد (مرتل)</option>
@@ -1077,6 +1188,7 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 <button class="mini" onclick="qPanel('taf')">📖 تفسير</button>
 <button class="mini" onclick="qPanel('memo')">🧠 حفظ</button>
 <button class="mini" onclick="qPanel('kh')">📚 ختمتي</button>
+<button class="mini" onclick="qPanel('off')">📥 بدون إنترنت</button>
 <button class="mini" onclick="qPanel('bm')">🔖 علاماتي</button>
 <button class="mini" onclick="copyAyah(this)">📋 نسخ</button>
 <button class="mini" onclick="shareAyah()">📤 مشاركة</button>
@@ -1103,12 +1215,30 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 <div id="loopLbl" style="color:var(--sky-blue);font-size:.88rem;margin-top:8px;min-height:20px"></div>
 </div>
 <div class="qpanel" id="pnl_kh">
-<div class="row" style="justify-content:space-between"><h4>📚 ختمتي</h4>
-<div class="row"><select id="khDays" class="input-select" style="max-width:150px;flex:none;padding:6px 10px"><option value="7">ختمة في 7 أيام</option><option value="10">10 أيام</option><option value="15">15 يوم</option><option value="20">20 يوم</option><option value="30" selected>30 يوم</option><option value="60">60 يوم</option><option value="90">90 يوم</option></select><button class="mini" onclick="khNew()">ابدأ ختمة جديدة</button></div></div>
-<progress id="khBar" value="0" max="604" style="margin:10px 0"></progress>
-<div id="khInfo" style="color:var(--text-muted);font-size:.88rem"></div>
-<div id="khWird" style="margin:10px 0;font-weight:700;line-height:1.9"></div>
-<div class="row"><button class="btn-action" onclick="khStartWird()">▶ ابدأ ورد النهاردة</button><button class="mini" onclick="khMark()">📍 سجّل وصولي للآية الحالية</button><button class="mini" onclick="khDone()">✅ خلّصت وردي</button></div>
+<div class="row" style="justify-content:space-between"><h4>📚 ختمتي</h4><button class="mini" id="khStreak" onclick="khRender()"></button></div>
+<progress id="khBar" value="0" max="604" style="margin:6px 0"></progress>
+<div class="kh-sum"><div><b id="khS1">٠</b><small>صفحة وصلت لها</small></div><div><b id="khS2">٠</b><small>ورد النهاردة</small></div><div><b id="khS3">٠</b><small>باقي أيام</small></div></div>
+<div id="khWird" style="margin:8px 0;font-weight:700;line-height:1.9"></div>
+<div id="khInfo" style="color:var(--text-muted);font-size:.84rem;line-height:1.8"></div>
+<div class="row" style="margin-top:10px"><button class="btn-action" onclick="khStartWird()">▶ ابدأ ورد النهاردة</button><button class="mini" onclick="khMark()">📍 سجّل وصولي للآية الحالية</button><button class="mini" onclick="khDone()">✅ خلّصت وردي</button></div>
+<div class="row" style="margin-top:10px"><span style="font-size:.88rem">وصلت لصفحة</span><input type="number" id="khPg" class="input-select kh-in" min="0" max="604" inputmode="numeric"><button class="mini" onclick="khSetPage()">سجّل</button></div>
+<div class="kh-grid" id="khGrid"></div>
+<div style="color:var(--text-muted);font-size:.72rem;margin-top:4px">الأجزاء الثلاثين — الملوّن هو اللي قريته</div>
+<div class="row" style="margin-top:12px;border-top:1px solid var(--border-light);padding-top:10px"><span style="font-size:.88rem">الخطة: ختمة في</span><input type="number" id="khDays" class="input-select kh-in" min="1" max="365" value="30" inputmode="numeric"><span style="font-size:.88rem">يوم</span>
+<button class="mini" onclick="khNew()">ختمة جديدة من الأول</button><button class="mini" onclick="khReplan()">كمّل من مكاني بالخطة دي</button></div>
+<div class="row" style="margin-top:8px"><button class="mini" onclick="document.getElementById('khDays').value=7">٧</button><button class="mini" onclick="document.getElementById('khDays').value=15">١٥</button><button class="mini" onclick="document.getElementById('khDays').value=30">٣٠</button><button class="mini" onclick="document.getElementById('khDays').value=60">٦٠</button><button class="mini" onclick="document.getElementById('khDays').value=90">٩٠</button></div>
+</div>
+<div class="qpanel" id="pnl_off">
+<h4>📥 قراءة وسماع بدون إنترنت</h4>
+<div id="offStore" class="off-note"></div>
+<div class="off-row"><span>📖 نص المصحف كامل <span id="offTxtS" class="off-note"></span></span><button class="mini" id="offTxtB" onclick="offTextDl()">تحميل</button></div>
+<div class="off-row"><span>📚 التفسير المختار فوق <span id="offTafS" class="off-note"></span></span><button class="mini" id="offTafB" onclick="offTafDl()">تحميل</button></div>
+<div style="margin-top:10px;font-weight:700">🎧 صوت سورة بصوت القارئ الحالي</div>
+<div class="row" style="margin-top:6px"><select id="offSurah" class="input-select" style="flex:1"></select><button class="mini" id="offAudB" onclick="offAudioDl()">تحميل الصوت</button></div>
+<div class="off-bar"><i id="offBar"></i></div>
+<div id="offMsg" class="off-note"></div>
+<div id="offList"></div>
+<div class="off-note">النص والتفسير بيتحفظوا على جهازك ويشتغلوا من غير نت. الصوت بيتحفظ لكل قارئ على حدة وبياخد مساحة (السورة الطويلة ممكن توصل لعشرات الميجا)، والتحميل أحسن يكون على الواي فاي.</div>
 </div>
 <div class="qpanel" id="pnl_bm">
 <div class="row" style="justify-content:space-between"><h4>🔖 علاماتي</h4><button class="mini" onclick="bmResume()">▶ كمّل من آخر موضع</button></div>
@@ -1299,6 +1429,7 @@ body.light-mode .br-t{background:#fff}body.light-mode .br-opts select{background
 <div class="card"><div class="card-header"><span class="card-title">🤖 اسأل ملاذ</span></div>
 <div class="ask-box"><textarea id="askQ" rows="2" placeholder="اكتب سؤالك الديني… مثلًا: ما فضل الاستغفار؟ أو: ما حكم الغيبة؟" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();askGo()}"></textarea><button class="ask-go" id="askBtn" onclick="askGo()">اسأل</button></div>
 <div class="ask-ex" id="askEx"></div>
+<div class="ask-ex"><button onclick="askBrowse()">📚 تصفّح كل المواضيع</button><button onclick="askBrowse('y')">💬 أسئلة الشباب</button><button onclick="askBrowse('f')">🤍 لو بعيد عن ربنا</button><button onclick="askRandom()">🎲 تعلّم موضوع جديد</button></div>
 <div class="ask-sub">الإجابة بتتبني على نصوص من القرآن الكريم والسنة النبوية بس، وكل نص معاه مصدره. مفيش كلام من عندي.</div>
 </div>
 <div id="askOut"></div></section>
@@ -1423,7 +1554,7 @@ function loadBuf(i){
   const key=curEd+'_'+surahNo+'_'+i;
   if(bufs.has(key))return bufs.get(key);
   const urls=urlsFor(i);
-  const p=(async()=>{for(const u of urls){try{const ac=new AbortController(),t=setTimeout(()=>ac.abort(),20000);const r=await fetch(u,{signal:ac.signal});clearTimeout(t);if(!r.ok)continue;return trim(await qCtx.decodeAudioData(await r.arrayBuffer()))}catch(e){}}throw 0})();
+  const p=(async()=>{for(const u of urls){try{const ac=new AbortController(),t=setTimeout(()=>ac.abort(),20000);const r=await offAudFetch(u,ac.signal);clearTimeout(t);if(!r.ok)continue;return trim(await qCtx.decodeAudioData(await r.arrayBuffer()))}catch(e){}}throw 0})();
   bufs.set(key,p);p.catch(()=>bufs.delete(key));return p;
 }
 /* وضع احتياطي: لو المتصفح منع تحميل الصوت للجدولة، بنشغّله بعناصر صوت عادية (أكيد بيشتغل) */
@@ -1436,7 +1567,10 @@ eA.forEach(a=>{a.preload='auto';
   a.addEventListener('timeupdate',()=>{if(!elMode||a!==eA[eAct]||!a.duration)return;$('seek').value=(cur+a.currentTime/a.duration)/ayahs.length*100;$('tCur').textContent=fmtT(a.currentTime);$('tDur').textContent=fmtT(a.duration)});
   a.addEventListener('error',()=>{if(elMode&&a===eA[eAct]&&a.getAttribute('src'))elErr()});
 });
-function elSrc(a,i,n=0){const u=urlsFor(i);a.dataset.i=i;a.dataset.n=n;a.src=u[Math.min(n,u.length-1)]}
+function elSrc(a,i,n=0){const u=urlsFor(i);a.dataset.i=i;a.dataset.n=n;
+  if(n===0&&window.caches&&offHas(curEd,surahNo)){
+    return caches.match(u[0],{cacheName:OFFC}).then(h=>h?h.blob():null).then(b=>{if(a.dataset.i!=i||a.dataset.n!=0)return;if(a._ou){try{URL.revokeObjectURL(a._ou)}catch(e){}a._ou=null}if(b){a._ou=URL.createObjectURL(b);a.src=a._ou}else a.src=u[0]}).catch(()=>{a.src=u[0]})}
+  a.src=u[Math.min(n,u.length-1)]}
 function elPlay(i){
   elMode=true;$('boostVal').textContent='غير متاح';
   sched.forEach(x=>{try{x.src.stop()}catch(e){}});sched=[];
@@ -1444,8 +1578,9 @@ function elPlay(i){
   ls.set('lastPos',JSON.stringify({n:surahNo,i,ed:curEd}));
   eA.forEach(a=>a.pause());
   const oth=eA[1-eAct];
-  if(oth.dataset.i==i&&oth.getAttribute('src'))eAct=1-eAct;else elSrc(eA[eAct],i);
-  eA[eAct].play().catch(()=>status('اضغط زر التشغيل ▶'));
+  let rdy=null;if(oth.dataset.i==i&&oth.getAttribute('src'))eAct=1-eAct;else rdy=elSrc(eA[eAct],i);
+  const pa=eA[eAct],go=()=>pa.play().catch(()=>status('اضغط زر التشغيل ▶'));
+  if(rdy&&rdy.then)rdy.then(()=>{if(eA[eAct]===pa&&elMode)go()});else go();
   if(ayahs[i+1])elSrc(eA[1-eAct],i+1);
   mediaInfo();
 }
@@ -1513,14 +1648,22 @@ function seekTo(){if(ayahs.length)playAyah(Math.min(ayahs.length-1,Math.floor($(
 
 function buildSurahs(q=''){
   const s=$('surahSelect'),keep=s.value;s.innerHTML='<option value="">اختر السورة...</option>';
-  allSurahs.filter(x=>!q||norm(x.name).includes(norm(q))||String(x.number)===q.trim()).forEach(x=>{const o=document.createElement('option');o.value=x.number;o.textContent=`${x.number}. سورة ${x.name.replace('سُورَةُ ','')}`;s.appendChild(o)});
+  allSurahs.filter(x=>surahMatch(x,q)).forEach(x=>{const o=document.createElement('option');o.value=x.number;o.textContent=`${x.number}. سورة ${x.name.replace('سُورَةُ ','')}`;s.appendChild(o)});
   s.value=keep;
 }
-function filterSurahs(){buildSurahs($('surahSearch').value)}
+const snm=s=>norm(String(s)).replace(/[\u06D6-\u06ED]/g,'').replace(/\s+/g,'');
+function surahMatch(x,q){q=(q||'').trim();if(!q)return true;if(String(x.number)===q)return true;const a=snm(q);return !!a&&snm(x.name).includes(a)}
+function surahPick(n){$('surahSearch').value='';buildSurahs();$('surahSelect').value=String(n);$('surahRes').innerHTML='';fetchSurah(0,false)}
+function filterSurahs(){
+  const q=$('surahSearch').value;buildSurahs(q);const r=$('surahRes');r.innerHTML='';if(!q.trim())return;
+  const m=allSurahs.filter(x=>surahMatch(x,q));
+  if(!m.length){r.innerHTML='<span class="srch-none">مفيش سورة بالاسم ده</span>';return}
+  m.slice(0,14).forEach(x=>{const b=document.createElement('button');b.type='button';b.className='mini';b.textContent=`${nAr(x.number)}. ${x.name.replace('سُورَةُ ','')}`;b.onclick=()=>surahPick(x.number);r.appendChild(b)});
+  if(m.length===1){$('surahSelect').value=String(m[0].number)}
+}
+const SURAH_NAMES='الفاتحة,البقرة,آل عمران,النساء,المائدة,الأنعام,الأعراف,الأنفال,التوبة,يونس,هود,يوسف,الرعد,إبراهيم,الحجر,النحل,الإسراء,الكهف,مريم,طه,الأنبياء,الحج,المؤمنون,النور,الفرقان,الشعراء,النمل,القصص,العنكبوت,الروم,لقمان,السجدة,الأحزاب,سبأ,فاطر,يس,الصافات,ص,الزمر,غافر,فصلت,الشورى,الزخرف,الدخان,الجاثية,الأحقاف,محمد,الفتح,الحجرات,ق,الذاريات,الطور,النجم,القمر,الرحمن,الواقعة,الحديد,المجادلة,الحشر,الممتحنة,الصف,الجمعة,المنافقون,التغابن,الطلاق,التحريم,الملك,القلم,الحاقة,المعارج,نوح,الجن,المزمل,المدثر,القيامة,الإنسان,المرسلات,النبأ,النازعات,عبس,التكوير,الانفطار,المطففين,الانشقاق,البروج,الطارق,الأعلى,الغاشية,الفجر,البلد,الشمس,الليل,الضحى,الشرح,التين,العلق,القدر,البينة,الزلزلة,العاديات,القارعة,التكاثر,العصر,الهمزة,الفيل,قريش,الماعون,الكوثر,الكافرون,النصر,المسد,الإخلاص,الفلق,الناس'.split(',');
 async function loadSurahList(){
-  const c=ls.get('surahList');
-  if(c){try{allSurahs=JSON.parse(c)}catch(e){}}
-  if(!allSurahs.length){try{const r=await fetch('https://api.alquran.cloud/v1/surah');allSurahs=(await r.json()).data.map(x=>({number:x.number,name:x.name}));ls.set('surahList',JSON.stringify(allSurahs))}catch(e){$('surahSelect').innerHTML='<option value="">تعذر تحميل السور</option>';return}}
+  allSurahs=SURAH_NAMES.map((n,i)=>({number:i+1,name:n}));
   buildSurahs();$('rSurah').innerHTML=$('surahSelect').innerHTML;
   try{const p=JSON.parse(ls.get('lastPos')||'null');if(p){$('reciterSelect').value=p.ed;$('surahSelect').value=p.n;fetchSurah(p.i,false)}}catch(e){}
 }
@@ -1533,14 +1676,14 @@ async function fetchSurah(startAt=0,autoplay=true){
   if(!data){const c=ls.get(key);if(c){try{data=JSON.parse(c)}catch(e){}}}
   if(!data){
     try{
-      const r=await fetch(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,${ed}`);
+      const r=await fetchT(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,${ed}`,ls.get('offTxt')?7000:30000);
       const j=(await r.json()).data;
       data={name:j[0].name,ayahs:j[0].ayahs.map((a,i)=>({t:a.text,a:j[1].ayahs[i].audio,g:a.number,p:a.page}))};
       ls.set(key,JSON.stringify(data));
-    }catch(e){status('تعذر تحميل السورة مع هذا القارئ، جرّب قارئ تاني أو تأكد من الإنترنت.');return}
+    }catch(e){data=await offSurahFallback(n).catch(()=>null);if(!data){status('تعذر تحميل السورة مع هذا القارئ، جرّب قارئ تاني أو تأكد من الإنترنت.');return}status('بدون إنترنت — النص من النسخة المحفوظة'+(offHas(ed,+n)?' والصوت محفوظ':' (الصوت محتاج إنترنت)'))}
   }
-  memCache[key]=data;surahNo=+n;surahName=data.name;curEd=ed;
-  renderSurah(n,data);status('');
+  if(!data._off)memCache[key]=data;surahNo=+n;surahName=data.name;curEd=ed;
+  renderSurah(n,data);if(!data._off)status('');
   if(autoplay)playAyah(startAt);else{cur=startAt;hl(cur)}
 }
 function changeReciter(){const keep=cur>=0?cur:0,was=playing&&(elMode?!eA[eAct].paused:qCtx&&qCtx.state==='running');fetchSurah(keep,was)}
@@ -1593,13 +1736,13 @@ function loopStart(){
 function loopStop(){LOOP.on=false;$('loopLbl').textContent='اتوقف التكرار'}
 function loopFromCur(){if(cur<0)return;$('lpA').value=cur+1;$('lpB').value=Math.min(ayahs.length,cur+3)}
 
-const QP=['taf','memo','kh','bm'];
+const QP=['taf','memo','kh','bm','off'];
 function qPanel(k){
   const el=$('pnl_'+k),open=!el.classList.contains('open');
   QP.forEach(x=>$('pnl_'+x).classList.remove('open'));
   if(!open)return;el.classList.add('open');
   if(k!=='bm'&&cur<0&&ayahs.length){cur=0;hl(0)}
-  if(k==='taf')tafRender();if(k==='kh')khRender();if(k==='bm')bmRender();
+  if(k==='taf')tafRender();if(k==='kh')khRender();if(k==='bm')bmRender();if(k==='off')offRender();
   el.scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 function abUpdate(){
@@ -1700,18 +1843,40 @@ function memoApply(){
 let KH=null;
 function khLoad(){try{KH=JSON.parse(ls.get('khatma')||'null')}catch(e){KH=null}if(!KH)KH={start:Date.now(),days:30,pos:0,count:0,completed:false,log:{}}}
 const khSave=()=>{ls.set('khatma',JSON.stringify(KH));try{todayRender()}catch(e){}};
-const khPer=()=>Math.ceil(604/KH.days);
+const khPer=()=>Math.max(1,Math.ceil((604-(KH.base||0))/Math.max(1,KH.days)));
 function khDayIdx(){const a=new Date(KH.start);a.setHours(0,0,0,0);const b=new Date();b.setHours(0,0,0,0);return Math.max(0,Math.round((b-a)/864e5))}
-const khTarget=()=>Math.min(604,khPer()*(khDayIdx()+1));
+const khTarget=()=>Math.min(604,(KH.base||0)+khPer()*(khDayIdx()+1));
 function khCheck(){if(KH.pos>=604&&!KH.completed){KH.completed=true;KH.count++;toast('ما شاء الله، ختمت القرآن 🎉')}}
+const KJUZ=[1,22,42,62,82,102,121,142,162,182,201,222,242,262,282,302,322,342,362,382,402,422,442,462,482,502,522,542,562,582];
+function khPrayerTxt(p){const x=Math.round(p/5*2)/2;if(x<=0)return '';const w=x===0.5?'نص صفحة':x===1?'صفحة':x===1.5?'صفحة ونص':x===2?'صفحتين':(Number.isInteger(x)?nAr(x)+' صفحات':nAr(Math.floor(x))+' صفحات ونص');return w}
 function khRender(){
   if(!KH)khLoad();
-  const t=khTarget(),pos=KH.pos,left=t-pos;
-  $('khDays').value=String(KH.days);$('khBar').value=pos;
-  $('khInfo').textContent=`وصلت صفحة ${pos.toLocaleString('ar-EG')} من ٦٠٤ (${Math.round(pos/604*100)}%) • الورد ${khPer().toLocaleString('ar-EG')} صفحة في اليوم • اليوم ${(khDayIdx()+1).toLocaleString('ar-EG')} من ${KH.days.toLocaleString('ar-EG')} • ختمات سابقة: ${KH.count.toLocaleString('ar-EG')}`;
-  $('khWird').textContent=pos>=604?'ما شاء الله، خلّصت الختمة 🎉 تقدر تبدأ ختمة جديدة.':left<=0?`✅ في الموعد وزيادة (مستهدف النهاردة لحد صفحة ${t.toLocaleString('ar-EG')})`:`ورد النهاردة: من صفحة ${(pos+1).toLocaleString('ar-EG')} لحد صفحة ${t.toLocaleString('ar-EG')} (${left.toLocaleString('ar-EG')} صفحة)${left>khPer()?' — متأخر شوية، ربنا يعينك 🤍':''}`;
+  const t=khTarget(),pos=KH.pos,left=t-pos,days=KH.days,di=khDayIdx(),dl=Math.max(1,days-di);
+  $('khBar').value=pos;if($('khDays')&&document.activeElement!==$('khDays'))$('khDays').value=String(KH.days);
+  const per=khPer(),need=pos>=604?0:Math.max(0,Math.ceil((604-pos)/dl)),todayPages=pos>=604?0:Math.max(left>0?left:0,0);
+  $('khS1').textContent=nAr(pos);$('khS2').textContent=nAr(pos>=604?0:Math.max(per,left>0?left:per));$('khS3').textContent=nAr(Math.max(0,days-di));
+  const fin=new Date(KH.start);fin.setDate(fin.getDate()+days-1);
+  const finTxt=fin.toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'});
+  const pr=khPrayerTxt(per);
+  $('khInfo').textContent=pos>=604?`ختمات سابقة: ${nAr(KH.count)}`:`${nAr(Math.round(pos/604*100))}% من المصحف • الورد ${nAr(per)} صفحة في اليوم${pr?` (يعني تقريبًا ${pr} بعد كل صلاة)`:''} • الختمة المفروض تخلص ${finTxt}${KH.base?` • الخطة بدأت من صفحة ${nAr(KH.base)}`:''} • ختمات سابقة: ${nAr(KH.count)}`;
+  let msg;
+  if(pos>=604)msg='ما شاء الله، خلّصت الختمة 🎉 تقدر تبدأ ختمة جديدة.';
+  else if(left<=0)msg=`✅ في الموعد وزيادة (مستهدف النهاردة لحد صفحة ${nAr(t)})`;
+  else msg=`ورد النهاردة: من صفحة ${nAr(pos+1)} لحد صفحة ${nAr(t)} (${nAr(left)} صفحة)`;
+  if(pos<604&&left>per*1.5&&days-di>1)msg+=` — اتأخرت شوية؛ لو كمّلت على باقي الأيام هتحتاج ${nAr(need)} صفحة في اليوم، أو اضغط «كمّل من مكاني» وظبّط الأيام.`;
+  $('khWird').textContent=msg;
+  if($('khPg')&&document.activeElement!==$('khPg'))$('khPg').value=pos;
+  let st=0;try{st=wirdStreak()}catch(e){}
+  $('khStreak').textContent=st>=1?`🔥 ${st===1?'يوم':st===2?'يومين':nAr(st)+' '+(st<11?'أيام':'يوم')} ورد`:'ابدأ سلسلتك';
+  const g=$('khGrid');if(g){g.innerHTML='';for(let j=0;j<30;j++){const s=KJUZ[j],e=(KJUZ[j+1]||605)-1,len=e-s+1,done=Math.max(0,Math.min(len,pos-s+1)),pc=Math.round(done/len*100);
+    const c=document.createElement('div');c.className='kh-j'+(pc>=100?' full':'');c.title='الجزء '+nAr(j+1);c.innerHTML=`<i style="width:${pc}%"></i><span>${nAr(j+1)}</span>`;g.appendChild(c)}}
 }
-function khNew(){if(!confirm('تبدأ ختمة جديدة؟ التقدم الحالي هيتصفّر (وعدد الختمات السابقة بيفضل).'))return;khLoad();KH={start:Date.now(),days:+$('khDays').value,pos:0,count:KH.count,completed:false,log:{}};khSave();khRender()}
+function khSetPage(){khLoad();let v=parseInt($('khPg').value,10);if(isNaN(v)||v<0||v>604){toast('اكتب رقم صفحة من ٠ لـ ٦٠٤');return}
+  KH.pos=v;if(v>=khTarget())KH.log[dayKey()]=1;if(v<604)KH.completed=false;khCheck();khSave();khRender();toast('اتسجّل تقدّمك ✅')}
+function khReplan(){khLoad();const n=Math.max(1,Math.min(365,parseInt($('khDays').value,10)||30));
+  if(KH.pos>=604){toast('خلّصت الختمة، ابدأ ختمة جديدة');return}
+  KH.base=KH.pos;KH.days=n;KH.start=Date.now();khSave();khRender();toast(`تمام — باقي ${nAr(604-KH.pos)} صفحة على ${nAr(n)} يوم`)}
+function khNew(){if(!confirm('تبدأ ختمة جديدة؟ التقدم الحالي هيتصفّر (وعدد الختمات السابقة بيفضل).'))return;khLoad();KH={start:Date.now(),days:Math.max(1,Math.min(365,parseInt($('khDays').value,10)||30)),pos:0,base:0,count:KH.count,completed:false,log:{}};khSave();khRender()}
 function khMark(){if(cur<0||!ayahs[cur]||!ayahs[cur].p){toast('اختر آية الأول');return}khLoad();KH.pos=ayahs[cur].p;if(KH.pos>=khTarget())KH.log[dayKey()]=1;khCheck();khSave();khRender();toast('اتسجّل تقدّمك 📍')}
 function khDone(){khLoad();KH.pos=Math.max(KH.pos,khTarget());KH.log[dayKey()]=1;khCheck();khSave();khRender();toast('تقبّل الله منك ✅');if(typeof pendRender==='function')pendRender()}
 async function khStartWird(){
@@ -1719,7 +1884,91 @@ async function khStartWird(){
   try{const r=await fetchT(`https://api.alquran.cloud/v1/page/${pg}/quran-uthmani`,15000);const j=await r.json();const a=j.data.ayahs[0];await bmGo({n:a.surah.number,i:a.numberInSurah-1})}
   catch(e){toast('تعذر فتح الصفحة، اتأكد من الإنترنت')}
 }
+
+/* ============ بدون إنترنت ============ */
+const OFFC='malaaz-audio';
+const offIdx=()=>{try{return JSON.parse(ls.get('offA')||'{}')}catch(e){return {}}};
+const offHas=(ed,n)=>{const x=offIdx()[ed];return !!(x&&x[n])};
+const offFmt=b=>b>=1048576?nAr(+(b/1048576).toFixed(1))+' م.ب':nAr(Math.round(b/1024))+' ك.ب';
+const offSay=m=>{const e=$('offMsg');if(e)e.textContent=m||''};
+const offProg=p=>{const e=$('offBar');if(e)e.style.width=Math.max(0,Math.min(100,p))+'%'};
+let QOFF=null;
+async function offTextLoad(){if(QOFF)return QOFF;try{QOFF=(await bk('get','qtext_all'))||null}catch(e){}return QOFF}
+async function offSurahFallback(n){const s=await offTextLoad();const x=s&&s.find(z=>z.n==n);return x?{_off:1,name:x.name,ayahs:x.a.map(y=>({t:y[0],a:'',g:y[1],p:y[2]}))}:null}
+async function offTextDl(){
+  const b=$('offTxtB');b.disabled=true;offSay('جاري تحميل نص المصحف...');offProg(10);
+  try{
+    const r=await fetchT('https://api.alquran.cloud/v1/quran/quran-uthmani',90000);const j=await r.json();
+    if(!j.data||!j.data.surahs||j.data.surahs.length<114)throw 0;
+    const s=j.data.surahs.map(x=>({n:x.number,name:x.name,a:x.ayahs.map(y=>[y.text,y.number,y.page])}));
+    await bk('put','qtext_all',s);QOFF=s;
+    ls.set('surahList',JSON.stringify(s.map(x=>({number:x.n,name:x.name}))));ls.set('offTxt','1');
+    offProg(100);offSay('تمام — المصحف كله متحفوظ على جهازك ✅');
+  }catch(e){offProg(0);offSay('معرفتش أحمّل النص، اتأكد من الإنترنت وجرّب تاني.')}
+  b.disabled=false;offRender(true);
+}
+async function offTafDl(){
+  const ed=$('tafEd').value,b=$('offTafB');b.disabled=true;let done=0,fail=0;const ns=Array.from({length:114},(_,i)=>i+1);
+  const run=async()=>{while(ns.length){const n=ns.shift();try{await tafGet(ed,n)}catch(e){fail++}done++;offProg(done/114*100);offSay(`جاري تحميل التفسير... ${nAr(done)} / ${nAr(114)}`)}};
+  await Promise.all([run(),run(),run()]);
+  try{const m=JSON.parse(ls.get('offT')||'{}');if(!fail)m[ed]=1;ls.set('offT',JSON.stringify(m))}catch(e){}
+  offSay(fail?`خلص بس ${nAr(fail)} سورة ماتحمّلتش، جرّب تاني.`:'تمام — التفسير متحفوظ ✅');b.disabled=false;offRender(true);
+}
+async function offSurahData(n,ed){ // نفس شكل ومفتاح fetchSurah
+  const key=`v3s${n}_${ed}`;let d=memCache[key];
+  if(!d){const c=ls.get(key);if(c){try{d=JSON.parse(c)}catch(e){}}}
+  if(d)return d;
+  const r=await fetchT(`https://api.alquran.cloud/v1/surah/${n}/editions/quran-uthmani,${ed}`,25000);const j=(await r.json()).data;
+  d={name:j[0].name,ayahs:j[0].ayahs.map((a,i)=>({t:a.text,a:j[1].ayahs[i].audio,g:a.number,p:a.page}))};
+  try{ls.set(key,JSON.stringify(d))}catch(e){}return memCache[key]=d;
+}
+async function offAudioDl(){
+  if(!window.caches){offSay('المتصفح هنا مش بيدعم حفظ الصوت — ثبّت التطبيق من رابط https وجرّب.');return}
+  const n=+$('offSurah').value,ed=$('reciterSelect').value;if(!n){offSay('اختار سورة الأول');return}
+  const b=$('offAudB');b.disabled=true;offProg(2);offSay('جاري تجهيز السورة...');
+  try{
+    const d=await offSurahData(n,ed),c=await caches.open(OFFC);let done=0,fail=0,bytes=0;const idx=d.ayahs.map((_,i)=>i);
+    const run=async()=>{while(idx.length){const i=idx.shift(),a=d.ayahs[i],u0=`https://cdn.islamic.app/quran/audio/${ed}/${a.g}.mp3`;let ok=false;
+      try{const h=await c.match(u0);if(h){ok=true;bytes+=+(h.headers.get('content-length')||0)}}catch(e){}
+      if(!ok){const us=[u0];if(QF[ed])us.push(`https://verses.quran.foundation/${QF[ed]}/mp3/${String(n).padStart(3,'0')}${String(i+1).padStart(3,'0')}.mp3`);if(a.a)us.push(a.a);
+        for(const u of us){try{const ac=new AbortController(),tm=setTimeout(()=>ac.abort(),30000);const r=await fetch(u,{signal:ac.signal});clearTimeout(tm);if(!r.ok)continue;const buf=await r.arrayBuffer();bytes+=buf.byteLength;await c.put(u0,new Response(buf,{headers:{'Content-Type':'audio/mpeg','Content-Length':String(buf.byteLength)}}));ok=true;break}catch(e){}}}
+      if(!ok)fail++;done++;offProg(done/d.ayahs.length*100);offSay(`${d.name} — ${nAr(done)} من ${nAr(d.ayahs.length)} آية`)}};
+    await Promise.all([run(),run(),run()]);
+    if(!fail){const m=offIdx();(m[ed]=m[ed]||{})[n]=bytes||1;ls.set('offA',JSON.stringify(m));offSay(`تمام — صوت ${d.name} متحفوظ (${offFmt(bytes)}) ✅`)}
+    else offSay(`${nAr(fail)} آية ماتحمّلتش — اتأكد من النت وجرّب تاني (اللي اتحمّل قبل كده مش هيتحمّل تاني).`);
+  }catch(e){offProg(0);offSay('معرفتش أحمّل السورة، اتأكد من الإنترنت.')}
+  b.disabled=false;offRender(true);
+}
+async function offAudioDel(ed,n){
+  if(!confirm('تمسح الصوت المحفوظ للسورة دي؟'))return;
+  try{const d=await offSurahData(n,ed).catch(()=>null),c=await caches.open(OFFC);if(d)for(const a of d.ayahs)await c.delete(`https://cdn.islamic.app/quran/audio/${ed}/${a.g}.mp3`)}catch(e){}
+  const m=offIdx();if(m[ed]){delete m[ed][n];if(!Object.keys(m[ed]).length)delete m[ed]}ls.set('offA',JSON.stringify(m));offRender(true);toast('اتمسح');
+}
+async function offAudFetch(u,sig){
+  if(window.caches&&offHas(curEd,surahNo)){try{const h=await caches.match(u,{cacheName:OFFC});if(h)return h}catch(e){}}
+  return fetch(u,{signal:sig});
+}
+function offRender(keepMsg){
+  const sel=$('offSurah');if(!sel)return;
+  if(!sel.options.length||sel.options.length<5){sel.innerHTML=$('surahSelect').innerHTML}
+  if(surahNo&&!keepMsg)sel.value=String(surahNo);
+  const txt=!!ls.get('offTxt');$('offTxtS').textContent=txt?'— متحفوظ ✅':'';$('offTxtB').textContent=txt?'تحديث':'تحميل';
+  let tf=0;try{tf=JSON.parse(ls.get('offT')||'{}')[$('tafEd').value]}catch(e){}
+  $('offTafS').textContent=tf?'— متحفوظ ✅':'';$('offTafB').textContent=tf?'تحديث':'تحميل';
+  const m=offIdx(),L=$('offList');let h='',any=false;
+  const nm=n=>{const s=(allSurahs||[]).find(x=>x.number==n);return s?'سورة '+s.name:'سورة '+nAr(n)};
+  const rn_={'ar.alafasy':'العفاسي','ar.abdulbasitmurattal':'عبد الباسط','ar.minshawi':'المنشاوي','ar.minshawimujawwad':'المنشاوي (مجوّد)','ar.husary':'الحصري','ar.husarymujawwad':'الحصري (مجوّد)','ar.abdurrahmaansudais':'السديس','ar.saoodshuraym':'الشريم'};
+  L.innerHTML='';
+  Object.keys(m).forEach(ed=>Object.keys(m[ed]).sort((a,b)=>a-b).forEach(n=>{any=true;
+    const r=document.createElement('div');r.className='off-row';
+    r.innerHTML=`<span>🎧 ${nm(n)} — ${rn_[ed]||ed} <span class="off-note">${m[ed][n]>1?offFmt(m[ed][n]):''}</span></span>`;
+    const bt=document.createElement('button');bt.className='mini';bt.textContent='🗑 مسح';bt.onclick=()=>offAudioDel(ed,+n);r.appendChild(bt);L.appendChild(r)}));
+  if(!any)L.innerHTML='<div class="off-note">لسه مفيش صوت محفوظ.</div>';
+  try{navigator.storage&&navigator.storage.estimate&&navigator.storage.estimate().then(e=>{$('offStore').textContent=`المساحة المستخدمة: ${offFmt(e.usage||0)}${e.quota?' من حوالي '+offFmt(e.quota):''}`})}catch(e){}
+  if(!keepMsg){offSay('');offProg(0)}
+}
 function initQuranTools(){
+  try{$('surahSearch').addEventListener('keydown',e=>{if(e.key==='Enter'){const m=allSurahs.filter(x=>surahMatch(x,$('surahSearch').value));if(m.length){e.preventDefault();surahPick(m[0].number)}}})}catch(e){}
   try{BM=JSON.parse(ls.get('bms')||'[]')}catch(e){BM=[]}
   khLoad();MEMO.lvl=+(ls.get('memoLvl')||0);$('memoLvl').value=String(MEMO.lvl);$('tafEd').value=ls.get('tafEd')||'ar.muyassar';INL=ls.get('inlTaf')==='1';$('inlTaf').checked=INL;
   if($('khDays'))$('khDays').value=String(KH.days);
@@ -2444,7 +2693,7 @@ const FAQ=[
 ['الخلفاء الراشدين|الخلفاء الاربعه|الخلفاء الراشدون','الخلفاء الراشدون','الخلفاء الراشدون أربعة بالترتيب: أبو بكر الصديق، ثم عمر بن الخطاب، ثم عثمان بن عفان، ثم علي بن أبي طالب رضي الله عنهم.','«عَلَيْكُمْ بِسُنَّتِي وَسُنَّةِ الْخُلَفَاءِ الرَّاشِدِينَ الْمَهْدِيِّينَ» — رواه أبو داود والترمذي وصحّحه الألباني'],
 ['السبعه في ظل العرش|ظل العرش|يظلهم الله في ظله','السبعة الذين يظلهم الله في ظله','هم: الإمام العادل، وشاب نشأ في عبادة الله، ورجل قلبه معلّق بالمساجد، ورجلان تحابّا في الله، ورجل دعته ذات منصب وجمال فقال إني أخاف الله، ورجل تصدّق فأخفى صدقته، ورجل ذكر الله خاليًا ففاضت عيناه.','«سَبْعَةٌ يُظِلُّهُمُ اللَّهُ فِي ظِلِّهِ يَوْمَ لَا ظِلَّ إِلَّا ظِلُّهُ...» — متفق عليه'],
 ['الاخلاق|حسن الخلق|فضل حسن الخلق','حسن الخلق','حسن الخلق من أثقل ما يوضع في ميزان العبد، ووصف الله نبيه بالخلق العظيم.','﴿وَإِنَّكَ لَعَلَىٰ خُلُقٍ عَظِيمٍ﴾ — القلم: 4‖«مَا مِنْ شَيْءٍ أَثْقَلُ فِي مِيزَانِ الْمُؤْمِنِ يَوْمَ الْقِيَامَةِ مِنْ خُلُقٍ حَسَنٍ» — رواه الترمذي وصحّحه الألباني'],
-['الغضب|علاج الغضب|لا تغضب|الغضب في الاسلام','الغضب','الشديد حقًّا من يملك نفسه عند الغضب، وأوصى النبي ﷺ من طلب الوصية بقوله: لا تغضب.','«لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ» — متفق عليه‖«لَا تَغْضَبْ» — رواه البخاري‖﴿وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ﴾ — آل عمران: 134'],
+['الغضب|علاج الغضب|لا تغضب|الغضب في الاسلام|بتعصب|عصبي|بزعل بسرعه|ازاي اتحكم في غضبي|سريع الغضب','الغضب','الشديد حقًّا من يملك نفسه عند الغضب، وأوصى النبي ﷺ من طلب الوصية بقوله: لا تغضب.','«لَيْسَ الشَّدِيدُ بِالصُّرَعَةِ، إِنَّمَا الشَّدِيدُ الَّذِي يَمْلِكُ نَفْسَهُ عِنْدَ الْغَضَبِ» — متفق عليه‖«لَا تَغْضَبْ» — رواه البخاري‖﴿وَالْكَاظِمِينَ الْغَيْظَ وَالْعَافِينَ عَنِ النَّاسِ﴾ — آل عمران: 134'],
 ['الحسد|حكم الحسد|علاج الحسد','الحسد','الحسد مذموم، وهو تمنّي زوال النعمة عن الغير، والمؤمن يغبط ولا يحسد.','«لَا تَحَاسَدُوا وَلَا تَبَاغَضُوا وَلَا تَدَابَرُوا، وَكُونُوا عِبَادَ اللَّهِ إِخْوَانًا» — متفق عليه‖﴿وَمِن شَرِّ حَاسِدٍ إِذَا حَسَدَ﴾ — الفلق: 5'],
 ['الصبر|فضل الصبر|ازاي اصبر','فضل الصبر','وعد الله الصابرين بأجر بغير حساب وبأنه معهم.','﴿إِنَّمَا يُوَفَّى الصَّابِرُونَ أَجْرَهُم بِغَيْرِ حِسَابٍ﴾ — الزمر: 10‖﴿إِنَّ اللَّهَ مَعَ الصَّابِرِينَ﴾ — البقرة: 153'],
 ['الشكر|فضل الشكر|الحمد','الشكر','الشكر سبب لزيادة النعم.','﴿لَئِن شَكَرْتُمْ لَأَزِيدَنَّكُمْ﴾ — إبراهيم: 7'],
@@ -2464,8 +2713,8 @@ const FAQ=[
 ['النيه|فضل النيه|اهميه النيه','النية','الأعمال بالنيات، ولكل امرئ ما نوى.','«إِنَّمَا الْأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى» — متفق عليه (حديث عمر)'],
 ['الجنه|وصف الجنه|ما هي الجنه|النار|عذاب النار','الجنة والنار','الجنة دار النعيم لمن آمن وعمل صالحًا، والنار دار العذاب لمن كفر وظلم. وأمر الغيب لا يُعلم تفصيله إلا بالنص.','﴿فَلَا تَعْلَمُ نَفْسٌ مَّا أُخْفِيَ لَهُم مِّن قُرَّةِ أَعْيُنٍ جَزَاءً بِمَا كَانُوا يَعْمَلُونَ﴾ — السجدة: 17‖«قَالَ اللَّهُ تَعَالَى: أَعْدَدْتُ لِعِبَادِي الصَّالِحِينَ مَا لَا عَيْنٌ رَأَتْ، وَلَا أُذُنٌ سَمِعَتْ، وَلَا خَطَرَ عَلَى قَلْبِ بَشَرٍ» — متفق عليه'],
 ['الصحابه|فضل الصحابه|الصحابه رضي الله عنهم','فضل الصحابة','رضي الله عن الصحابة وأثنى عليهم، وسبّهم محرّم.','﴿وَالسَّابِقُونَ الْأَوَّلُونَ مِنَ الْمُهَاجِرِينَ وَالْأَنصَارِ وَالَّذِينَ اتَّبَعُوهُم بِإِحْسَانٍ رَّضِيَ اللَّهُ عَنْهُمْ وَرَضُوا عَنْهُ﴾ — التوبة: 100‖«لَا تَسُبُّوا أَصْحَابِي» — رواه البخاري ومسلم'],
-['الموت|ذكر الموت|بعد الموت|القبر|عذاب القبر','الموت وما بعده','كل نفس ذائقة الموت، والمؤمن يستعد بالعمل الصالح، وتُكثر السنة من تذكّر الموت.','﴿كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ﴾ — آل عمران: 185‖«أَكْثِرُوا ذِكْرَ هَاذِمِ اللَّذَّاتِ: الْمَوْتَ» — رواه الترمذي وصحّحه الألباني'],
-['الاكتئاب|الحزن|القلق|الهم|الضيق|اتضايق|مخنوق','الحزن والهم والقلق','المؤمن يبتلى والله يخفف عنه بالذكر والدعاء والصبر. ومن أدعية الهمّ والحزن المأثورة: «اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ». وإن اشتد عليك الحال، فاطلب العون من أهل الاختصاص (طبيب أو مرشد) إلى جانب العبادة، فهذا من الأخذ بالأسباب.','﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28‖﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾ — الشرح: 5-6‖«اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ» — رواه البخاري']
+['الموت|ذكر الموت|بعد الموت|القبر|عذاب القبر|خايف من الموت|الخوف من الموت|رهبه الموت','الموت وما بعده','كل نفس ذائقة الموت، والمؤمن يستعد بالعمل الصالح، وتُكثر السنة من تذكّر الموت.','﴿كُلُّ نَفْسٍ ذَائِقَةُ الْمَوْتِ ۗ وَإِنَّمَا تُوَفَّوْنَ أُجُورَكُمْ يَوْمَ الْقِيَامَةِ﴾ — آل عمران: 185‖«أَكْثِرُوا ذِكْرَ هَاذِمِ اللَّذَّاتِ: الْمَوْتَ» — رواه الترمذي وصحّحه الألباني'],
+['الاكتئاب|الحزن|القلق|الهم|الضيق|اتضايق|مخنوق|قلقان|متوتر|توتر|قلق وتوتر|ازاي اهدا|حاسس بقلق','الحزن والهم والقلق','المؤمن يبتلى والله يخفف عنه بالذكر والدعاء والصبر. ومن أدعية الهمّ والحزن المأثورة: «اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ». وإن اشتد عليك الحال، فاطلب العون من أهل الاختصاص (طبيب أو مرشد) إلى جانب العبادة، فهذا من الأخذ بالأسباب.','﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28‖﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾ — الشرح: 5-6‖«اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْهَمِّ وَالْحَزَنِ» — رواه البخاري']
 
 ,['المحرمات|ما هي المحرمات|المحرمات في الاسلام|ما حرم الله|ما هو الحرام|الحرام','المحرَّمات في الإسلام','من أبرز المحرّمات المنصوص عليها: الشرك بالله، وعقوق الوالدين، وقتل النفس بغير حق، والفواحش (كالزنا)، وأكل مال اليتيم، والربا، والخمر والميسر، وأكل الميتة والدم ولحم الخنزير وما أُهلّ به لغير الله، والكذب والغيبة والظلم، وأكل أموال الناس بالباطل.','﴿قُلْ تَعَالَوْا أَتْلُ مَا حَرَّمَ رَبُّكُمْ عَلَيْكُمْ ۖ أَلَّا تُشْرِكُوا بِهِ شَيْئًا ۖ وَبِالْوَالِدَيْنِ إِحْسَانًا ۖ وَلَا تَقْتُلُوا أَوْلَادَكُم مِّنْ إِمْلَاقٍ ۖ وَلَا تَقْرَبُوا الْفَوَاحِشَ مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ ۖ وَلَا تَقْتُلُوا النَّفْسَ الَّتِي حَرَّمَ اللَّهُ إِلَّا بِالْحَقِّ﴾ — الأنعام: 151‖﴿حُرِّمَتْ عَلَيْكُمُ الْمَيْتَةُ وَالدَّمُ وَلَحْمُ الْخِنزِيرِ وَمَا أُهِلَّ لِغَيْرِ اللَّهِ بِهِ﴾ — المائدة: 3‖﴿قُلْ إِنَّمَا حَرَّمَ رَبِّيَ الْفَوَاحِشَ مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ وَالْإِثْمَ وَالْبَغْيَ بِغَيْرِ الْحَقِّ وَأَن تُشْرِكُوا بِاللَّهِ﴾ — الأعراف: 33',1],
 ['المحرمات من النساء|من يحرم الزواج بهن|من لا يجوز الزواج منهن|محارم','المحرَّمات من النساء','حدّد الله من يحرم الزواج بهن: الأمهات والبنات والأخوات والعمات والخالات وبنات الأخ وبنات الأخت، والأمهات من الرضاعة والأخوات من الرضاعة، وأمهات الزوجة، والربائب (بنات الزوجة) بشرطه، وزوجات الأبناء، والجمع بين الأختين.','﴿حُرِّمَتْ عَلَيْكُمْ أُمَّهَاتُكُمْ وَبَنَاتُكُمْ وَأَخَوَاتُكُمْ وَعَمَّاتُكُمْ وَخَالَاتُكُمْ وَبَنَاتُ الْأَخِ وَبَنَاتُ الْأُخْتِ وَأُمَّهَاتُكُمُ اللَّاتِي أَرْضَعْنَكُمْ وَأَخَوَاتُكُم مِّنَ الرَّضَاعَةِ...﴾ — النساء: 23',1],
@@ -2510,13 +2759,13 @@ const FAQ=[
 ['الامر بالمعروف|النهي عن المنكر|تغيير المنكر','الأمر بالمعروف والنهي عن المنكر','هو من واجبات الأمة بحسب القدرة، وبالحكمة والموعظة الحسنة.','«مَنْ رَأَى مِنْكُمْ مُنْكَرًا فَلْيُغَيِّرْهُ بِيَدِهِ، فَإِنْ لَمْ يَسْتَطِعْ فَبِلِسَانِهِ، فَإِنْ لَمْ يَسْتَطِعْ فَبِقَلْبِهِ، وَذَلِكَ أَضْعَفُ الْإِيمَانِ» — رواه مسلم‖﴿ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ﴾ — النحل: 125'],
 ['النصيحه|الدين النصيحه|فن النصيحه','النصيحة','الدين النصيحة: لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم.','«الدِّينُ النَّصِيحَةُ» قلنا: لمن؟ قال: «لِلَّهِ وَلِكِتَابِهِ وَلِرَسُولِهِ وَلِأَئِمَّةِ الْمُسْلِمِينَ وَعَامَّتِهِمْ» — رواه مسلم'],
 ['حفظ اللسان|الصمت|قول الخير|الكلام','حفظ اللسان','المؤمن يقول خيرًا أو يصمت، واللسان من أعظم أسباب دخول الجنة أو النار.','«مَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الْآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ» — متفق عليه‖﴿مَّا يَلْفِظُ مِن قَوْلٍ إِلَّا لَدَيْهِ رَقِيبٌ عَتِيدٌ﴾ — ق: 18'],
-['الوسواس|الوسوسه|وساوس الشيطان|الشيطان','الوسوسة والشيطان','الشيطان عدو للإنسان، والعلاج بالاستعاذة والذكر والإعراض عن الوسوسة.','﴿وَإِمَّا يَنزَغَنَّكَ مِنَ الشَّيْطَانِ نَزْغٌ فَاسْتَعِذْ بِاللَّهِ ۚ إِنَّهُ سَمِيعٌ عَلِيمٌ﴾ — فصلت: 36‖﴿مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ﴾ — الناس: 4‖«فَمَنْ وَجَدَ ذَلِكَ فَلْيَسْتَعِذْ بِاللَّهِ وَلْيَنْتَهِ» — متفق عليه'],
+['الوسواس|الوسوسه|وساوس الشيطان|الشيطان|افكار سلبيه|تفكير زايد|وسواس|افكار وحشه|افكار مش بتبطل|ازاي اتخلص من الافكار السلبيه','الوسوسة والشيطان','الشيطان عدو للإنسان، والعلاج بالاستعاذة والذكر والإعراض عن الوسوسة.','﴿وَإِمَّا يَنزَغَنَّكَ مِنَ الشَّيْطَانِ نَزْغٌ فَاسْتَعِذْ بِاللَّهِ ۚ إِنَّهُ سَمِيعٌ عَلِيمٌ﴾ — فصلت: 36‖﴿مِن شَرِّ الْوَسْوَاسِ الْخَنَّاسِ﴾ — الناس: 4‖«فَمَنْ وَجَدَ ذَلِكَ فَلْيَسْتَعِذْ بِاللَّهِ وَلْيَنْتَهِ» — متفق عليه'],
 ['ذكر الله|فضل الذكر|اذكار|الذكر','فضل ذكر الله','الذكر حياة القلب وسبب لطمأنينته، وأمر الله به كثيرًا.','﴿يَا أَيُّهَا الَّذِينَ آمَنُوا اذْكُرُوا اللَّهَ ذِكْرًا كَثِيرًا﴾ — الأحزاب: 41‖﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28‖«مَثَلُ الَّذِي يَذْكُرُ رَبَّهُ وَالَّذِي لَا يَذْكُرُ مَثَلُ الْحَيِّ وَالْمَيِّتِ» — رواه البخاري'],
 ['مسئوليه الاب|تربيه الاولاد|حقوق الاولاد|الابناء|تربيه الابناء','مسؤولية الأسرة وتربية الأولاد','كل راعٍ مسؤول عن رعيته، وللأولاد حق على والديهم في التربية والنفقة.','«كُلُّكُمْ رَاعٍ وَكُلُّكُمْ مَسْئُولٌ عَنْ رَعِيَّتِهِ» — متفق عليه‖﴿يَا أَيُّهَا الَّذِينَ آمَنُوا قُوا أَنفُسَكُمْ وَأَهْلِيكُمْ نَارًا﴾ — التحريم: 6'],
 ['المحرمات|محرمات|ما هو الحرام|ما حرم الله|الحرام في الاسلام|ما الذي حرمه الله','المحرَّمات في الإسلام','حرّم الله الفواحش ما ظهر منها وما بطن، والإثم والظلم، والشرك بالله، والقول على الله بغير علم. ومن أهم المحرمات: الشرك، وقتل النفس، والزنا، والربا، وأكل مال اليتيم، والسحر، والخمر، والكذب والغيبة، وعقوق الوالدين. (تفاصيل كل واحدة في موضعها: اكتب اسمها).','﴿قُلْ إِنَّمَا حَرَّمَ رَبِّيَ الْفَوَاحِشَ مَا ظَهَرَ مِنْهَا وَمَا بَطَنَ وَالْإِثْمَ وَالْبَغْيَ بِغَيْرِ الْحَقِّ وَأَن تُشْرِكُوا بِاللَّهِ مَا لَمْ يُنَزِّلْ بِهِ سُلْطَانًا وَأَن تَقُولُوا عَلَى اللَّهِ مَا لَا تَعْلَمُونَ﴾ — الأعراف: 33‖«اجْتَنِبُوا السَّبْعَ الْمُوبِقَاتِ: الشِّرْكُ بِاللَّهِ، وَالسِّحْرُ، وَقَتْلُ النَّفْسِ الَّتِي حَرَّمَ اللَّهُ إِلَّا بِالْحَقِّ، وَأَكْلُ الرِّبَا، وَأَكْلُ مَالِ الْيَتِيمِ، وَالتَّوَلِّي يَوْمَ الزَّحْفِ، وَقَذْفُ الْمُحْصَنَاتِ الْغَافِلَاتِ الْمُؤْمِنَاتِ» — متفق عليه'],
 ['الابتلاء|المصيبه|البلاء|ابتلاء المؤمن|عزاء|التعزيه|ربنا ابتلاني','الابتلاء والمصائب','الدنيا دار ابتلاء، والمؤمن يصبر ويقول عند المصيبة: إنا لله وإنا إليه راجعون، وأمره كله خير.','﴿وَلَنَبْلُوَنَّكُم بِشَيْءٍ مِّنَ الْخَوْفِ وَالْجُوعِ وَنَقْصٍ مِّنَ الْأَمْوَالِ وَالْأَنفُسِ وَالثَّمَرَاتِ ۗ وَبَشِّرِ الصَّابِرِينَ﴾ — البقرة: 155‖﴿الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ﴾ — البقرة: 156‖«عَجَبًا لِأَمْرِ الْمُؤْمِنِ إِنَّ أَمْرَهُ كُلَّهُ خَيْرٌ، وَلَيْسَ ذَاكَ لِأَحَدٍ إِلَّا لِلْمُؤْمِنِ: إِنْ أَصَابَتْهُ سَرَّاءُ شَكَرَ فَكَانَ خَيْرًا لَهُ، وَإِنْ أَصَابَتْهُ ضَرَّاءُ صَبَرَ فَكَانَ خَيْرًا لَهُ» — رواه مسلم'],
 ['التوكل|اتوكل|اتوكل على الله|التوكل على الله|الاخذ بالاسباب','التوكل على الله','التوكل: الاعتماد على الله مع الأخذ بالأسباب، ومن توكل على الله كفاه.','﴿وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ﴾ — الطلاق: 3‖«لَوْ أَنَّكُمْ تَتَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَمَا يُرْزَقُ الطَّيْرُ، تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا» — رواه الترمذي وأحمد'],
-['رحمه الله|سعه رحمه الله|اليأس|القنوط|الامل|ذنوبي كتير|مغفره الذنوب','رحمة الله وعدم اليأس','رحمة الله وسعت كل شيء، ومهما كثرت الذنوب فباب التوبة مفتوح، وحسن الظن بالله مطلوب.','﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا﴾ — الزمر: 53‖«يَقُولُ اللَّهُ تَعَالَى: أَنَا عِنْدَ ظَنِّ عَبْدِي بِي» — متفق عليه'],
+['رحمه الله|سعه رحمه الله|اليأس|القنوط|الامل|ذنوبي كتير|مغفره الذنوب|يئست|حاسس اني يئست|ربنا مش هيسامحني|ذنوبي كتير|ذنوبي كبيره|مش هتتغفر لي','رحمة الله وعدم اليأس','رحمة الله وسعت كل شيء، ومهما كثرت الذنوب فباب التوبة مفتوح، وحسن الظن بالله مطلوب.','﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا﴾ — الزمر: 53‖«يَقُولُ اللَّهُ تَعَالَى: أَنَا عِنْدَ ظَنِّ عَبْدِي بِي» — متفق عليه'],
 ['الاخلاص|الرياء|الرياء والسمعه|الشرك الاصغر|الاخلاص لله','الإخلاص والرياء','الإخلاص: أن يكون العمل لله وحده، والرياء: أن يعمل ليراه الناس، وهو من الشرك الأصغر.','﴿وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ﴾ — البينة: 5‖«إِنَّ أَخْوَفَ مَا أَخَافُ عَلَيْكُمُ الشِّرْكُ الْأَصْغَرُ: الرِّيَاءُ» — رواه أحمد'],
 ['الكبر|التكبر|الغرور|التواضع','الكِبر والتواضع','الكِبر من أخطر الأمراض القلبية، والتواضع سبب لرفعة العبد عند الله.','﴿إِنَّهُ لَا يُحِبُّ الْمُسْتَكْبِرِينَ﴾ — النحل: 23‖«لَا يَدْخُلُ الْجَنَّةَ مَنْ كَانَ فِي قَلْبِهِ مِثْقَالُ ذَرَّةٍ مِنْ كِبْرٍ» — رواه مسلم‖«وَمَا تَوَاضَعَ أَحَدٌ لِلَّهِ إِلَّا رَفَعَهُ اللَّهُ» — رواه مسلم'],
 ['الاسراف|التبذير|الاعتدال في الانفاق|تبذير المال','الإسراف والتبذير','نهى الله عن الإسراف والتبذير في المال والطعام وغيره، وأمر بالاعتدال.','﴿وَكُلُوا وَاشْرَبُوا وَلَا تُسْرِفُوا ۚ إِنَّهُ لَا يُحِبُّ الْمُسْرِفِينَ﴾ — الأعراف: 31‖﴿إِنَّ الْمُبَذِّرِينَ كَانُوا إِخْوَانَ الشَّيَاطِينِ﴾ — الإسراء: 27'],
@@ -2529,7 +2778,7 @@ const FAQ=[
 ['الاضحيه|الاضحيه والعيد|عيد الاضحي|ذبح الاضحيه|نحر الاضحيه','الأضحية','الأضحية من شعائر الإسلام في عيد الأضحى، وقد ضحّى النبي ﷺ بكبشين وذبحهما بيده وسمّى وكبّر.','﴿فَصَلِّ لِرَبِّكَ وَانْحَرْ﴾ — الكوثر: 2‖«ضَحَّى النَّبِيُّ ﷺ بِكَبْشَيْنِ أَمْلَحَيْنِ أَقْرَنَيْنِ، ذَبَحَهُمَا بِيَدِهِ، وَسَمَّى وَكَبَّرَ» — متفق عليه'],
 ['الجنازه|صلاه الجنازه|تشييع الجنازه|اتباع الجنازه|الدفن|تغسيل الميت','الجنازة وتشييعها','الصلاة على الميت وتشييعه من حقوق المسلم على المسلم، وفيها أجر عظيم.','«مَنْ شَهِدَ الْجَنَازَةَ حَتَّى يُصَلَّى عَلَيْهَا فَلَهُ قِيرَاطٌ، وَمَنْ شَهِدَهَا حَتَّى تُدْفَنَ فَلَهُ قِيرَاطَانِ، قِيلَ: وَمَا الْقِيرَاطَانِ؟ قَالَ: مِثْلُ الْجَبَلَيْنِ الْعَظِيمَيْنِ» — متفق عليه'],
 ['زياره القبور|زيارة المقابر|زيارة القبر','زيارة القبور','زيارة القبور مشروعة لتذكّر الآخرة.','«كُنْتُ نَهَيْتُكُمْ عَنْ زِيَارَةِ الْقُبُورِ فَزُورُوهَا؛ فَإِنَّهَا تُذَكِّرُ الْآخِرَةَ» — رواه مسلم (وفي رواية: «وَتُزَهِّدُ فِي الدُّنْيَا» — ابن ماجه)'],
-['الصحبه الصالحه|الاصدقاء|الصديق|الصاحب|الاصحاب|اختيار الاصدقاء|صاحب السوء|رفاق السوء','الصحبة الصالحة','للصاحب أثر كبير على دين المرء، فيُنظر من يُصاحَب.','«الرَّجُلُ عَلَى دِينِ خَلِيلِهِ، فَلْيَنْظُرْ أَحَدُكُمْ مَنْ يُخَالِلُ» — رواه أبو داود والترمذي‖﴿الْأَخِلَّاءُ يَوْمَئِذٍ بَعْضُهُمْ لِبَعْضٍ عَدُوٌّ إِلَّا الْمُتَّقِينَ﴾ — الزخرف: 67'],
+['الصحبه الصالحه|الاصدقاء|الصديق|الصاحب|الاصحاب|اختيار الاصدقاء|صاحب السوء|رفاق السوء|اصحابي وحشين|اصحاب السوء|صحبه السوء|اصحاب بيجروني للمعصيه|ازاي ابعد عن اصحابي|اصدقاء السوء','الصحبة الصالحة','للصاحب أثر كبير على دين المرء، فيُنظر من يُصاحَب.','«الرَّجُلُ عَلَى دِينِ خَلِيلِهِ، فَلْيَنْظُرْ أَحَدُكُمْ مَنْ يُخَالِلُ» — رواه أبو داود والترمذي‖﴿الْأَخِلَّاءُ يَوْمَئِذٍ بَعْضُهُمْ لِبَعْضٍ عَدُوٌّ إِلَّا الْمُتَّقِينَ﴾ — الزخرف: 67'],
 ['الكسب الحلال|العمل والكسب|الرزق الحلال|العمل في الاسلام|الشغل','الكسب الحلال والعمل','الإسلام يحث على العمل والكسب الحلال، وخير الطعام ما كان من عمل اليد.','﴿يَا أَيُّهَا الَّذِينَ آمَنُوا كُلُوا مِن طَيِّبَاتِ مَا رَزَقْنَاكُمْ﴾ — البقرة: 172‖«مَا أَكَلَ أَحَدٌ طَعَامًا قَطُّ خَيْرًا مِنْ أَنْ يَأْكُلَ مِنْ عَمَلِ يَدِهِ» — رواه البخاري'],
 ['الدين|الاستدانه|سداد الدين|القرض|الدين وسداده|المدين|الاقتراض','الدَّين وسداده','يجب أداء الدَّين، ومن كان المدين في عسرة فيُمهَل إلى أن يتيسّر له.','«نَفْسُ الْمُؤْمِنِ مُعَلَّقَةٌ بِدَيْنِهِ حَتَّى يُقْضَى عَنْهُ» — رواه الترمذي وابن ماجه‖﴿وَإِن كَانَ ذُو عُسْرَةٍ فَنَظِرَةٌ إِلَىٰ مَيْسَرَةٍ ۚ وَأَن تَصَدَّقُوا خَيْرٌ لَّكُمْ﴾ — البقرة: 280'],
 ['الاحسان الي النساء|معامله الزوجه|حق المراه|البنات|تربيه البنات|فضل البنات|معامله النساء','الإحسان إلى الزوجة والبنات والنساء','أمر الله بمعاشرة النساء بالمعروف، وجعل النبي ﷺ خيرَ الناس خيرَهم لأهله، وفي الإحسان إلى البنات فضل عظيم.','﴿وَعَاشِرُوهُنَّ بِالْمَعْرُوفِ﴾ — النساء: 19‖«خَيْرُكُمْ خَيْرُكُمْ لِأَهْلِهِ، وَأَنَا خَيْرُكُمْ لِأَهْلِي» — رواه الترمذي‖«مَنْ عَالَ جَارِيَتَيْنِ حَتَّى تَبْلُغَا جَاءَ يَوْمَ الْقِيَامَةِ أَنَا وَهُوَ» وَضَمَّ أَصَابِعَهُ — رواه مسلم'],
@@ -2666,16 +2915,92 @@ const FAQ=[
 ['اطول ايه في القران|ايه الدين|اطول ايه|اقصر ايه|اقصر سوره|اطول سوره|ايه المداينه','أطول آية في القرآن','أطول آية في القرآن هي آية الدَّين في سورة البقرة (آية 282)، وأطول سورة هي البقرة. وأقصر سورة الكوثر.','﴿يَا أَيُّهَا الَّذِينَ آمَنُوا إِذَا تَدَايَنتُم بِدَيْنٍ إِلَىٰ أَجَلٍ مُّسَمًّى فَاكْتُبُوهُ﴾ — البقرة: 282'],
 ['اسماء الفاتحه|الفاتحه ام الكتاب|السبع المثاني|ام القران|فضل الفاتحه|سوره الفاتحه|الشافيه','أسماء سورة الفاتحة','للفاتحة أسماء كثيرة منها: أم الكتاب، وأم القرآن، والسبع المثاني، والرقية، والشافية. وهي ركن في الصلاة، لا صلاة لمن لم يقرأ بها.','﴿وَلَقَدْ آتَيْنَاكَ سَبْعًا مِّنَ الْمَثَانِي وَالْقُرْآنَ الْعَظِيمَ﴾ — الحجر: 87‖«هِيَ أُمُّ الْقُرْآنِ، وَهِيَ السَّبْعُ الْمَثَانِي، وَالْقُرْآنُ الْعَظِيمُ» — رواه البخاري',1],
 ['الاستشاره|المشوره|شاور|اخد راي الناس|الشوري|استشير مين|استشاره الناس','الاستشارة والشورى','الشورى من هدي الإسلام، يستشير الإنسان أهل العلم والخبرة والأمانة في أموره، ثم إذا عزم توكل على الله. وتُجمع مع الاستخارة: يستخير ربه ويستشير أهل الرأي.','﴿وَشَاوِرْهُمْ فِي الْأَمْرِ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ﴾ — آل عمران: 159‖﴿وَأَمْرُهُمْ شُورَىٰ بَيْنَهُمْ﴾ — الشورى: 38'],
-['تاخر اجابه الدعاء|ليه دعايي مش بيستجاب|الدعاء مش بيتحقق|ربنا مش بيستجيب|دعيت كتير ومفيش|استعجال الاجابه|الدعاء ما استجيب','لماذا تتأخر إجابة الدعاء','الله يجيب دعاء عبده، لكن الإجابة تكون بإحدى ثلاث: إما أن يُعجّل له ما طلب، وإما أن يدّخر له أجره في الآخرة، وإما أن يصرف عنه من السوء مثله. فلا تستعجل، وأحسن الظن بربك، وكرر الدعاء بيقين وإلحاح، واجتنب الحرام في المأكل والمشرب.','﴿وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ﴾ — غافر: 60‖«يُسْتَجَابُ لِأَحَدِكُمْ مَا لَمْ يَعْجَلْ، يَقُولُ: دَعَوْتُ فَلَمْ يُسْتَجَبْ لِي» — متفق عليه‖«مَا مِنْ مُسْلِمٍ يَدْعُو بِدَعْوَةٍ لَيْسَ فِيهَا إِثْمٌ وَلَا قَطِيعَةُ رَحِمٍ إِلَّا أَعْطَاهُ اللَّهُ بِهَا إِحْدَى ثَلَاثٍ: إِمَّا أَنْ تُعَجَّلَ لَهُ دَعْوَتُهُ، وَإِمَّا أَنْ يَدَّخِرَهَا لَهُ فِي الْآخِرَةِ، وَإِمَّا أَنْ يَصْرِفَ عَنْهُ مِنَ السُّوءِ مِثْلَهَا» — رواه أحمد'],
+['تاخر اجابه الدعاء|ليه دعايي مش بيستجاب|الدعاء مش بيتحقق|ربنا مش بيستجيب|دعيت كتير ومفيش|استعجال الاجابه|الدعاء ما استجيب|ربنا مش بيستجيب|دعيت كتير ومحصلش حاجه|ليه ربنا مش بيستجيب لدعائي|دعيت ومفيش اجابه|ليه ربنا مش بيرد عليا|بدعي ومفيش اجابه|بدعي ومفيش استجابه|بدعي كتير ومفيش حاجه بتحصل|بدعي ومش بيستجاب لي','لماذا تتأخر إجابة الدعاء','الله يجيب دعاء عبده، لكن الإجابة تكون بإحدى ثلاث: إما أن يُعجّل له ما طلب، وإما أن يدّخر له أجره في الآخرة، وإما أن يصرف عنه من السوء مثله. فلا تستعجل، وأحسن الظن بربك، وكرر الدعاء بيقين وإلحاح، واجتنب الحرام في المأكل والمشرب.','﴿وَقَالَ رَبُّكُمُ ادْعُونِي أَسْتَجِبْ لَكُمْ﴾ — غافر: 60‖«يُسْتَجَابُ لِأَحَدِكُمْ مَا لَمْ يَعْجَلْ، يَقُولُ: دَعَوْتُ فَلَمْ يُسْتَجَبْ لِي» — متفق عليه‖«مَا مِنْ مُسْلِمٍ يَدْعُو بِدَعْوَةٍ لَيْسَ فِيهَا إِثْمٌ وَلَا قَطِيعَةُ رَحِمٍ إِلَّا أَعْطَاهُ اللَّهُ بِهَا إِحْدَى ثَلَاثٍ: إِمَّا أَنْ تُعَجَّلَ لَهُ دَعْوَتُهُ، وَإِمَّا أَنْ يَدَّخِرَهَا لَهُ فِي الْآخِرَةِ، وَإِمَّا أَنْ يَصْرِفَ عَنْهُ مِنَ السُّوءِ مِثْلَهَا» — رواه أحمد'],
 ['الفرق بين الزكاه والصدقه|زكاه وصدقه|الصدقه والزكاه|مصارف الصدقه|هل الصدقه تغني عن الزكاه','الفرق بين الزكاة والصدقة','الزكاة فريضة مقدّرة تجب في المال إذا بلغ النصاب وحال عليه الحول، وتُصرف في مصارف حددها القرآن ثمانية. أما الصدقة فتطوّع مفتوح لا حد لها ولا شرط لمقدارها ولا وقتها، وتُعطى لأي محتاج، ولا تُغني عن الزكاة الواجبة.','﴿إِنَّمَا الصَّدَقَاتُ لِلْفُقَرَاءِ وَالْمَسَاكِينِ وَالْعَامِلِينَ عَلَيْهَا وَالْمُؤَلَّفَةِ قُلُوبُهُمْ وَفِي الرِّقَابِ وَالْغَارِمِينَ وَفِي سَبِيلِ اللَّهِ وَابْنِ السَّبِيلِ﴾ — التوبة: 60',1],
 ['انواع الشهداء|الشهيد|الشهاده|من هو الشهيد|الشهيد الحكمي|الميت بالغرق او الحريق|مات في حادث شهيد','أنواع الشهداء','الشهيد الكامل من قُتل في سبيل الله، وهناك شهداء الآخرة (في الثواب لا في أحكام الدنيا) كالمطعون (المصاب بالطاعون)، والمبطون، والغريق، وصاحب الهدم، ومن قُتل دون ماله. ويختلف في التفاصيل بين الشهيد في المعركة وشهيد الآخرة من جهة الغسل والتكفين.','«الشُّهَدَاءُ خَمْسَةٌ: الْمَطْعُونُ، وَالْمَبْطُونُ، وَالْغَرِيقُ، وَصَاحِبُ الْهَدْمِ، وَالشَّهِيدُ فِي سَبِيلِ اللَّهِ» — متفق عليه‖«مَنْ قُتِلَ دُونَ مَالِهِ فَهُوَ شَهِيدٌ» — متفق عليه',1],
 ['فضل المرض|المرض تكفير|ثواب المرض|المريض اجره|الالم تكفير الذنوب|لما اتعب|الحمي تكفر الذنوب','فضل المرض وتكفير الذنوب','ما يصيب المسلم من مرض أو هم أو حزن أو أذى، حتى الشوكة يُشاكها، يكفّر الله به من خطاياه ويرفع به درجاته إذا صبر واحتسب. ومع هذا يُشرع التداوي والأخذ بالأسباب.','«مَا يُصِيبُ الْمُسْلِمَ مِنْ نَصَبٍ وَلَا وَصَبٍ وَلَا هَمٍّ وَلَا حُزْنٍ وَلَا أَذًى وَلَا غَمٍّ حَتَّى الشَّوْكَةِ يُشَاكُهَا إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ» — متفق عليه'],
-['مس المصحف بدون وضوء|قراءه القران بدون وضوء|اقرا قران وانا مش متوضي|لمس المصحف|المصحف والوضوء|الحايض والمصحف|قراءه القران وانا جنب|قراءه القران من الموبايل بدون وضوء','قراءة القرآن ومسّ المصحف بغير وضوء','يجوز للمُحدِث حدثًا أصغر (بغير وضوء) قراءة القرآن عن ظهر قلب. أما مسّ المصحف نفسه فجمهور العلماء على اشتراط الطهارة له. وقراءة القرآن من شاشة الهاتف لا تأخذ حكم المصحف عند كثير من المعاصرين. وللجنب والحائض أحكام خاصة وفيها خلاف بين العلماء.','﴿إِنَّهُ لَقُرْآنٌ كَرِيمٌ ۝ فِي كِتَابٍ مَّكْنُونٍ ۝ لَّا يَمَسُّهُ إِلَّا الْمُطَهَّرُونَ﴾ — الواقعة: 77-79',1]
+['مس المصحف بدون وضوء|قراءه القران بدون وضوء|اقرا قران وانا مش متوضي|لمس المصحف|المصحف والوضوء|الحايض والمصحف|قراءه القران وانا جنب|قراءه القران من الموبايل بدون وضوء','قراءة القرآن ومسّ المصحف بغير وضوء','يجوز للمُحدِث حدثًا أصغر (بغير وضوء) قراءة القرآن عن ظهر قلب. أما مسّ المصحف نفسه فجمهور العلماء على اشتراط الطهارة له. وقراءة القرآن من شاشة الهاتف لا تأخذ حكم المصحف عند كثير من المعاصرين. وللجنب والحائض أحكام خاصة وفيها خلاف بين العلماء.','﴿إِنَّهُ لَقُرْآنٌ كَرِيمٌ ۝ فِي كِتَابٍ مَّكْنُونٍ ۝ لَّا يَمَسُّهُ إِلَّا الْمُطَهَّرُونَ﴾ — الواقعة: 77-79',1],
+['اي هوه الاسلام|اي هو الاسلام|ايه هو الاسلام|ايه هوه الاسلام|ما هو الاسلام|ما هوه الاسلام|تعريف الاسلام|معني الاسلام|يعني ايه اسلام|الاسلام يعني ايه|عرف الاسلام|الاسلام ايه|اي هو الدين الاسلامي|ما هو الدين الاسلامي','ما هو الإسلام؟','الإسلام هو الاستسلام لله بالتوحيد، والانقياد له بالطاعة، والبراءة من الشرك وأهله. وهو دين الله الذي بعث به جميع الأنبياء، وختمه برسالة محمد ﷺ، ويقوم على خمسة أركان ويشمل العقيدة والعبادة والأخلاق والمعاملات.','﴿إِنَّ الدِّينَ عِندَ اللَّهِ الْإِسْلَامُ﴾ — آل عمران: 19‖﴿الْيَوْمَ أَكْمَلْتُ لَكُمْ دِينَكُمْ وَأَتْمَمْتُ عَلَيْكُمْ نِعْمَتِي وَرَضِيتُ لَكُمُ الْإِسْلَامَ دِينًا﴾ — المائدة: 3‖«الْإِسْلَامُ أَنْ تَشْهَدَ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَأَنَّ مُحَمَّدًا رَسُولُ اللَّهِ، وَتُقِيمَ الصَّلَاةَ، وَتُؤْتِيَ الزَّكَاةَ، وَتَصُومَ رَمَضَانَ، وَتَحُجَّ الْبَيْتَ إِنِ اسْتَطَعْتَ إِلَيْهِ سَبِيلًا» — رواه مسلم (حديث جبريل)'],
+['معني مسلم|من هو المسلم|مين المسلم|تعريف المسلم|الفرق بين الاسلام والايمان|الاسلام والايمان|الفرق بين المسلم والمؤمن|المسلم والمؤمن','من هو المسلم؟ والفرق بين الإسلام والإيمان','المسلم هو من شهد أن لا إله إلا الله وأن محمدًا رسول الله والتزم بأحكام الإسلام. والإسلام يغلب عليه الأعمال الظاهرة، والإيمان أصله تصديق القلب وعمله. وقال أهل العلم: إذا ذُكر أحدهما وحده دخل فيه الآخر، وإذا اجتمعا فلكل منهما معنى.','﴿قَالَتِ الْأَعْرَابُ آمَنَّا ۖ قُل لَّمْ تُؤْمِنُوا وَلَٰكِن قُولُوا أَسْلَمْنَا وَلَمَّا يَدْخُلِ الْإِيمَانُ فِي قُلُوبِكُمْ﴾ — الحجرات: 14‖«الْمُسْلِمُ مَنْ سَلِمَ الْمُسْلِمُونَ مِنْ لِسَانِهِ وَيَدِهِ» — متفق عليه'],
+['كيف ادخل الاسلام|كيف يدخل الانسان في الاسلام|ازاي ادخل الاسلام|ازاي اسلم|كيف اسلم|عايز اسلم|عاوز اسلم|اعلان الاسلام|النطق بالشهادتين|ازاي اصبح مسلم|كيف اصبح مسلما|دخول الاسلام|اسلام شخص جديد|مسلم جديد','كيف يدخل الإنسان في الإسلام؟','يدخل الإنسان الإسلام بالنطق بالشهادتين عن علم وصدق ويقين: «أشهد أن لا إله إلا الله وأشهد أن محمدًا رسول الله». لا يُشترط شكل معين ولا شهود ولا مكان، ثم يتعلم أحكام دينه شيئًا فشيئًا: الصلاة أولًا ثم بقية الأركان. ويُستحب له الاغتسال، ويتوب الله على من تاب.','«فَلْيَكُنْ أَوَّلَ مَا تَدْعُوهُمْ إِلَيْهِ شَهَادَةُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ» — متفق عليه (حديث معاذ)‖﴿قُل لِّلَّذِينَ كَفَرُوا إِن يَنتَهُوا يُغَفَرْ لَهُم مَّا قَدْ سَلَفَ﴾ — الأنفال: 38',0,'انطق الشهادتين وأنت مؤمن بمعناهما¦تعلّم كيفية الوضوء والصلاة، وابدأ بالفرائض¦اسأل أهل العلم الثقات عمّا يشكل عليك¦اصحب أهل الخير وتدرّج في تعلّم الدين، فالله يعلم ضعفك'],
+['من هو الله|مين هو الله|مين الله|عرفني بالله|تعريف الله|اي هو الله|ايه هو الله|صفات الله|الله سبحانه وتعالي من هو','من هو الله سبحانه وتعالى؟','الله هو الإله الحق، خالق كل شيء ومالكه ومدبّر أمره، الأحد الصمد، له الأسماء الحسنى والصفات العليا، ليس كمثله شيء، وهو وحده المستحق للعبادة. لا يشبه خلقه، ولا يحتاج إلى شيء، وكل شيء محتاج إليه.','﴿قُلْ هُوَ اللَّهُ أَحَدٌ ۝ اللَّهُ الصَّمَدُ ۝ لَمْ يَلِدْ وَلَمْ يُولَدْ ۝ وَلَمْ يَكُن لَّهُ كُفُوًا أَحَدٌ﴾ — الإخلاص: 1-4‖﴿اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ﴾ — البقرة: 255‖﴿لَيْسَ كَمِثْلِهِ شَيْءٌ ۖ وَهُوَ السَّمِيعُ الْبَصِيرُ﴾ — الشورى: 11'],
+['اقسام التوحيد|انواع التوحيد|توحيد الربوبيه|توحيد الالوهيه|توحيد الاسماء والصفات|التوحيد وانواعه','أقسام التوحيد','قسّم العلماء التوحيد (من تتبّع نصوص القرآن والسنة) إلى ثلاثة: توحيد الربوبية: الإيمان بأن الله وحده الخالق الرازق المدبّر. وتوحيد الألوهية: إفراده وحده بالعبادة من دعاء وصلاة ونذر وتوكل. وتوحيد الأسماء والصفات: إثبات ما أثبته الله لنفسه من الأسماء والصفات من غير تشبيه ولا تعطيل.','﴿رَّبُّ السَّمَاوَاتِ وَالْأَرْضِ وَمَا بَيْنَهُمَا فَاعْبُدْهُ وَاصْطَبِرْ لِعِبَادَتِهِ﴾ — مريم: 65‖﴿وَلِلَّهِ الْأَسْمَاءُ الْحُسْنَىٰ فَادْعُوهُ بِهَا﴾ — الأعراف: 180'],
+['نواقض الاسلام|ما يخرج من الملة|ما الذي يخرج من الاسلام|امور تخرج من الاسلام|الكفر الاكبر|متي يكفر المسلم|ايه اللي يخرج المسلم من الدين|حكم من سب الدين|الاستهزاء بالدين','ما الذي يُخرج من الإسلام؟ (نواقض الإسلام)','ذكر العلماء أمورًا تُناقض الإسلام، منها: الشرك بالله، والاستهزاء بالدين أو بالله أو برسوله، وإنكار شيء معلوم من الدين بالضرورة كوجوب الصلاة، وبغض ما جاء به الرسول ﷺ. لكن الحكم على شخص معيّن بالكفر لا يكون بالظن ولا بالانفعال، فلا بد من تحقق الشروط وانتفاء الموانع (كالجهل والإكراه والتأويل)، وهذا شأن أهل العلم والقضاء لا آحاد الناس.','﴿إِنَّ اللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَاءُ﴾ — النساء: 48‖﴿قُلْ أَبِاللَّهِ وَآيَاتِهِ وَرَسُولِهِ كُنتُمْ تَسْتَهْزِئُونَ ۝ لَا تَعْتَذِرُوا قَدْ كَفَرْتُم بَعْدَ إِيمَانِكُمْ﴾ — التوبة: 65-66‖«إِذَا قَالَ الرَّجُلُ لِأَخِيهِ يَا كَافِرُ فَقَدْ بَاءَ بِهَا أَحَدُهُمَا» — متفق عليه',1],
+['لا اكراه في الدين|هل الاسلام اجبر الناس|الاسلام والاجبار|حريه الاعتقاد|حريه الاديان|هل يجبر احد علي الاسلام|اجبار الناس علي الدين','لا إكراه في الدين','الإيمان عمل القلب، ولا يصح بالإجبار، ولذلك قرر القرآن حرية الاعتقاد: من شاء آمن ومن شاء كفر، وعلى المسلمين البلاغ والدعوة بالحكمة والموعظة الحسنة والإحسان، مع بقاء العدل والبر مع المسالمين من غير المسلمين.','﴿لَا إِكْرَاهَ فِي الدِّينِ ۖ قَدْ تَّبَيَّنَ الرُّشْدُ مِنَ الْغَيِّ﴾ — البقرة: 256‖﴿وَقُلِ الْحَقُّ مِن رَّبِّكُمْ ۖ فَمَن شَاءَ فَلْيُؤْمِن وَمَن شَاءَ فَلْيَكْفُرْ﴾ — الكهف: 29‖﴿ادْعُ إِلَىٰ سَبِيلِ رَبِّكَ بِالْحِكْمَةِ وَالْمَوْعِظَةِ الْحَسَنَةِ﴾ — النحل: 125'],
+['الاسلام دين الفطره|الفطره|الفطره السليمه|ما هي الفطره|كل مولود يولد علي الفطره|معني الفطره','الإسلام دين الفطرة','الفطرة هي الخِلقة التي خلق الله الناس عليها من الميل إلى معرفة خالقهم وتوحيده وحب الخير. والإسلام موافق لها: لا يُحرّم الطيبات ولا يُكلّف الإنسان ما لا يطيق، ويُلبّي حاجات الروح والجسد معًا.','﴿فَأَقِمْ وَجْهَكَ لِلدِّينِ حَنِيفًا ۚ فِطْرَتَ اللَّهِ الَّتِي فَطَرَ النَّاسَ عَلَيْهَا﴾ — الروم: 30‖«كُلُّ مَوْلُودٍ يُولَدُ عَلَى الْفِطْرَةِ» — متفق عليه'],
+['يسر الاسلام|الاسلام دين يسر|رفع الحرج|الدين يسر|هل الاسلام صعب|الاسلام سهل ولا صعب|التيسير في الدين|التشدد في الدين|الغلو في الدين','يُسر الإسلام ورفع الحرج','من أصول الشريعة رفع الحرج والتيسير على الناس، فلا يكلّف الله نفسًا إلا وسعها، وشُرعت الرُّخَص عند المشقة كالفطر للمريض والمسافر. وفي المقابل نهى الإسلام عن الغلو والتشدد، وأرشد إلى القصد والاعتدال والمداومة على القليل.','﴿يُرِيدُ اللَّهُ بِكُمُ الْيُسْرَ وَلَا يُرِيدُ بِكُمُ الْعُسْرَ﴾ — البقرة: 185‖﴿وَمَا جَعَلَ عَلَيْكُمْ فِي الدِّينِ مِنْ حَرَجٍ﴾ — الحج: 78‖«إِنَّ الدِّينَ يُسْرٌ، وَلَنْ يُشَادَّ الدِّينَ أَحَدٌ إِلَّا غَلَبَهُ» — رواه البخاري'],
+['معني العباده|ما هي العباده|شروط قبول العمل|شروط قبول العبادات|متي يقبل العمل|العباده في الاسلام|مفهوم العباده|هل ربنا يقبل العمل','معنى العبادة وشروط قبول العمل','العبادة اسم جامع لكل ما يحبه الله ويرضاه من الأقوال والأعمال الظاهرة والباطنة، فهي أوسع من الشعائر، وتشمل الأخلاق والعمل الصالح ونفع الناس. وشرطا قبول العمل: الإخلاص لله وحده، والمتابعة للنبي ﷺ فيما شرع.','﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ﴾ — الذاريات: 56‖﴿فَمَن كَانَ يَرْجُو لِقَاءَ رَبِّهِ فَلْيَعْمَلْ عَمَلًا صَالِحًا وَلَا يُشْرِكْ بِعِبَادَةِ رَبِّهِ أَحَدًا﴾ — الكهف: 110‖«مَنْ أَحْدَثَ فِي أَمْرِنَا هَذَا مَا لَيْسَ مِنْهُ فَهُوَ رَدٌّ» — متفق عليه'],
+['مصادر التشريع|ادله الاحكام|مصادر الفقه|من اين تؤخذ الاحكام|الكتاب والسنه والاجماع|الاجماع والقياس|ما هو الاجماع|ما هو القياس','مصادر التشريع في الإسلام','المصادر الأصلية للأحكام: القرآن الكريم، ثم السنة النبوية الصحيحة، ثم الإجماع (اتفاق مجتهدي الأمة على حكم)، ثم القياس (إلحاق مسألة جديدة بنظيرها المنصوص عليها بعلة جامعة). ويُرجع في فهمها وتطبيقها إلى أهل العلم المجتهدين.','﴿يَا أَيُّهَا الَّذِينَ آمَنُوا أَطِيعُوا اللَّهَ وَأَطِيعُوا الرَّسُولَ وَأُولِي الْأَمْرِ مِنكُمْ ۖ فَإِن تَنَازَعْتُمْ فِي شَيْءٍ فَرُدُّوهُ إِلَى اللَّهِ وَالرَّسُولِ﴾ — النساء: 59‖﴿وَمَا آتَاكُمُ الرَّسُولُ فَخُذُوهُ وَمَا نَهَاكُمْ عَنْهُ فَانتَهُوا﴾ — الحشر: 7'],
+['الاحكام الخمسه|الفرق بين الفرض والواجب|الفرق بين الفرض والسنه|الواجب والمندوب والمباح|الفرض والسنه والمستحب|ما هو المباح|ما هو المكروه|الحلال والحرام والمكروه|ما هي السنه والمستحب|الاصل في الاشياء الاباحه','الأحكام الخمسة: الفرض والسنة والمباح والمكروه والحرام','أفعال المكلّفين خمسة أحكام: الواجب (الفرض): يُثاب فاعله ويأثم تاركه كالصلوات الخمس. والمندوب (السنة والمستحب): يُثاب فاعله ولا يأثم تاركه كالرواتب. والمباح: لا ثواب ولا عقاب. والمكروه: يُثاب تاركه ولا يأثم فاعله. والحرام: يأثم فاعله ويُثاب تاركه امتثالًا. والأصل في الأشياء والعادات الإباحة ما لم يرد دليل بالتحريم، والأصل في العبادات التوقيف.','﴿هُوَ الَّذِي خَلَقَ لَكُم مَّا فِي الْأَرْضِ جَمِيعًا﴾ — البقرة: 29‖﴿وَيُحِلُّ لَهُمُ الطَّيِّبَاتِ وَيُحَرِّمُ عَلَيْهِمُ الْخَبَائِثَ﴾ — الأعراف: 157‖«إِنَّ الْحَلَالَ بَيِّنٌ وَإِنَّ الْحَرَامَ بَيِّنٌ وَبَيْنَهُمَا أُمُورٌ مُشْتَبِهَاتٌ» — متفق عليه (حديث النعمان بن بشير)'],
+['المذاهب الاربعه|المذاهب الفقهيه|الفرق بين المذاهب|ما هي المذاهب|ابو حنيفه ومالك والشافعي واحمد|مذهب الشافعي|مذهب مالك|مذهب ابي حنيفه|مذهب احمد|اي مذهب اتبع|اختلاف العلماء','المذاهب الفقهية الأربعة واختلاف العلماء','المذاهب الفقهية السنية المشهورة أربعة، نُسبت لأئمتها: الحنفي (أبو حنيفة النعمان)، والمالكي (مالك بن أنس)، والشافعي (محمد بن إدريس الشافعي)، والحنبلي (أحمد بن حنبل). وهي متفقة على أصول الدين وأركانه، والخلاف بينها في فروع الفقه ناتج عن اجتهاد مشروع في فهم الأدلة، وهو من سعة الشريعة. ومن لم يكن من أهل الاجتهاد فعليه سؤال أهل العلم الثقات.','﴿فَاسْأَلُوا أَهْلَ الذِّكْرِ إِن كُنتُمْ لَا تَعْلَمُونَ﴾ — النحل: 43‖«إِذَا حَكَمَ الْحَاكِمُ فَاجْتَهَدَ ثُمَّ أَصَابَ فَلَهُ أَجْرَانِ، وَإِذَا حَكَمَ فَاجْتَهَدَ ثُمَّ أَخْطَأَ فَلَهُ أَجْرٌ» — متفق عليه',1],
+['الحديث الصحيح والضعيف|الفرق بين الصحيح والضعيف|الحديث الموضوع|درجات الحديث|الحديث الحسن|الاحاديث الضعيفه|هل اتاكد ان الحديث صحيح|الكذب علي النبي','الحديث الصحيح والحسن والضعيف والموضوع','الحديث الصحيح: ما رواه عدل تام الضبط بسند متصل بلا شذوذ ولا علة. والحسن: أقل ضبطًا لكنه مقبول. والضعيف: ما فقد شرطًا من شروط القبول، ويتفاوت ضعفه. والموضوع: المكذوب المختلَق على النبي ﷺ ولا تحل روايته إلا للتحذير منه. فلا تنشر حديثًا حتى تتأكد من صحته من كتب أهل العلم بالحديث.','«مَنْ كَذَبَ عَلَيَّ مُتَعَمِّدًا فَلْيَتَبَوَّأْ مَقْعَدَهُ مِنَ النَّارِ» — متفق عليه'],
+['الكتب الستة|كتب الحديث|صحيح البخاري|صحيح مسلم|اشهر كتب الحديث|كتب السنه|السنن الاربعه|من اشهر كتب الحديث|رياض الصالحين|الاربعين النوويه','الكتب الستة وأشهر كتب الحديث','الكتب الستة: صحيح البخاري وصحيح مسلم (وهما أصح الكتب بعد القرآن)، وسنن أبي داود، وسنن الترمذي، وسنن النسائي، وسنن ابن ماجه. ومن أشهر الكتب الأخرى: موطأ مالك، ومسند أحمد، وكتب مختصرة مفيدة للمبتدئ مثل الأربعين النووية ورياض الصالحين.','«نَضَّرَ اللَّهُ امْرَأً سَمِعَ مِنَّا شَيْئًا فَبَلَّغَهُ كَمَا سَمِعَ» — رواه الترمذي وأبو داود'],
+['مكي ومدني|السور المكيه والمدنيه|الفرق بين المكي والمدني|ما هي السور المكيه|ما هي السور المدنيه|نزول القران مفرقا|كيف نزل القران|نزول القران','السور المكية والمدنية وكيف نزل القرآن','نزل القرآن منجَّمًا (مفرّقًا) على مدى نحو ثلاث وعشرين سنة. المكي: ما نزل قبل الهجرة، ويغلب عليه الحديث عن التوحيد والبعث وقصص الأنبياء. والمدني: ما نزل بعد الهجرة، ويغلب عليه الأحكام والتشريع وبناء المجتمع. وكان نزوله أول مرة في ليلة القدر من رمضان.','﴿وَقُرْآنًا فَرَقْنَاهُ لِتَقْرَأَهُ عَلَى النَّاسِ عَلَىٰ مُكْثٍ وَنَزَّلْنَاهُ تَنزِيلًا﴾ — الإسراء: 106‖﴿شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ﴾ — البقرة: 185'],
+['جمع القران|حفظ القران وجمعه|كيف جمع القران|من جمع القران|حفظ القران من التحريف|هل القران محرف|هل القران اتغير|المصحف العثماني|زيد بن ثابت والقران|القران محفوظ','حفظ القرآن وجمعه','تعهّد الله بحفظ القرآن. كُتب القرآن في عهد النبي ﷺ وحفظه الصحابة، ثم جُمع في صحف في عهد أبي بكر الصديق رضي الله عنه بكتابة زيد بن ثابت، ثم نُسخت منه المصاحف في عهد عثمان رضي الله عنه ووُزعت على الأمصار. وتواتر نقله حفظًا وكتابةً جيلًا بعد جيل إلى اليوم.','﴿إِنَّا نَحْنُ نَزَّلْنَا الذِّكْرَ وَإِنَّا لَهُ لَحَافِظُونَ﴾ — الحجر: 9‖﴿إِنَّ عَلَيْنَا جَمْعَهُ وَقُرْآنَهُ﴾ — القيامة: 17'],
+['اعجاز القران|معجزه القران|لماذا القران معجز|تحدي القران|هل القران من عند الله|دليل ان القران من عند الله|هل القران كلام الله','إعجاز القرآن','القرآن معجزة النبي ﷺ الخالدة، تحدّى الله به العرب وهم أهل الفصاحة أن يأتوا بمثله أو بسورة منه فعجزوا. ويظهر إعجازه في بلاغته ونظمه، وتشريعه المحكم، وإخباره عن الغيب والأمم السابقة، وسلامته من الاختلاف، وتأثيره في القلوب.','﴿قُل لَّئِنِ اجْتَمَعَتِ الْإِنسُ وَالْجِنُّ عَلَىٰ أَن يَأْتُوا بِمِثْلِ هَٰذَا الْقُرْآنِ لَا يَأْتُونَ بِمِثْلِهِ وَلَوْ كَانَ بَعْضُهُمْ لِبَعْضٍ ظَهِيرًا﴾ — الإسراء: 88‖﴿أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ ۚ وَلَوْ كَانَ مِنْ عِندِ غَيْرِ اللَّهِ لَوَجَدُوا فِيهِ اخْتِلَافًا كَثِيرًا﴾ — النساء: 82'],
+['تدبر القران|كيف اتدبر القران|كيف افهم القران|ازاي افهم القران|قراءه القران بتدبر|كيف اقرا القران بتفكر|ازاي اقرا القران صح|كيف ابدا قراءه القران','كيف أتدبّر القرآن وأفهمه؟','التدبّر هو التأمل في المعاني لا مجرد القراءة. ابدأ بقدر يسير بانتظام، واجعل لك تفسيرًا ميسّرًا بجوارك ترجع إليه، وتوقّف عند الآية التي تؤثر فيك واسأل نفسك: ماذا يريد الله مني بها؟','﴿كِتَابٌ أَنزَلْنَاهُ إِلَيْكَ مُبَارَكٌ لِّيَدَّبَّرُوا آيَاتِهِ وَلِيَتَذَكَّرَ أُولُو الْأَلْبَابِ﴾ — ص: 29‖﴿أَفَلَا يَتَدَبَّرُونَ الْقُرْآنَ أَمْ عَلَىٰ قُلُوبٍ أَقْفَالُهَا﴾ — محمد: 24',0,'حدّد وردًا ثابتًا ولو صفحة في اليوم¦اقرأ بتمهّل وبصوت خافت ورتّل¦افتح تفسيرًا ميسّرًا كتفسير السعدي أو الميسّر واقرأ معنى الآية¦توقّف عند آية واحدة تأثّرت بها وطبّقها في يومك¦استمع لتلاوة خاشعة وتابع المصحف'],
+['المراه في الاسلام|حقوق المراه في الاسلام|مكانه المراه|هل الاسلام ظلم المراه|هل الاسلام كرم المراه|المراه والرجل في الاسلام|الاسلام والمراه|تكريم المراه','المرأة في الإسلام وحقوقها','ساوى الإسلام بين الرجل والمرأة في أصل التكليف والجزاء، وأعطى المرأة حقوقها: ملكية مالها، والميراث، والتعليم، والاختيار في الزواج، والنفقة على الزوج والقريب، وحفظ كرامتها بنتًا وزوجة وأمًّا. وللرجل والمرأة أدوار وأحكام تتناسب مع طبيعة كل منهما.','﴿وَلَهُنَّ مِثْلُ الَّذِي عَلَيْهِنَّ بِالْمَعْرُوفِ﴾ — البقرة: 228‖﴿مَنْ عَمِلَ صَالِحًا مِّن ذَكَرٍ أَوْ أُنثَىٰ وَهُوَ مُؤْمِنٌ فَلَنُحْيِيَنَّهُ حَيَاةً طَيِّبَةً﴾ — النحل: 97‖﴿لِّلرِّجَالِ نَصِيبٌ مِّمَّا اكْتَسَبُوا ۖ وَلِلنِّسَاءِ نَصِيبٌ مِّمَّا اكْتَسَبْنَ﴾ — النساء: 32'],
+['المساواه في الاسلام|العدل في الاسلام|العنصريه في الاسلام|الاسلام والعنصريه|التفاضل بين الناس|لا فرق بين عربي واعجمي|اللون والجنس في الاسلام|الكرامه الانسانيه','العدل والمساواة والكرامة الإنسانية','الناس جميعًا خُلقوا من أصل واحد، ولا فضل لأحد على أحد بجنس أو لون أو نسب، وإنما التفاضل بالتقوى والعمل الصالح. وأمر الإسلام بالعدل حتى مع من نكره، وكرّم الإنسان من حيث هو إنسان.','﴿يَا أَيُّهَا النَّاسُ إِنَّا خَلَقْنَاكُم مِّن ذَكَرٍ وَأُنثَىٰ وَجَعَلْنَاكُمْ شُعُوبًا وَقَبَائِلَ لِتَعَارَفُوا ۚ إِنَّ أَكْرَمَكُمْ عِندَ اللَّهِ أَتْقَاكُمْ﴾ — الحجرات: 13‖﴿وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ﴾ — الإسراء: 70‖﴿وَلَا يَجْرِمَنَّكُمْ شَنَآنُ قَوْمٍ عَلَىٰ أَلَّا تَعْدِلُوا ۚ اعْدِلُوا هُوَ أَقْرَبُ لِلتَّقْوَىٰ﴾ — المائدة: 8'],
+['معني الجهاد|ما هو الجهاد|الجهاد في الاسلام|انواع الجهاد|جهاد النفس|هل الاسلام دين ارهاب|الارهاب والاسلام|الاسلام والعنف','معنى الجهاد في الإسلام','الجهاد: بذل الجهد في طاعة الله. وهو أنواع: جهاد النفس على الطاعة وترك المعصية، وجهاد العلم والدعوة، والصبر، وجهاد الدفع عن الدين والنفس والوطن. وللقتال أحكام وضوابط تُرجع إلى أهل العلم والجهات المسؤولة لا إلى الأفراد، ومن أعظمها تحريم الاعتداء وقتل غير المقاتلين والتخريب، فالإسلام يحرّم الإرهاب وترويع الآمنين وقتل الأبرياء.','﴿وَجَاهِدُوا فِي اللَّهِ حَقَّ جِهَادِهِ﴾ — الحج: 78‖﴿وَقَاتِلُوا فِي سَبِيلِ اللَّهِ الَّذِينَ يُقَاتِلُونَكُمْ وَلَا تَعْتَدُوا ۚ إِنَّ اللَّهَ لَا يُحِبُّ الْمُعْتَدِينَ﴾ — البقرة: 190‖﴿مَن قَتَلَ نَفْسًا بِغَيْرِ نَفْسٍ أَوْ فَسَادٍ فِي الْأَرْضِ فَكَأَنَّمَا قَتَلَ النَّاسَ جَمِيعًا﴾ — المائدة: 32',1],
+['النظافه في الاسلام|الطهاره|انواع الطهاره|الطهور شطر الايمان|الطهاره الحسيه|الحدث الاكبر والاصغر|ما هي النجاسه|الحدث والخبث','الطهارة وأنواعها','الطهارة شرط لصحة الصلاة وغيرها، وهي نوعان: طهارة من الحدث: الأصغر بالوضوء، والأكبر بالغسل، وعند العذر بالتيمم. وطهارة من الخبث: إزالة النجاسة عن البدن والثوب والمكان. والإسلام يحث على النظافة عمومًا: السواك والاغتسال والتطيّب ونظافة البيت والطريق.','﴿إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ وَيُحِبُّ الْمُتَطَهِّرِينَ﴾ — البقرة: 222‖«الطُّهُورُ شَطْرُ الْإِيمَانِ» — رواه مسلم',1],
+['مبطلات الصلاه|ما يبطل الصلاه|ايه اللي يبطل الصلاه|هل الصلاه تبطل لو|الكلام في الصلاه|الضحك في الصلاه|الحركه في الصلاه|الاكل في الصلاه','مبطلات الصلاة','من مبطلات الصلاة عند جمهور العلماء: الكلام عمدًا لغير مصلحة الصلاة، والحدث (انتقاض الوضوء)، والأكل والشرب عمدًا، والحركة الكثيرة المتوالية لغير حاجة، وترك ركن أو شرط عمدًا (كاستدبار القبلة وكشف العورة)، والقهقهة. أما السهو فيُجبر بسجود السهو. وللتفاصيل خلاف بين المذاهب فاسأل أهل العلم في حالتك.','«إِنَّ هَذِهِ الصَّلَاةَ لَا يَصْلُحُ فِيهَا شَيْءٌ مِنْ كَلَامِ النَّاسِ، إِنَّمَا هُوَ التَّسْبِيحُ وَالتَّكْبِيرُ وَقِرَاءَةُ الْقُرْآنِ» — رواه مسلم',1],
+['المحافظه علي صلاه الفجر|كيف احافظ علي صلاه الفجر|ازاي اصحي للفجر|كيف استيقظ للفجر|اصحي لصلاه الفجر|صعب اصحي الفجر|مش بعرف اصحي للفجر|اقوم الفجر|الاستيقاظ لصلاه الفجر|ضيعت الفجر','كيف أحافظ على صلاة الفجر؟','الاستيقاظ للفجر يحتاج نية صادقة وتنظيمًا بسيطًا: النوم المبكر هو أهم الأسباب. واعلم أن الفجر من أثقل الصلوات على النفس ولذلك عظُم أجرها، وصلاتها في جماعة تحفظ صاحبها.','«مَنْ صَلَّى الصُّبْحَ فَهُوَ فِي ذِمَّةِ اللَّهِ» — رواه مسلم‖«أَثْقَلُ الصَّلَاةِ عَلَى الْمُنَافِقِينَ صَلَاةُ الْعِشَاءِ وَصَلَاةُ الْفَجْرِ، وَلَوْ يَعْلَمُونَ مَا فِيهِمَا لَأَتَوْهُمَا وَلَوْ حَبْوًا» — متفق عليه‖«رَكْعَتَا الْفَجْرِ خَيْرٌ مِنَ الدُّنْيَا وَمَا فِيهَا» — رواه مسلم',0,'نم مبكرًا ولا تسهر بلا حاجة، وانوِ القيام قبل النوم¦اقرأ أذكار النوم ونم على طهارة¦ضع المنبّه بعيدًا عنك وفعّل أكثر من منبّه¦اطلب من أحد في البيت أو صديق أن يوقظك¦قم فورًا ولا تعد للنوم، واشرب ماءً وتوضأ¦صلِّ الفجر في المسجد إن أمكنك، ولا تترك الصلاة لو فاتك الوقت: قم وصلِّ حين تستيقظ'],
+['كيف اخشع في الصلاه|كيف اخشع في صلاتي|ازاي اخشع في الصلاه|الخشوع في الصلاه|مش عارف اخشع|شرود الذهن في الصلاه|اركز في الصلاه|ازاي اركز في صلاتي|السرحان في الصلاه|الوساوس في الصلاه','كيف أخشع في صلاتي؟','الخشوع حضور القلب وسكون الجوارح في الصلاة، وهو يُكتسب بالتدرّب. وشرود الذهن يصيب الجميع، فلا تيأس، وجاهد نفسك في كل مرة وارجع إلى معنى ما تقول.','﴿قَدْ أَفْلَحَ الْمُؤْمِنُونَ ۝ الَّذِينَ هُمْ فِي صَلَاتِهِمْ خَاشِعُونَ﴾ — المؤمنون: 1-2‖«إِنَّ الْعَبْدَ لَيُصَلِّي الصَّلَاةَ مَا يُكْتَبُ لَهُ مِنْهَا إِلَّا عُشْرُهَا، تُسْعُهَا، ثُمُنُهَا...» — رواه أحمد وأبو داود',0,'تهيّأ للصلاة قبلها: توضأ بهدوء وتخلّص من المشتّتات¦تذكّر أنك واقف بين يدي الله وأنه يسمعك¦افهم معاني ما تقرأ: الفاتحة والأذكار وتدبّر كل آية¦انظر إلى موضع سجودك وتمهّل ولا تستعجل الركوع والسجود¦نوّع في السور القصيرة التي تقرؤها بعد الفاتحة¦اطلب من الله العون: «اللهم أعنّي على ذكرك وشكرك وحسن عبادتك»'],
+['ازاي ارجع لربنا|كيف ارجع الي الله|كيف ابدا الالتزام|عايز اتوب والتزم|عاوز اتوب والتزم|ابدا التزام|اريد الالتزام|ابدا من فين|كيف اصبح ملتزما|ازاي ابقي ملتزم|انا بعيد عن ربنا|ازاي اقرب من ربنا|بعدت عن الله','كيف أرجع إلى الله وأبدأ الالتزام؟','باب التوبة مفتوح لكل أحد مهما كانت ذنوبه. ابدأ بخطوات صغيرة ثابتة ولا تحمّل نفسك فوق طاقتك، فأحب الأعمال إلى الله أدومها وإن قل. وتدرّج في ترك المعاصي مع صدق النية والعزم.','﴿قُلْ يَا عِبَادِيَ الَّذِينَ أَسْرَفُوا عَلَىٰ أَنفُسِهِمْ لَا تَقْنَطُوا مِن رَّحْمَةِ اللَّهِ ۚ إِنَّ اللَّهَ يَغْفِرُ الذُّنُوبَ جَمِيعًا﴾ — الزمر: 53‖«أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ» — متفق عليه‖«وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا» — رواه الترمذي',0,'تُب إلى الله توبة صادقة: اندم واترك الذنب واعزم ألا تعود¦حافظ على الصلوات الخمس في أوقاتها قبل أي شيء¦اجعل لك وردًا قرآنيًا صغيرًا وأذكار الصباح والمساء¦ابتعد عن أسباب المعصية والصحبة التي تدفعك إليها¦اصحب أهل الخير واحضر مجالس العلم¦داوم ولا تيأس إن تعثرت، وجدد التوبة كل مرة'],
+['كيف احب الله|ازاي احب ربنا|كيف اتقرب الي الله|التقرب الي الله|ازاي اتقرب من ربنا|حب الله|كيف يحبني الله|ازاي ربنا يحبني|علامات حب الله للعبد','كيف أتقرّب إلى الله ويحبني؟','محبة الله تُنال باتباع النبي ﷺ، والمحافظة على الفرائض ثم الإكثار من النوافل وذكر الله، والإحسان إلى خلقه. ومن علامات حب الله لعبده توفيقه للطاعة وتيسيرها عليه.','﴿قُلْ إِن كُنتُمْ تُحِبُّونَ اللَّهَ فَاتَّبِعُونِي يُحْبِبْكُمُ اللَّهُ وَيَغْفِرْ لَكُمْ ذُنُوبَكُمْ﴾ — آل عمران: 31‖«وَمَا تَقَرَّبَ إِلَيَّ عَبْدِي بِشَيْءٍ أَحَبَّ إِلَيَّ مِمَّا افْتَرَضْتُ عَلَيْهِ، وَمَا يَزَالُ عَبْدِي يَتَقَرَّبُ إِلَيَّ بِالنَّوَافِلِ حَتَّى أُحِبَّهُ» — رواه البخاري (حديث قدسي)',0,'أدِّ الفرائض على أكمل وجه¦أكثر من النوافل: الرواتب والضحى وقيام الليل¦داوم على ذكر الله وقراءة القرآن¦أحسن إلى الناس وأخلص النية¦تعرّف على أسماء الله الحسنى وتأمّل صفاته'],
+['كيف احفظ القران|ازاي احفظ القران|طريقه حفظ القران|حفظ القران|خطه حفظ القران|اريد حفظ القران|عايز احفظ القران|عاوز احفظ القران|تثبيت الحفظ|مراجعه القران','كيف أحفظ القرآن؟','الله يسّر القرآن للحفظ، والعبرة بالصبر والمداومة والإخلاص. الأفضل أن يكون لك شيخ أو مقرئ يصحّح لك التلاوة، وأن تراجع أكثر مما تحفظ.','﴿وَلَقَدْ يَسَّرْنَا الْقُرْآنَ لِلذِّكْرِ فَهَلْ مِن مُّدَّكِرٍ﴾ — القمر: 17‖«خَيْرُكُمْ مَنْ تَعَلَّمَ الْقُرْآنَ وَعَلَّمَهُ» — رواه البخاري',0,'صحّح تلاوتك أولًا على يد مقرئ أو بالاستماع لمقرئ متقن¦حدّد قدرًا يوميًا صغيرًا (آيات أو نصف صفحة) والتزم به¦احفظ في وقت صافي الذهن (بعد الفجر مثلًا)¦كرّر الآيات واستمع إليها قبل الحفظ ثم احفظ¦راجع المحفوظ يوميًا ولا تنتقل قبل أن يثبت السابق¦صلِّ بما حفظت في النوافل لتثبيته'],
+['الدين والعقيده والشريعه|الفرق بين العقيده والشريعه|ما هو الفقه|معني الفقه|معني الشريعه|ما هي العقيده|الفرق بين الفقه والشريعه|معني العقيده','الفرق بين العقيدة والشريعة والفقه','العقيدة: ما يعتقده القلب ويؤمن به من أصول الإيمان كالتوحيد والنبوة واليوم الآخر. والشريعة: ما شرعه الله لعباده من الأحكام والعبادات والمعاملات والأخلاق. والفقه: العلم بالأحكام الشرعية العملية المستنبطة من الأدلة التفصيلية، فهو فهم العلماء للشريعة.','﴿ثُمَّ جَعَلْنَاكَ عَلَىٰ شَرِيعَةٍ مِّنَ الْأَمْرِ فَاتَّبِعْهَا﴾ — الجاثية: 18‖«مَنْ يُرِدِ اللَّهُ بِهِ خَيْرًا يُفَقِّهْهُ فِي الدِّينِ» — متفق عليه'],
+['كيف اقوي ايماني|ازاي ازود ايماني|ضعف الايمان|ايماني ضعيف|قله الايمان|ازاي اقوي ايماني|زياده الايمان|قسوه القلب|قلبي قاسي|ازاي القلب يلين','كيف أقوّي إيماني وأعالج قسوة القلب؟','الإيمان يزيد بالطاعة وينقص بالمعصية، والقلوب تتقلّب فتحتاج تعاهدًا. ومن أعظم أسباب زيادته: تلاوة القرآن بتدبّر، وذكر الله، وتأمل خلق الله، والمحافظة على الفرائض، وصحبة الصالحين، وتذكّر الموت والآخرة.','﴿إِنَّمَا الْمُؤْمِنُونَ الَّذِينَ إِذَا ذُكِرَ اللَّهُ وَجِلَتْ قُلُوبُهُمْ وَإِذَا تُلِيَتْ عَلَيْهِمْ آيَاتُهُ زَادَتْهُمْ إِيمَانًا﴾ — الأنفال: 2‖﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28',0,'حافظ على الصلوات في وقتها وخاصة الفجر¦اقرأ القرآن يوميًا بتدبّر ولو قليلًا¦أكثر من الذكر والاستغفار والدعاء¦تأمل في خلق الله وفي نعمه عليك¦اصحب الصالحين وابتعد عن الغفلة والمعاصي¦تذكّر الموت وزر المقابر وعُد المرضى'],
+['الاسلام والاديان الاخري|الفرق بين الاسلام والمسيحيه|الفرق بين الاسلام واليهوديه|الاسلام والمسيحيه|الاسلام واليهوديه|الاديان السماويه|اهل الكتاب|هل عيسي اله|ما راي الاسلام في المسيحيه|دين الانبياء','الإسلام والأديان السماوية الأخرى','في الإسلام أن دين الأنبياء جميعًا واحد في أصله: عبادة الله وحده لا شريك له، وأن موسى وعيسى عليهما السلام نبيان ورسولان من عند الله، وأنه أُنزلت عليهما التوراة والإنجيل. ويؤمن المسلم بجميع الأنبياء ولا يفرّق بين أحد منهم. ويخالف الإسلام ما ذُكر في بعض العقائد من ألوهية المسيح أو بنوّته لله، ويرى أن الله واحد لا ولد له ولا شريك. ويأمر الإسلام بالبر والعدل مع المسالمين من أهل الأديان الأخرى.','﴿لَقَدْ كَفَرَ الَّذِينَ قَالُوا إِنَّ اللَّهَ هُوَ الْمَسِيحُ ابْنُ مَرْيَمَ﴾ — المائدة: 72‖﴿لَا نُفَرِّقُ بَيْنَ أَحَدٍ مِّنْهُمْ وَنَحْنُ لَهُ مُسْلِمُونَ﴾ — البقرة: 136‖﴿لَا يَنْهَاكُمُ اللَّهُ عَنِ الَّذِينَ لَمْ يُقَاتِلُوكُمْ فِي الدِّينِ وَلَمْ يُخْرِجُوكُم مِّن دِيَارِكُمْ أَن تَبَرُّوهُمْ وَتُقْسِطُوا إِلَيْهِمْ﴾ — الممتحنة: 8'],
+['هل المسلم يخلد في النار|هل الموحد يخلد في النار|هل يدخل المسلم النار|المسلم العاصي|اهل الكبائر|مرتكب الكبيره|هل العاصي يدخل الجنه|من قال لا اله الا الله دخل الجنه','هل يخلد المسلم العاصي في النار؟','عقيدة أهل السنة أن من مات على التوحيد ولو ارتكب الكبائر فهو تحت مشيئة الله: إن شاء عفا عنه وإن شاء عذّبه بقدر ذنوبه، ثم يخرجه من النار إلى الجنة، ولا يخلّد في النار إلا الكفار. وهذا لا يعني التهاون بالذنوب، فالمعصية خطر، والواجب المسارعة إلى التوبة.','﴿إِنَّ اللَّهَ لَا يَغْفِرُ أَن يُشْرَكَ بِهِ وَيَغْفِرُ مَا دُونَ ذَٰلِكَ لِمَن يَشَاءُ﴾ — النساء: 48‖«يَخْرُجُ مِنَ النَّارِ مَنْ قَالَ لَا إِلَهَ إِلَّا اللَّهُ وَفِي قَلْبِهِ وَزْنُ شَعِيرَةٍ مِنْ خَيْرٍ» — متفق عليه'],
+['حقوق الله وحقوق العباد|حق الله وحق العبد|المفلس يوم القيامه|رد المظالم|مظالم العباد|حقوق الناس|هل التوبه تسقط حقوق الناس|الدين المعامله','حقوق الله وحقوق العباد','حقوق الله تسقط بالتوبة الصادقة. أما حقوق العباد كالمال والدم والعرض فلا تسقط بمجرد التوبة، بل لا بد من رد الحق إلى صاحبه أو طلب مسامحته. ولذلك حذّر النبي ﷺ من ظلم الناس لأن القصاص يوم القيامة بالحسنات والسيئات.','«أَتَدْرُونَ مَا الْمُفْلِسُ؟ قَالُوا: الْمُفْلِسُ فِينَا مَنْ لَا دِرْهَمَ لَهُ وَلَا مَتَاعَ. فَقَالَ: إِنَّ الْمُفْلِسَ مِنْ أُمَّتِي يَأْتِي يَوْمَ الْقِيَامَةِ بِصَلَاةٍ وَصِيَامٍ وَزَكَاةٍ، وَيَأْتِي قَدْ شَتَمَ هَذَا وَقَذَفَ هَذَا وَأَكَلَ مَالَ هَذَا...» — رواه مسلم'],
+['فرض عين وفرض كفايه|الفرض الكفائي|الفرق بين فرض العين وفرض الكفايه|ما هو فرض الكفايه|فرض كفايه','فرض العين وفرض الكفاية','فرض العين: ما يجب على كل مسلم بنفسه كالصلاة والصيام. وفرض الكفاية: ما يجب على المجتمع المسلم في مجموعه، إذا قام به من يكفي سقط الإثم عن الباقين، كصلاة الجنازة، وتعلّم الطب والعلوم النافعة، وتغسيل الميت.','﴿وَلْتَكُن مِّنكُمْ أُمَّةٌ يَدْعُونَ إِلَى الْخَيْرِ وَيَأْمُرُونَ بِالْمَعْرُوفِ وَيَنْهَوْنَ عَنِ الْمُنكَرِ﴾ — آل عمران: 104'],
+['ما الواجب علي المسلم|اساسيات يجب ان يعرفها كل مسلم|واجبات المسلم|ماذا يجب علي المسلم|الفرائض الاساسيه|ما هي الفرائض|اهم ما يجب علي المسلم|اساسيات الدين|اساسيات الاسلام|اتعلم ديني من الاول|عايز اعرف ديني|عاوز اعرف ديني|تعلم الاسلام للمبتدئين','أساسيات يجب أن يعرفها كل مسلم','ما لا يسع المسلم جهله: التوحيد (معرفة الله ورسوله ودينه)، وأركان الإسلام الخمسة وكيفية الصلاة والطهارة، وأركان الإيمان الستة، وحرمة الكبائر كالشرك والربا والزنا وعقوق الوالدين، ومكارم الأخلاق كالصدق والأمانة وبر الوالدين وحسن الجوار.','«أَفْلَحَ إِنْ صَدَقَ» — متفق عليه (قاله النبي ﷺ للأعرابي الذي سأل عن فرائض الإسلام فذكر له الصلاة والصيام والزكاة فقال: والله لا أزيد على هذا ولا أنقص)‖«طَلَبُ الْعِلْمِ فَرِيضَةٌ عَلَى كُلِّ مُسْلِمٍ» — رواه ابن ماجه',0,'تعلّم معنى الشهادتين والتوحيد¦أتقن الوضوء والصلاة وأحكامها الأساسية¦اعرف أحكام الصيام والزكاة والحج الذي يخصّك¦تعلّم الحلال والحرام فيما تتعامل به يوميًا¦اقرأ سيرة النبي ﷺ وحافظ على الأذكار والقرآن¦اسأل أهل العلم الثقات عمّا يشكل عليك'],
+['بسم الله الرحمن الرحيم|البسمله ومتي تقال|معني البسمله|متي نقول بسم الله|فضل البسمله|التسميه|حكم التسميه عند الاكل|التسميه قبل الاكل','البسملة ومتى تُقال','«بسم الله الرحمن الرحيم» افتتاح كل سورة في المصحف عدا التوبة، ويُشرع للمسلم أن يبدأ بها أموره المباحة: الأكل والشرب والوضوء ودخول البيت والخروج منه وبداية العمل، استعانةً بالله وتبرّكًا باسمه. ومعناها: أبدأ بكل أمر مستعينًا باسم الله الرحمن الرحيم.','«يَا غُلَامُ سَمِّ اللَّهَ، وَكُلْ بِيَمِينِكَ، وَكُلْ مِمَّا يَلِيكَ» — متفق عليه‖﴿إِنَّهُ مِن سُلَيْمَانَ وَإِنَّهُ بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ﴾ — النمل: 30'],
+['سن التكليف|متي يجب الصيام علي الطفل|متي يجب الصلاه علي الطفل|متي يحاسب الانسان|علامات البلوغ|البلوغ|التكليف الشرعي|من لا يحاسب|الطفل والصلاه|الطفل والصيام','سن التكليف: متى تجب العبادات؟','تجب العبادات على المسلم البالغ العاقل. وعلامات البلوغ: الاحتلام، أو الحيض للأنثى، أو إنبات شعر العانة، أو بلوغ خمس عشرة سنة قمرية عند الجمهور. أما الصغير فلا يُكتب عليه إثم، لكن يُؤمر بالصلاة لسبع ويُضرب عليها (ضربًا غير مبرِّح للتأديب) لعشر، وتعويده الصيام تدريجيًا.','«رُفِعَ الْقَلَمُ عَنْ ثَلَاثَةٍ: عَنِ النَّائِمِ حَتَّى يَسْتَيْقِظَ، وَعَنِ الصَّبِيِّ حَتَّى يَحْتَلِمَ، وَعَنِ الْمَجْنُونِ حَتَّى يَعْقِلَ» — رواه أبو داود والنسائي‖«مُرُوا أَوْلَادَكُمْ بِالصَّلَاةِ وَهُمْ أَبْنَاءُ سَبْعِ سِنِينَ» — رواه أبو داود',1],
+['الاسلام والبيئه|الحفاظ علي البيئه|زراعه الشجر|غرس الشجر|الاسلام والزراعه|عدم الافساد في الارض|النظافه والبيئه|الماء والاسراف في الوضوء','الإسلام والبيئة','حثّ الإسلام على عمارة الأرض والحفاظ على مواردها: النهي عن الفساد في الأرض، وعن الإسراف في الماء وغيره، وفضل الغرس والزرع، وإماطة الأذى عن الطريق، والرفق بالحيوان.','﴿وَلَا تُفْسِدُوا فِي الْأَرْضِ بَعْدَ إِصْلَاحِهَا﴾ — الأعراف: 56‖«مَا مِنْ مُسْلِمٍ يَغْرِسُ غَرْسًا أَوْ يَزْرَعُ زَرْعًا فَيَأْكُلُ مِنْهُ طَيْرٌ أَوْ إِنْسَانٌ أَوْ بَهِيمَةٌ إِلَّا كَانَ لَهُ بِهِ صَدَقَةٌ» — متفق عليه'],
+['الاتقان في العمل|الاسلام والعمل|اهميه العمل في الاسلام|العمل عباده|اتقان العمل|الاجتهاد في العمل|العمل والتجاره في الاسلام','العمل والإتقان في الإسلام','العمل في الإسلام عبادة إذا صحّت النية والتزم صاحبه بالحلال. وطلب الرزق بالكسب الحلال محمود، والإسلام يحب الإتقان في أداء كل عمل، ويحذّر من الكسل والاتكال على الناس.','﴿وَقُلِ اعْمَلُوا فَسَيَرَى اللَّهُ عَمَلَكُمْ وَرَسُولُهُ وَالْمُؤْمِنُونَ﴾ — التوبة: 105‖«إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلًا أَنْ يُتْقِنَهُ» — رواه البيهقي'],
+['هل النبي بشر|النبي يعلم الغيب|هل النبي ص يعلم الغيب|هل الرسول بشر|هل الرسول يعلم الغيب|النبي نور|هل النبي بشر ام نور|بشريه النبي','هل النبي ﷺ بشر؟ وهل يعلم الغيب؟','النبي ﷺ بشر اختاره الله رسولًا وأوحى إليه، يأكل ويشرب وينسى ويمرض ويموت كغيره من البشر، لكنه أكمل البشر خُلقًا وأفضلهم. ولا يعلم الغيب إلا الله، وما أخبر به النبي ﷺ من الغيب فبوحي من الله.','﴿قُلْ إِنَّمَا أَنَا بَشَرٌ مِّثْلُكُمْ يُوحَىٰ إِلَيَّ أَنَّمَا إِلَٰهُكُمْ إِلَٰهٌ وَاحِدٌ﴾ — الكهف: 110‖﴿قُل لَّا أَقُولُ لَكُمْ عِندِي خَزَائِنُ اللَّهِ وَلَا أَعْلَمُ الْغَيْبَ﴾ — الأنعام: 50'],
+['محبه النبي|حب الرسول|علامات حب النبي|كيف احب الرسول|ازاي احب النبي|حقوق النبي علينا|حق النبي علي امته|اتباع النبي|متابعه الرسول','محبة النبي ﷺ وحقوقه علينا','محبة النبي ﷺ من أصول الإيمان، وعلامتها: اتباع سنته وتقديم أمره، والصلاة والسلام عليه، وتعلّم سيرته والتخلّق بأخلاقه، وحب آل بيته وصحابته، والذبّ عن سنته. وحقوقه: الإيمان به وطاعته وتوقيره وعدم الابتداع في دينه.','«لَا يُؤْمِنُ أَحَدُكُمْ حَتَّى أَكُونَ أَحَبَّ إِلَيْهِ مِنْ وَالِدِهِ وَوَلَدِهِ وَالنَّاسِ أَجْمَعِينَ» — متفق عليه‖﴿لَّقَدْ كَانَ لَكُمْ فِي رَسُولِ اللَّهِ أُسْوَةٌ حَسَنَةٌ﴾ — الأحزاب: 21'],
+['الحكمه من العبادات|لماذا الصلاه|لماذا الصيام|لماذا الزكاه|لماذا الحج|ليه الصلاه|ليه الصيام|ليه نصوم|ليه نصلي|فائده العبادات|الحكمه من الصلاه والصيام والزكاه','الحكمة من العبادات','العبادات غايتها صلة العبد بربه وتزكية النفس وتهذيب السلوك: الصلاة تنهى عن الفحشاء والمنكر وتصل القلب بالله خمس مرات يوميًا. والصيام يربّي التقوى والصبر والإحساس بالفقراء. والزكاة تطهّر النفس والمال وتسدّ حاجة المحتاجين. والحج يجمع المسلمين ويذكّر بالآخرة. والمسلم يعبد الله امتثالًا وإن لم يعرف الحكمة التفصيلية.','﴿إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ﴾ — العنكبوت: 45‖﴿كُتِبَ عَلَيْكُمُ الصِّيَامُ كَمَا كُتِبَ عَلَى الَّذِينَ مِن قَبْلِكُمْ لَعَلَّكُمْ تَتَّقُونَ﴾ — البقرة: 183‖﴿خُذْ مِنْ أَمْوَالِهِمْ صَدَقَةً تُطَهِّرُهُمْ وَتُزَكِّيهِم بِهَا﴾ — التوبة: 103'],
+['ليه مش بنشوف ربنا|لماذا لا نري الله|هل يمكن رؤيه الله|هل نشوف ربنا|الايمان بالغيب|هل نري الله في الدنيا|اشوف ربنا ازاي|رؤيه الله في الاخره','لماذا لا نرى الله؟ والإيمان بالغيب','لا تدركه الأبصار في الدنيا لقصور قدرتها لا لعدم وجوده، فنحن نؤمن بأشياء كثيرة لا نراها (كالروح والجاذبية) من آثارها. والإيمان بالغيب أساس الإيمان. ويرى المؤمنون ربهم في الآخرة نعمةً عظيمة.','﴿لَّا تُدْرِكُهُ الْأَبْصَارُ وَهُوَ يُدْرِكُ الْأَبْصَارَ ۖ وَهُوَ اللَّطِيفُ الْخَبِيرُ﴾ — الأنعام: 103‖﴿الَّذِينَ يُؤْمِنُونَ بِالْغَيْبِ وَيُقِيمُونَ الصَّلَاةَ﴾ — البقرة: 3‖﴿وُجُوهٌ يَوْمَئِذٍ نَّاضِرَةٌ ۝ إِلَىٰ رَبِّهَا نَاظِرَةٌ﴾ — القيامة: 22-23'],
+['ليه في شر|لماذا يوجد الشر|لماذا يوجد الالم|لماذا يسمح الله بالشر|ليه ربنا يسمح بالظلم|ليه في الم ومعاناه|حكمه الابتلاء والشر|لماذا يتالم الابرياء|ليه الله خلق الشر|ليه بنتالم|ليه بنتعذب|ليه ربنا بيعذبنا|ليه ربنا بيبتلينا|ليه بيحصل لنا كده|ليه ربنا بيسيب الناس تتعذب','لماذا يوجد الشر والألم؟','الدنيا دار ابتلاء لا دار جزاء، خلق الله فيها الخير والشر ليختبر الإنسان، ولله حكمة بالغة في كل ما يقدّره حتى لو خفيت علينا. والألم قد يكون تكفيرًا للذنوب ورفعًا للدرجات، والظلم لا يضيع حقه فالعدل الكامل في الآخرة. وعلينا مواجهة الشر بالصبر والعمل على إزالته ورفع الظلم قدر الاستطاعة.','﴿الَّذِي خَلَقَ الْمَوْتَ وَالْحَيَاةَ لِيَبْلُوَكُمْ أَيُّكُمْ أَحْسَنُ عَمَلًا﴾ — الملك: 2‖﴿وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ﴾ — البقرة: 216'],
+['مسير ام مخير|هل الانسان مسير|هل الانسان مخير|الجبر والاختيار|لماذا يحاسبني الله وهو قدر علي|القدر والاختيار|هل نحن مجبرون|الله كتب علينا المعصيه','هل الإنسان مُسيَّر أم مُخيَّر؟','للإنسان مشيئة واختيار حقيقي وبه يُحاسَب، ومع ذلك لا يخرج شيء عن علم الله ومشيئته وخلقه. فالله علِم ما سنفعله ولم يجبرنا عليه، والعلم الإلهي كاشف لا مُجبِر. ولذلك نأخذ بالأسباب ونعمل ونتوكل على الله ولا نحتجّ بالقدر على المعصية.','﴿وَقُلِ الْحَقُّ مِن رَّبِّكُمْ ۖ فَمَن شَاءَ فَلْيُؤْمِن وَمَن شَاءَ فَلْيَكْفُرْ﴾ — الكهف: 29‖﴿وَمَا تَشَاءُونَ إِلَّا أَن يَشَاءَ اللَّهُ رَبُّ الْعَالَمِينَ﴾ — التكوير: 29‖«اعْمَلُوا فَكُلٌّ مُيَسَّرٌ لِمَا خُلِقَ لَهُ» — متفق عليه'],
+['ليه بنحس بزهق|ليه بحس بزهق|ليه بزهق|زهقان|انا زهقان|حاسس بزهق|الزهق|الملل|حاسس بملل|ليه الملل|ليه بنحس بالملل|ليه بحس بالملل|مليت من كل حاجه|مش لاقي حاجه تفرحني|ضيق وزهق|الضجر|زهق من الحياه','ليه بنحس بالزهق والملل؟','الزهق والملل في الغالب إشارة من القلب أنه فارغ أو مشغول بما لا يشبعه. ومن أسبابه: كثرة الترفيه السريع والجوال، وقلة العمل النافع، والغفلة عن ذكر الله، والذنوب التي تُثقل القلب. وعلاجه برجوع القلب إلى ما خُلق له: ذكر الله، وعمل له أثر، وصحبة طيبة، وحركة. ولو كان الزهق معه حزن شديد أو فقدان للرغبة في كل شيء لفترة طويلة، فاستشر مختصًا نفسيًا إلى جانب الطاعة.','﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28‖﴿وَمَنْ أَعْرَضَ عَن ذِكْرِي فَإِنَّ لَهُ مَعِيشَةً ضَنكًا﴾ — طه: 124‖«نِعْمَتَانِ مَغْبُونٌ فِيهِمَا كَثِيرٌ مِنَ النَّاسِ: الصِّحَّةُ وَالْفَرَاغُ» — رواه البخاري',0,'قلّل وقت الجوال والتصفّح الذي لا ينتهي، وخصّص له وقتًا¦حافظ على الصلاة في وقتها واجعل لك وردًا من القرآن وأذكار الصباح والمساء¦اعمل شيئًا نافعًا: تعلّم مهارة، تطوّع، ساعد أحدًا¦تحرّك: امشِ أو مارس رياضة، واخرج للهواء والشمس¦اجلس مع صحبة طيبة بدل الوحدة والعزلة¦اطلب من الله: «اللهم إني أعوذ بك من الهمّ والحزن والعجز والكسل»','yf'],
+['ليه بنتالم|ليه بتالم|ليه بنتعب|ليه بنتعذب|ليه الحياه تعب|ليه الدنيا تعب|ليه الدنيا صعبه|ليه الحياه صعبه|ليه الدنيا كده|ليه الحياه كده|الدنيا تعبانه|تعبت من الدنيا|ليه ربنا بيتعبنا|ليه العذاب في الدنيا','ليه الدنيا فيها تعب وألم؟','الدنيا خُلقت دار ابتلاء وتعب لا دار راحة كاملة، والراحة الكاملة في الجنة. والألم فيها يحمل حكمًا: يُذكّر الإنسان بضعفه وحاجته إلى الله، ويُكفّر الذنوب، ويرفع الدرجات، ويُنضج النفس ويُعلّمها الرحمة بالآخرين. وليس معنى هذا أن نستسلم للألم، بل نأخذ بالأسباب ونصبر ونطلب العون من الله.','﴿لَقَدْ خَلَقْنَا الْإِنسَانَ فِي كَبَدٍ﴾ — البلد: 4‖﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾ — الشرح: 5-6‖«مَا يُصِيبُ الْمُسْلِمَ مِنْ نَصَبٍ وَلَا وَصَبٍ وَلَا هَمٍّ وَلَا حَزَنٍ وَلَا أَذًى وَلَا غَمٍّ حَتَّى الشَّوْكَةِ يُشَاكُهَا إِلَّا كَفَّرَ اللَّهُ بِهَا مِنْ خَطَايَاهُ» — متفق عليه',0,'','yf'],
+['ليه انا عايش|ليه خلقنا ربنا ونحن نتعذب|ايه معني حياتي|ما معني الحياه|الحياه ملهاش معني|مفيش هدف في حياتي|حاسس بفراغ|الفراغ الروحي|فراغ داخلي|حاسس اني تايه|انا تايه|ضايع ومش عارف اعمل ايه|ليه اعيش','حاسس بفراغ ومش عارف معنى حياتي','الفراغ الداخلي والإحساس بالضياع من أكثر ما يشكو منه الشباب. وجواب الإسلام أن للحياة معنًى وغاية: أن تعرف خالقك وتعبده وتعمّر الأرض بالخير، وأن وراء هذه الدنيا آخرة وحسابًا. وحين يعرف الإنسان لماذا خُلق تهدأ نفسه ويتّضح له الطريق، فالقلب لا يشبعه إلا قربه من الله.','﴿وَمَا خَلَقْتُ الْجِنَّ وَالْإِنسَ إِلَّا لِيَعْبُدُونِ﴾ — الذاريات: 56‖﴿أَفَحَسِبْتُمْ أَنَّمَا خَلَقْنَاكُمْ عَبَثًا وَأَنَّكُمْ إِلَيْنَا لَا تُرْجَعُونَ﴾ — المؤمنون: 115‖﴿الَّذِينَ آمَنُوا وَتَطْمَئِنُّ قُلُوبُهُم بِذِكْرِ اللَّهِ﴾ — الرعد: 28',0,'ابدأ بالأساس: صلاة في وقتها، فهي موعدك اليومي مع ربك¦اقرأ في معنى الحياة وغاية الخلق من القرآن والسيرة¦ضع لنفسك هدفًا نافعًا تخدم به الناس وتعمّر به الأرض¦تحدّث مع شخص ثقة أو عالم عمّا يشغلك، ولا تحمل الحيرة وحدك','yf'],
+['حاسس بوحده|انا وحيد|الوحده|مفيش حد معايا|مفيش حد فاهمني|محدش فاهمني|مليش اصحاب|حاسس اني لوحدي|وحيد ومكتئب|مش لاقي حد يسمعني|ازاي اتغلب علي الوحده','حاسس بالوحدة ومفيش حد فاهمني','الشعور بالوحدة مؤلم، لكن المسلم ليس وحيدًا: الله قريب يسمع ويجيب، والكلام معه في الدعاء والصلاة باب للأنس لا يُغلق. وإلى جانب ذلك، الإنسان مخلوق اجتماعيًا فاسعَ للصحبة الطيبة، وللتواصل مع الأهل والأقارب.','﴿وَنَحْنُ أَقْرَبُ إِلَيْهِ مِنْ حَبْلِ الْوَرِيدِ﴾ — ق: 16‖﴿وَإِذَا سَأَلَكَ عِبَادِي عَنِّي فَإِنِّي قَرِيبٌ ۖ أُجِيبُ دَعْوَةَ الدَّاعِ إِذَا دَعَانِ﴾ — البقرة: 186‖﴿إِنَّ اللَّهَ مَعَ الصَّابِرِينَ﴾ — البقرة: 153',0,'اجعل لك وقتًا تناجي فيه ربك وتشكو إليه ما في قلبك¦احضر صلاة الجماعة أو حلقة علم أو نشاطًا تطوعيًا لتلتقي بناس طيبين¦كلّم شخصًا تثق به، وابدأ أنت بالسؤال عنه¦لو الوحدة معها حزن شديد ومستمر، تحدّث مع مختص نفسي','yf'],
+['مش بصلي|معنديش التزام|انا مش بصلي وعايز ابدا|عايز ابدا اصلي|عاوز ابدا اصلي|ازاي ابدا اصلي|ازاي ابدا الصلاه من الصفر|مش بعرف اصلي|مش عارف اصلي|ما صليتش بقالي سنين|تركت الصلاه|عايز ارجع للصلاه|عاوز ارجع للصلاه|انا بعيد عن الصلاه','مش بصلي وعايز أبدأ من الصفر','أول خطوة هي أنك قررت الرجوع، وهذا فضل من الله. لا تنشغل بالماضي، فالتوبة تمحو ما قبلها. ابدأ بالتدرّج لكن بثبات، وتعلّم الصلاة بالتطبيق الصحيح، ولا تيأس إن تعثّرت. والصلاة الواحدة بانتظام أفضل من خمس تتركها بعد أيام.','﴿وَأْمُرْ أَهْلَكَ بِالصَّلَاةِ وَاصْطَبِرْ عَلَيْهَا﴾ — طه: 132‖«أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ» — متفق عليه‖«وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا» — رواه الترمذي',0,'تُب إلى الله واعزم على المحافظة، ولا تلتفت لما فات¦تعلّم الوضوء وطريقة الصلاة (من قسم «كيفية الصلاة» هنا) وسورة الفاتحة وقصار السور¦ابدأ بصلاة واحدة أو اثنتين ثابتتين ثم زد كل أسبوع حتى تكتمل الخمس¦فعّل تنبيهات مواقيت الصلاة في التطبيق¦اجعل لك صاحبًا يذكّرك ويصلّي معك أو اذهب إلى المسجد¦إن فاتتك صلاة فقم وصلِّ فورًا ولا تترك الباقي','yf'],
+['العاده السريه|الاستمناء|حكم العاده السريه|ازاي اقلع عن العاده السريه|عاده سريه|ادمان العاده السريه|بعمل العاده السريه|ازاي اتوقف عن العاده السريه|اقلع عن العاده','العادة السرية: حكمها وكيف أتخلّص منها','ذهب جمهور العلماء إلى تحريمها، لأن الله أمر بحفظ الفرج إلا على الزوجة، وبعضهم يخفف عند الخوف من الوقوع في الزنا بحسب أحوال مفصّلة. والتخلص منها يحتاج صبرًا وتدرّجًا وأخذًا بالأسباب، والتوبة مفتوحة لمن وقع ثم عاد. ولا تيأس من رحمة الله ولا تجلد نفسك فتكره الطاعة.','﴿وَالَّذِينَ هُمْ لِفُرُوجِهِمْ حَافِظُونَ ۝ إِلَّا عَلَىٰ أَزْوَاجِهِمْ﴾ — المؤمنون: 5-6‖«يَا مَعْشَرَ الشَّبَابِ مَنِ اسْتَطَاعَ مِنْكُمُ الْبَاءَةَ فَلْيَتَزَوَّجْ... وَمَنْ لَمْ يَسْتَطِعْ فَعَلَيْهِ بِالصَّوْمِ فَإِنَّهُ لَهُ وِجَاءٌ» — متفق عليه',1,'غضّ بصرك وابتعد عن المثيرات والمقاطع والصور¦املأ وقت الفراغ ولا تبقَ وحدك على الجوال في الليل¦مارس الرياضة بانتظام وانم مبكرًا ولا تبقَ في السرير مستيقظًا¦صم الاثنين والخميس إن استطعت، وتعجّل الزواج الشرعي إن قدرت¦إذا وقعت: بادر بالتوبة والغسل والصلاة ولا تيأس، وجدّد العزم¦لو أصبحت عادة قهرية أو معها ضيق شديد فاستشر مختصًا','yf'],
+['الاباحيه|ازاي اقلع عن الاباحيه|ادمان الاباحيه|الافلام الاباحيه|مشاهده الاباحيه|المواقع الاباحيه|اتفرج علي حاجات وحشه|بتفرج علي افلام وحشه|افلام البورن|البورنو|المحتوي الاباحي','مشاهدة المحتوى الإباحي: كيف أتخلّص منه؟','مشاهدة المحتوى الإباحي حرام، وهو مما أمر الله بغض البصر عنه، وله أضرار على القلب والنفس والعلاقات. والتخلص منه ممكن بالعزم والتدرّج والأخذ بالأسباب، والله يقبل التوبة ويحب من يعود إليه. وإن عدت بعد التوبة فجدد التوبة ولا تيأس. وإذا صار الأمر قهريًا فاطلب مساعدة مختص مع الاستعانة بالله.','﴿قُل لِّلْمُؤْمِنِينَ يَغُضُّوا مِنْ أَبْصَارِهِمْ وَيَحْفَظُوا فُرُوجَهُمْ ۚ ذَٰلِكَ أَزْكَىٰ لَهُمْ﴾ — النور: 30‖«اتَّقِ اللَّهَ حَيْثُمَا كُنْتَ، وَأَتْبِعِ السَّيِّئَةَ الْحَسَنَةَ تَمْحُهَا» — رواه الترمذي‖﴿إِنَّ اللَّهَ يُحِبُّ التَّوَّابِينَ﴾ — البقرة: 222',1,'احذف التطبيقات والحسابات والروابط التي تقودك إليه، وفعّل برامج الحجب¦لا تنفرد بالجوال في الغرفة المغلقة ليلًا، واجعل الشاحن خارجها¦اشغل وقتك بالرياضة والدراسة والعمل وصحبة طيبة¦عند رغبة قوية: توضأ وصلِّ ركعتين أو غيّر المكان واخرج¦اجعل لك صديقًا ثقة تصارحه وتتعاونان على الخير¦تُب بعد كل زلة وجدّد العزم، وراجع مختصًا إن استحكمت العادة','yf'],
+['العلاقه بين الولد والبنت|حب قبل الجواز|علاقه بنت وولد|صاحبي بنت|عندي صاحبه بنت|حكم الحب|الصداقه بين الولد والبنت|بحب بنت|بحب واحد|الحب في الاسلام|الحب بدون جواز|الخروج مع بنت|الخطوبه والكلام|حكم الكلام مع البنات|حكم الكلام مع الولاد|الاختلاط','العلاقة بين الشاب والفتاة قبل الزواج','الميل القلبي والإعجاب أمر فطري لا يُؤاخذ عليه الإنسان ما لم يتبعه فعل محرم. لكن الإسلام لا يقرّ علاقات الحب والمصاحبة والخلوة واللمس خارج إطار الزواج، لأنها تفتح أبواب الفتنة والإيذاء والضياع. والطريق الشرعي: إذا أحببت أو أعجبت بإنسان فتقدّم لخطبته عبر أهله ثم الزواج، وإذا لم تقدر فاستعفف واشغل نفسك. وتعامل مع الجنس الآخر في حدود الأدب والحاجة (دراسة وعمل) بلا خلوة ولا ميوعة.','﴿وَلَا تَقْرَبُوا الزِّنَا ۖ إِنَّهُ كَانَ فَاحِشَةً وَسَاءَ سَبِيلًا﴾ — الإسراء: 32‖«لَا يَخْلُوَنَّ رَجُلٌ بِامْرَأَةٍ إِلَّا وَمَعَهَا ذُو مَحْرَمٍ» — متفق عليه‖«مَا تَرَكْتُ بَعْدِي فِتْنَةً هِيَ أَضَرُّ عَلَى الرِّجَالِ مِنَ النِّسَاءِ» — متفق عليه',1,'','y'],
+['اتاخرت في الجواز|مش لاقي جواز|العنوسه|اتاخر الجواز|مش بتجوز|ازاي اتجوز|عايز اتجوز ومش قادر|الجواز صعب|اتاخر زواجي|البنت اتاخرت في الجواز|خايفه مااتجوزش|خايف مااتجوزش','تأخر الزواج والصبر عليه','تأخر الزواج ابتلاء يتفاوت الناس فيه، وليس عيبًا ولا علامة غضب من الله. والواجب الأخذ بالأسباب: التعرّف عبر الأهل والمعارف الثقات، وتحسين الحال، والدعاء، والصبر والعفة، وعدم الاستعجال في اختيار من لا يناسب. والله قد يؤخر الشيء لحكمة ثم يعوّض خيرًا.','﴿وَأَنكِحُوا الْأَيَامَىٰ مِنكُمْ وَالصَّالِحِينَ مِنْ عِبَادِكُمْ وَإِمَائِكُمْ ۚ إِن يَكُونُوا فُقَرَاءَ يُغْنِهِمُ اللَّهُ مِن فَضْلِهِ﴾ — النور: 32‖﴿وَلْيَسْتَعْفِفِ الَّذِينَ لَا يَجِدُونَ نِكَاحًا حَتَّىٰ يُغْنِيَهُمُ اللَّهُ مِن فَضْلِهِ﴾ — النور: 33‖﴿وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ﴾ — البقرة: 216',0,'ادعُ الله بإلحاح أن يرزقك زوجًا صالحًا¦اطلب من أهلك وأقاربك الثقات الترشيح، وحسّن نفسك دينًا وخلقًا¦لا تقارن حالك بغيرك ولا تستعجل في القبول بمن لا يصلح¦اشغل نفسك بالنافع وحافظ على عفتك','y'],
+['اهلي مش فاهمني|اهلي مش فاهمين|اهلي بيضغطوا عليا|ضغط الاهل|مشاكل مع اهلي|بابا مش فاهمني|ماما مش فاهمني|خلافات مع الاهل|الاهل بيتحكموا فيا|اهلي ضد التزامي|اهلي مش عاوزني اصلي|مشاكل مع الوالدين|ازاي اتعامل مع اهلي','أهلي مش فاهمني وبيضغطوا عليّ','حق الوالدين عظيم حتى لو اختلفتَ معهم أو أخطؤوا، والمطلوب الأدب والكلمة الطيبة والصبر. وطاعتهم في المعروف واجبة، لكن لا طاعة لهم في معصية الله، وحتى وقتها تبقى صحبتهم بالمعروف دون عقوق. وحاول أن تشرح لهم برفق ووقت مناسب، وأن تستعين بشخص يحترمونه ليقرّب وجهات النظر.','﴿وَإِن جَاهَدَاكَ عَلَىٰ أَن تُشْرِكَ بِي مَا لَيْسَ لَكَ بِهِ عِلْمٌ فَلَا تُطِعْهُمَا ۖ وَصَاحِبْهُمَا فِي الدُّنْيَا مَعْرُوفًا﴾ — لقمان: 15‖﴿فَلَا تَقُل لَّهُمَا أُفٍّ وَلَا تَنْهَرْهُمَا وَقُل لَّهُمَا قَوْلًا كَرِيمًا﴾ — الإسراء: 23‖«إِنَّمَا الطَّاعَةُ فِي الْمَعْرُوفِ» — متفق عليه',0,'اهدأ ولا ترفع صوتك ولا تدخل في جدال حاد¦اختر وقتًا مناسبًا واشرح وجهة نظرك بهدوء وحب¦اعترف بحقهم وتقديرك لهم قبل أن تطلب أو تعترض¦استعن بقريب أو شيخ يحترمونه ليقرّب بينكم¦ادعُ لهم وكن بارًّا بهم في الأمور الأخرى لتكسب قلوبهم','y'],
+['خايف من المستقبل|قلقان علي مستقبلي|مستقبلي مجهول|خوف من المستقبل|خايف من بكره|قلق من الرزق|خايف من الفقر|مش عارف ايه اللي هيحصل|قلقان من الشغل|خايف مااتشغلش|خايف مااكملش','الخوف من المستقبل والقلق على الرزق','القلق على المستقبل طبيعي، لكن المؤمن يأخذ بالأسباب ثم يتوكل على الله ويطمئن أن الرزق والآجال بيد الله وأن ما قُدّر له سيأتيه. التوكل ليس تركًا للعمل، بل سعي مع تفويض النتيجة. وكل يوم له عمل: افعل ما عليك اليوم وانتظر الخير من الله.','﴿وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ﴾ — الطلاق: 3‖«لَوْ أَنَّكُمْ تَتَوَكَّلُونَ عَلَى اللَّهِ حَقَّ تَوَكُّلِهِ لَرَزَقَكُمْ كَمَا يَرْزُقُ الطَّيْرَ تَغْدُو خِمَاصًا وَتَرُوحُ بِطَانًا» — رواه الترمذي وأحمد‖﴿وَفِي السَّمَاءِ رِزْقُكُمْ وَمَا تُوعَدُونَ﴾ — الذاريات: 22',0,'خطّط وقسّم الهدف إلى خطوات صغيرة ابدأ بأولها اليوم¦اعمل ما تقدر عليه من تعلّم وتطوير وسعي¦اترك ما لا تملكه لله بعد الأخذ بالأسباب¦أكثر من الدعاء والاستخارة وقل: حسبي الله لا إله إلا هو','y'],
+['فشلت|رسبت|فشل في الدراسه|فشل في الشغل|احباط|انا محبط|ضاعت مني فرصه|خيبه امل|الفشل|ازاي اتعامل مع الفشل|حاسس اني فاشل|مش قادر انجح|رسبت في الامتحان','الفشل والرسوب وخيبة الأمل','الفشل أو الرسوب ليس نهاية الطريق، والمؤمن يتعلّم من التجربة ويعاود السعي دون جلد للذات ولا اعتراض على القدر. وعلّمنا النبي ﷺ أن نحرص على النافع ونستعين بالله ولا نعجز، وإذا وقع ما نكره نقول: قدّر الله وما شاء فعل، فنقبل ونمضي.','﴿وَلَا تَهِنُوا وَلَا تَحْزَنُوا وَأَنتُمُ الْأَعْلَوْنَ إِن كُنتُم مُّؤْمِنِينَ﴾ — آل عمران: 139‖«احْرِصْ عَلَى مَا يَنْفَعُكَ وَاسْتَعِنْ بِاللَّهِ وَلَا تَعْجَزْ، وَإِنْ أَصَابَكَ شَيْءٌ فَلَا تَقُلْ لَوْ أَنِّي فَعَلْتُ كَذَا كَانَ كَذَا وَكَذَا، وَلَكِنْ قُلْ قَدَّرَ اللَّهُ وَمَا شَاءَ فَعَلَ» — رواه مسلم',0,'اسمح لنفسك بالحزن قليلًا ثم انهض¦حلّل ما حدث: ما الذي يمكن تحسينه؟¦ضع خطة جديدة صغيرة وابدأ فورًا¦استعن بالله وادعُ واستشر من سبقك¦تذكّر أن كثيرًا من الناجحين سبقتهم محاولات فاشلة','y'],
+['ادمان الموبايل|ادمان السوشيال ميديا|ضياع الوقت|مضيعه الوقت|مش بعرف انظم وقتي|ازاي انظم وقتي|وقتي بيضيع|قاعد علي الموبايل كتير|تيك توك|ادمان الجوال|ادمان الانترنت|الالعاب الاليكترونيه|ازاي اقلل استخدام الموبايل|سهر الموبايل|ازاي استغل وقتي','ضياع الوقت وإدمان الجوال والسوشيال ميديا','الوقت هو العمر، والإنسان مسؤول عنه يوم القيامة. والجوال نعمة إن استُخدم فيما ينفع، وفخّ إن التهم الساعات بلا فائدة. والعلاج في تنظيم الوقت حول الصلوات الخمس، وتحديد وقت للترفيه، وحذف ما يضيّع الوقت، وتعويضه بعمل نافع.','﴿وَالْعَصْرِ ۝ إِنَّ الْإِنسَانَ لَفِي خُسْرٍ ۝ إِلَّا الَّذِينَ آمَنُوا وَعَمِلُوا الصَّالِحَاتِ﴾ — العصر: 1-3‖«لَا تَزُولُ قَدَمَا عَبْدٍ يَوْمَ الْقِيَامَةِ حَتَّى يُسْأَلَ عَنْ عُمُرِهِ فِيمَ أَفْنَاهُ، وَعَنْ شَبَابِهِ فِيمَ أَبْلَاهُ...» — رواه الترمذي‖«اغْتَنِمْ خَمْسًا قَبْلَ خَمْسٍ: شَبَابَكَ قَبْلَ هَرَمِكَ، وَصِحَّتَكَ قَبْلَ سَقَمِكَ، وَغِنَاكَ قَبْلَ فَقْرِكَ، وَفَرَاغَكَ قَبْلَ شُغْلِكَ، وَحَيَاتَكَ قَبْلَ مَوْتِكَ» — رواه الحاكم',0,'قسّم يومك على مواقيت الصلاة فهي أفضل تقسيم للوقت¦ضع حدًّا زمنيًا لاستخدام التطبيقات وفعّل تنبيه وقت الاستخدام¦أطفئ الإشعارات واترك الجوال بعيدًا وقت العمل والمذاكرة والنوم¦استبدل جزءًا من التصفّح بالقراءة أو الرياضة أو القرآن¦حاسب نفسك آخر اليوم: أين ذهب وقتي؟','yf'],
+['عندي شك في ديني|شك في وجود ربنا|مش متاكد ان ربنا موجود|الحاد|اصبحت ملحد|انا ملحد|شكوك في الدين|ازاي ارد علي الملحدين|عندي اسئله عن الدين محيراني|اسئله محيره في الدين|ازاي اثبت ان الدين صح|خايف اكفر|شكوك|فقدت ايماني','عندي شكوك وأسئلة كبيرة عن الدين','الأسئلة والشكوك التي تعرض للشاب لا تُخرجه من الدين، وقد شكا الصحابة إلى النبي ﷺ وساوس في أنفسهم فقال: «ذاك صريح الإيمان». المهم ألا تهرب من السؤال ولا تستسلم للشك: ابحث بإخلاص، واسأل أهل العلم المتخصصين، وخذ علمك من مصادر موثوقة لا من منصات تبيع الشك. وسؤال الله الهداية سبب عظيم لانشراح الصدر.','﴿أَمْ خُلِقُوا مِنْ غَيْرِ شَيْءٍ أَمْ هُمُ الْخَالِقُونَ﴾ — الطور: 35‖«ذَاكَ صَرِيحُ الْإِيمَانِ» — رواه مسلم (جوابه ﷺ لمن شكا وساوس في أمر الإيمان)‖﴿اللَّهُ يَجْتَبِي إِلَيْهِ مَن يَشَاءُ وَيَهْدِي إِلَيْهِ مَن يُنِيبُ﴾ — الشورى: 13',0,'اكتب أسئلتك بصراحة ولا تكتمها¦اسأل عالمًا ثقة أو اقرأ كتب العقيدة الميسّرة لعلماء معروفين¦تجنّب الغرق في منصات الجدل التي لا تريد جوابًا¦داوم على الصلاة والدعاء: «اللهم أرني الحق حقًّا وارزقني اتباعه»¦تأمل في خلق الله وفي نفسك','yf'],
+['ازاي اسامح نفسي|مش قادر اسامح نفسي|حاسس اني وحش|ندمان علي ذنوبي|بكره نفسي|حاسس بالذنب|الشعور بالذنب|ضميري بيأنبني|انا ارتكبت ذنب كبير|ذنب كبير ومش عارف اعمل ايه|خايف ربنا مايقبلنيش|مش هيغفر لي','كيف أسامح نفسي بعد الذنب؟','الندم على الذنب علامة حياة في القلب، وهو أول طريق التوبة، لكن لا يجوز أن يتحول إلى يأس. الله يقبل التوبة ويستر، ولا يُخلّد صاحب التوحيد في نار. والمطلوب ثلاثة: الإقلاع عن الذنب، والندم، والعزم على ألا تعود، ثم الإكثار من الحسنات. وإن كان الذنب فيه حق لآدمي فأدِّ الحق أو استسمح صاحبه.','﴿وَالَّذِينَ إِذَا فَعَلُوا فَاحِشَةً أَوْ ظَلَمُوا أَنفُسَهُمْ ذَكَرُوا اللَّهَ فَاسْتَغْفَرُوا لِذُنُوبِهِمْ وَمَن يَغْفِرُ الذُّنُوبَ إِلَّا اللَّهُ﴾ — آل عمران: 135‖«كُلُّ ابْنِ آدَمَ خَطَّاءٌ وَخَيْرُ الْخَطَّائِينَ التَّوَّابُونَ» — رواه الترمذي وابن ماجه‖«مَنْ سَتَرَ مُسْلِمًا سَتَرَهُ اللَّهُ فِي الدُّنْيَا وَالْآخِرَةِ» — رواه مسلم',0,'تُب الآن: أقلع وندم واعزم ألا تعود¦اطلب من الله المغفرة وصلِّ ركعتين للتوبة¦اتبع السيئة بحسنة: صدقة وصلاة وقرآن¦اترك الأماكن والأسباب التي تجرّك للذنب¦لا تفضح نفسك ولا تُخبر بذنبك الناس، واستر نفسك¦كن مع ربك بعد التوبة بحسن الظن ولا تيأس إن عثرت','yf'],
+['ربنا زعلان مني|ربنا غضبان عليا|ربنا كرهني|ربنا مش بيحبني|هل ربنا بيحبني|هل الله غاضب عليا|ربنا مش راضي عني|حاسس ان ربنا بعيد|حاسس ان ربنا مش سامعني|ربنا سابني','هل الله غاضب عليّ؟ هل يحبني؟','الله أرحم بعباده من أنفسهم، ورحمته وسعت كل شيء، وهو يفرح بتوبة عبده أشد من فرح أحدكم براحلته بعد أن أضلها. والشعور بالبعد غالبًا من أثر الذنوب والغفلة، وليس إعلانًا بطرد، فالباب مفتوح للرجوع. وتأخر الإجابة أو الابتلاء لا يعني الكراهية، فقد يكون رفعة ورحمة.','﴿وَرَحْمَتِي وَسِعَتْ كُلَّ شَيْءٍ﴾ — الأعراف: 156‖«لَلَّهُ أَفْرَحُ بِتَوْبَةِ عَبْدِهِ مِنْ أَحَدِكُمْ سَقَطَ عَلَى بَعِيرِهِ وَقَدْ أَضَلَّهُ فِي أَرْضٍ فَلَاةٍ» — متفق عليه‖«إِنَّ رَحْمَتِي تَغْلِبُ غَضَبِي» — متفق عليه (حديث قدسي)',0,'','yf'],
+['هل تقبل صلاتي وانا بعمل ذنوب|بصلي وبعمل ذنوب|بصلي بس بعمل حاجات غلط|ليه اصلي وانا بعصي|الصلاه مع المعصيه|الصلاه مش بتنفعني|صلاتي مش مقبوله|هل الصلاه تكفر الذنوب','هل تُقبل صلاتي وأنا أقع في الذنوب؟','لا تترك الصلاة بحجة أنك تعصي، فالصلاة سبب لمغفرة الذنوب، وتعين على ترك المعصية مع الوقت، والشيطان يريد أن تترك الخير بسبب الشر. صلِّ وتب واجتهد في ترك الذنب. والصلوات الخمس تكفّر الصغائر ما اجتُنبت الكبائر، ويبقى التوبة من الكبائر.','﴿وَأَقِمِ الصَّلَاةَ طَرَفَيِ النَّهَارِ وَزُلَفًا مِّنَ اللَّيْلِ ۚ إِنَّ الْحَسَنَاتِ يُذْهِبْنَ السَّيِّئَاتِ﴾ — هود: 114‖«الصَّلَوَاتُ الْخَمْسُ وَالْجُمْعَةُ إِلَى الْجُمْعَةِ وَرَمَضَانُ إِلَى رَمَضَانَ مُكَفِّرَاتٌ مَا بَيْنَهُنَّ إِذَا اجْتَنَبَ الْكَبَائِرَ» — رواه مسلم‖﴿إِنَّ الصَّلَاةَ تَنْهَىٰ عَنِ الْفَحْشَاءِ وَالْمُنكَرِ﴾ — العنكبوت: 45',0,'','yf'],
+['بعمل خير وبعمل ناس كويسه من غير صلاه|انا كويس من غير صلاه|المهم قلبي طيب|المهم النيه|ليه لازم اصلي لو انا طيب|الاخلاق بس كفايه|هل حسن الخلق يكفي|مش لازم عباده','هل يكفي حُسن الخلق بدون عبادة؟','حسن الخلق جزء عظيم من الدين، لكنه ليس كل الدين. غاية الخلق عبادة الله، والعبادات (الصلاة والصيام والزكاة) حقه عليك، ولا يغني خُلق حسن عن فرض ضيّعته. والكمال أن تجمع بين حق الله وحق الناس.','﴿وَمَا أُمِرُوا إِلَّا لِيَعْبُدُوا اللَّهَ مُخْلِصِينَ لَهُ الدِّينَ حُنَفَاءَ وَيُقِيمُوا الصَّلَاةَ وَيُؤْتُوا الزَّكَاةَ ۚ وَذَٰلِكَ دِينُ الْقَيِّمَةِ﴾ — البينة: 5‖«إِنَّمَا بُعِثْتُ لِأُتَمِّمَ مَكَارِمَ الْأَخْلَاقِ» — رواه أحمد',0,'','yf'],
+['بحسد اصحابي|بقارن نفسي بالناس|مقارنه نفسي بغيري|حاسس اني اقل من غيري|الناس احسن مني|ازاي ارضي بحالي|الرضا بالنصيب|الرضا بالقدر|ازاي ارضي بما قسمه الله|غيره من الناس','المقارنة بالناس والرضا بما قسمه الله','المقارنة بالآخرين تسرق السعادة، خصوصًا في زمن السوشيال ميديا حيث يرى الإنسان أحسن ما عند غيره فقط. والإسلام يأمر بالنظر إلى من هو أقل منا في الدنيا، وإلى من هو أعلى في الدين، وبالرضا بالقسمة مع السعي للأفضل. ومن رضي بما قسم الله له اتسع قلبه.','﴿وَلَا تَمُدَّنَّ عَيْنَيْكَ إِلَىٰ مَا مَتَّعْنَا بِهِ أَزْوَاجًا مِّنْهُمْ زَهْرَةَ الْحَيَاةِ الدُّنْيَا﴾ — طه: 131‖«انْظُرُوا إِلَى مَنْ هُوَ أَسْفَلَ مِنْكُمْ وَلَا تَنْظُرُوا إِلَى مَنْ هُوَ فَوْقَكُمْ فَهُوَ أَجْدَرُ أَنْ لَا تَزْدَرُوا نِعْمَةَ اللَّهِ عَلَيْكُمْ» — رواه مسلم‖«ارْضَ بِمَا قَسَمَ اللَّهُ لَكَ تَكُنْ أَغْنَى النَّاسِ» — رواه الترمذي',0,'قلّل متابعة من يشعرك بالنقص¦اكتب نعمك كل ليلة واحمد الله عليها¦قارن نفسك بنفسك أمس لا بغيرك¦اطلب من الله الخير ولا تتمنَّ ما عند غيرك','y'],
+['ضعف الثقه بالنفس|مش واثق في نفسي|انا مش كفايه|حاسس اني ملوش قيمه|مليش قيمه|بكره نفسي|انا فاشل ومحدش بيحبني|ازاي ازود ثقتي في نفسي|الاكتئاب من قله الثقه','ضعف الثقة بالنفس: قيمتك عند الله','قيمتك لا تتحدد بآراء الناس ولا بنجاحاتك الظاهرة: الله كرّمك وخلقك في أحسن تقويم وجعلك خليفة في الأرض. والثقة بالنفس تقوم على الثقة بتوفيق الله مع العمل. اجتهد في تنمية نقاط قوتك وعالج ضعفك بهدوء، ولا تجلد ذاتك.','﴿لَقَدْ خَلَقْنَا الْإِنسَانَ فِي أَحْسَنِ تَقْوِيمٍ﴾ — التين: 4‖﴿وَلَقَدْ كَرَّمْنَا بَنِي آدَمَ﴾ — الإسراء: 70‖«الْمُؤْمِنُ الْقَوِيُّ خَيْرٌ وَأَحَبُّ إِلَى اللَّهِ مِنَ الْمُؤْمِنِ الضَّعِيفِ وَفِي كُلٍّ خَيْرٌ» — رواه مسلم',0,'ذكّر نفسك بنعم الله عليك ومواهبك¦ابدأ بإنجازات صغيرة وكافئ نفسك¦حدّث نفسك بالحسنى وتجنّب جلدها¦تعلّم مهارة جديدة وتحدَّ نفسك بالتدريج¦لو الإحساس بالنقص شديد ومستمر، استشر مختصًا','y'],
+['الدين بيمنع الاستمتاع بالحياه|هل الاسلام ضد الفرح|هل ممكن اتمتع بحياتي واكون ملتزم|الدين صعب ومعقد|الدين بيحرم كل حاجه|هل الاسلام بيحرم كل حاجه حلوه|ازاي اوازن بين الدين والدنيا|الترفيه في الاسلام|اتمتع بحياتي','هل الدين يمنع الاستمتاع بالحياة؟','ليس في الإسلام ما يمنع الفرح والترفيه المباح؛ بل أباح الله الطيبات والزينة وأمر بالتوازن: للنفس حقها، وللرب حقه، وللأهل حقهم. والمحرمات قليلة مقارنة بما أباح، وهي في حقيقتها ضارة بالإنسان أو بغيره. والمسلم يفرح ويلعب ويضحك في إطار الحلال، ويجد في قربه من الله لذة أعمق.','﴿قُلْ مَنْ حَرَّمَ زِينَةَ اللَّهِ الَّتِي أَخْرَجَ لِعِبَادِهِ وَالطَّيِّبَاتِ مِنَ الرِّزْقِ﴾ — الأعراف: 32‖«إِنَّ لِنَفْسِكَ عَلَيْكَ حَقًّا، وَلِرَبِّكَ عَلَيْكَ حَقًّا، وَلِأَهْلِكَ عَلَيْكَ حَقًّا، فَأَعْطِ كُلَّ ذِي حَقٍّ حَقَّهُ» — رواه البخاري‖«سَاعَةً وَسَاعَةً» — رواه مسلم',0,'','yf'],
+['السخريه والتنمر|التنمر|حد بيتنمر عليا|بيسخروا مني|الناس بتتريق عليا|التريقه|الاستهزاء بالناس|بسخر من الناس|التنمر في المدرسه|بيتنمروا عليا','السخرية والتنمّر','السخرية من الناس والتنمّر بسبب شكل أو مال أو أصل حرام، وهو من الأذى الذي يُحاسب عليه صاحبه. وإذا كنت ضحية فاعلم أن الله يرى ويسمع، وأنك لست أقل قيمة، وأن العدل قادم، وأن من واجبك طلب الحماية من الأهل أو المدرسة أو الجهات المختصة ولا تصمت.','﴿يَا أَيُّهَا الَّذِينَ آمَنُوا لَا يَسْخَرْ قَوْمٌ مِّن قَوْمٍ عَسَىٰ أَن يَكُونُوا خَيْرًا مِّنْهُمْ﴾ — الحجرات: 11‖«بِحَسْبِ امْرِئٍ مِنَ الشَّرِّ أَنْ يَحْقِرَ أَخَاهُ الْمُسْلِمَ» — رواه مسلم',0,'','y'],
+['المخدرات|الحشيش|الترامادول|ادمان المخدرات|ازاي اقلع عن الادمان|ادمان|عايز اتعالج من الادمان|ازاي اساعد صاحبي المدمن|الاستروكس|البانجو|الشيشه','المخدرات والإدمان وطريق التعافي','المخدرات حرام لأنها تُذهب العقل وتضرّ الجسد والنفس والأسرة، وتدخل في عموم المسكرات. لكن المدمن مريض يحتاج علاجًا ودعمًا لا نبذًا، والتوبة والتعافي ممكنان. اطلب المساعدة المتخصصة ولا تحاول الإقلاع وحدك في الحالات الشديدة. في مصر يمكن الاتصال بالخط الساخن لصندوق مكافحة وعلاج الإدمان (١٦٠٢٣ — تأكد من الرقم الحالي).','﴿وَلَا تُلْقُوا بِأَيْدِيكُمْ إِلَى التَّهْلُكَةِ﴾ — البقرة: 195‖«كُلُّ مُسْكِرٍ خَمْرٌ وَكُلُّ خَمْرٍ حَرَامٌ» — رواه مسلم‖«تَدَاوَوْا عِبَادَ اللَّهِ فَإِنَّ اللَّهَ لَمْ يَضَعْ دَاءً إِلَّا وَضَعَ لَهُ دَوَاءً» — رواه أبو داود والترمذي',1,'اعترف أنك تحتاج مساعدة وتوكّل على الله¦تواصل مع مركز علاج إدمان معتمد أو الخط الساخن¦ابتعد عن الأصدقاء والأماكن المرتبطة بالتعاطي¦اصحب أهل الخير وحافظ على الصلاة والذكر¦لا تيأس من الانتكاسة: عُد للعلاج وجدّد التوبة','yf'],
+['حزن شديد ومستمر|مش قادر اخرج من الحزن|اكتئاب|مكتئب|انا مكتئب|نفسيتي تعبانه|تعب نفسي|ضغط نفسي|حاسس اني منهار|مش قادر اكمل|ازاي اتعالج نفسيا|الدين والطب النفسي|هل الذهاب للطبيب النفسي عيب','حزن شديد ومستمر: الإيمان والعلاج النفسي','التعب النفسي ليس ضعف إيمان، وطلب العلاج النفسي والطبي ليس عيبًا ولا ينافي التوكل، بل هو من الأخذ بالأسباب. والإيمان والذكر والصلاة والصحبة الطيبة معين كبير على التعافي، لكنها لا تغني عن الطبيب إذا استمر الحزن أسابيع أو أثّر على النوم والأكل والعمل. وإن راودتك أفكار لإيذاء نفسك فكلّم شخصًا قريبًا منك فورًا أو اتصل بخط الطوارئ في بلدك.','«مَا أَنْزَلَ اللَّهُ دَاءً إِلَّا أَنْزَلَ لَهُ شِفَاءً» — رواه البخاري‖«تَدَاوَوْا عِبَادَ اللَّهِ» — رواه أبو داود والترمذي‖﴿أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ﴾ — الرعد: 28',0,'حافظ على الصلاة والذكر والنوم المنتظم والحركة والتغذية¦تحدّث مع شخص تثق به ولا تكتم ما بداخلك¦استشر طبيبًا أو أخصائيًا نفسيًا، فهذا من الأخذ بالأسباب¦لو وصل الأمر لأفكار إيذاء النفس، اطلب مساعدة عاجلة من أقرب شخص أو الطوارئ','yf'],
+['حظي وحش|الدنيا ضدي|كل حاجه بتبوظ|مفيش حاجه بتمشي معايا|نحس|حاسس اني منحوس|ربنا مش عايز يوفقني|ليه كل حاجه صعبه|الحظ|ليه انا بالذات','حظي وحش والدنيا ضدي','المؤمن لا يعتقد بالنحس ولا يحمّل الأيام والأشخاص مسؤولية ما يصيبه؛ الأمور بقدر الله وحكمته، وقد يكون ما تكرهه خيرًا لك وأنت لا تعلم. والعسر يعقبه يسر. عالج الأمر بالأسباب والدعاء والصبر وحسن الظن بالله.','﴿فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا﴾ — الشرح: 5-6‖﴿وَعَسَىٰ أَن تَكْرَهُوا شَيْئًا وَهُوَ خَيْرٌ لَّكُمْ وَعَسَىٰ أَن تُحِبُّوا شَيْئًا وَهُوَ شَرٌّ لَّكُمْ ۗ وَاللَّهُ يَعْلَمُ وَأَنتُمْ لَا تَعْلَمُونَ﴾ — البقرة: 216‖«لَا عَدْوَى وَلَا طِيَرَةَ» — متفق عليه',0,'','y'],
+['الفتور في العباده|فتور|ماليش نفس اصلي|ماليش مزاج للعباده|قلت العباده|حماسي ضعف|زهقت من العباده|ثقل الطاعه|كنت ملتزم وبعدين فترت|كنت بصلي وبعدين بطلت|مش حاسس بحلاوه العباده|مش بحس بالايمان|العباده بقت روتين','الفتور بعد الحماس في العبادة','الفتور بعد الحماس يصيب كل مجتهد، وليس دليلًا على النفاق. وهو من طبيعة الإقبال والإدبار في القلوب. المهم ألا تترك الفرائض وتبقى على السنة وتجدّد نشاطك بتنويع الطاعات والعودة التدريجية. وخير ما يعين: مجالس الذكر والصحبة وتأمل معاني العبادة.','«إِنَّ لِكُلِّ عَمَلٍ شِرَّةً، وَلِكُلِّ شِرَّةٍ فَتْرَةً، فَمَنْ كَانَتْ فَتْرَتُهُ إِلَى سُنَّتِي فَقَدْ اهْتَدَى» — رواه أحمد وابن حبان‖«أَحَبُّ الْأَعْمَالِ إِلَى اللَّهِ أَدْوَمُهَا وَإِنْ قَلَّ» — متفق عليه‖«يَا حَنْظَلَةُ سَاعَةً وَسَاعَةً» — رواه مسلم',0,'حافظ على الفرائض مهما كان حالك واترك الإفراط¦قلّل من النوافل وأبقِ على قدر يسير ثابت¦غيّر روتينك: صلِّ في المسجد، اقرأ تفسيرًا، استمع لدرس مؤثر¦ابحث عن صحبة صالحة وحلقة علم¦تذكّر الموت والآخرة، وأكثر من الدعاء بثبات القلب: «يا مقلّب القلوب ثبّت قلبي على دينك»','yf'],
+['اتلعثم في القراءه|مش بعرف اقرا القران|ازاي اتعلم التجويد|تجويد|ماعرفش اقرا القران صح|بتمتم في القراءه|مش بحسن القراءه|عايز اتعلم اقرا القران|اتعلم القراءه الصحيحه','لا أحسن قراءة القرآن أو أتلعثم فيها','لا تتحرّج ولا تترك القراءة: الذي يقرأ القرآن ويتتعتع فيه وهو عليه شاق له أجران. ابدأ بتعلّم القراءة الصحيحة على يد مقرئ أو بتطبيق موثوق، وتدرّج في أحكام التجويد الأساسية، وداوم على التلاوة اليومية القليلة.','«الْمَاهِرُ بِالْقُرْآنِ مَعَ السَّفَرَةِ الْكِرَامِ الْبَرَرَةِ، وَالَّذِي يَقْرَأُ الْقُرْآنَ وَيَتَتَعْتَعُ فِيهِ وَهُوَ عَلَيْهِ شَاقٌّ لَهُ أَجْرَانِ» — متفق عليه‖﴿وَرَتِّلِ الْقُرْآنَ تَرْتِيلًا﴾ — المزمل: 4',0,'ابدأ بالحروف ومخارجها ثم الأحكام الأساسية (النون الساكنة والمدود)¦استمع لمقرئ مجوّد وردّد خلفه آية آية¦اطلب من معلّم أو شيخ يصحح قراءتك¦داوم على قراءة صفحة يوميًا بالتدريج','y'],
+['دعاء المذاكره|دعاء الامتحان|ازاي اذاكر|الاستعانه بالله في الدراسه|دعاء قبل الامتحان|قلقان من الامتحان|خايف من الامتحان|دعاء النجاح|مذاكره وصلاه|الدعاء للتوفيق في الدراسه','المذاكرة والامتحان: دعاء وتنظيم','الاجتهاد في طلب العلم عبادة بنيّة صالحة، ومع الأخذ بالأسباب يُستعان بالله. نظّم وقتك حول الصلوات، واذكر الله، وتوكّل عليه، واعلم أن النجاح يجمع الجهد والتوفيق. ولا تترك الصلاة بحجة الامتحان.','﴿وَقُل رَّبِّ زِدْنِي عِلْمًا﴾ — طه: 114‖﴿رَبِّ اشْرَحْ لِي صَدْرِي ۝ وَيَسِّرْ لِي أَمْرِي﴾ — طه: 25-26‖«اللَّهُمَّ لَا سَهْلَ إِلَّا مَا جَعَلْتَهُ سَهْلًا، وَأَنْتَ تَجْعَلُ الْحَزْنَ إِذَا شِئْتَ سَهْلًا» — رواه ابن حبان',0,'ابدأ بالبسملة وطهّر مكانك ونيّتك¦نظّم المذاكرة على فترات قصيرة بينها راحة¦ادعُ بدعاء موسى: «رب اشرح لي صدري ويسّر لي أمري»¦راجع قبل النوم ونَم ساعات كافية¦لا تؤخر الصلاة، فهي تعينك على الصفاء الذهني','y'],
+['ليه حال المسلمين كده|ليه المسلمين ضعاف|ليه المسلمين متاخرين|حال الامه|الامه الاسلاميه ضعيفه|ليه المسلمين متخلفين|احباط من حال المسلمين|ازاي ننهض بالامه','ليه حال المسلمين كده؟ وما دوري؟','تأخّر حال المسلمين له أسباب كثيرة: الابتعاد عن قيم الدين في العلم والعمل والأخلاق، والتفرق، وضعف الاهتمام بالعلم والإتقان، إضافةً إلى ظروف تاريخية وسياسية. والإسلام لا يرى التغيير بالتمني، بل يبدأ من الأفراد. ودورك أن تُصلح نفسك وتتقن عملك وتنفع من حولك فتكون لبنة في النهضة.','﴿إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنفُسِهِمْ﴾ — الرعد: 11‖﴿وَاعْتَصِمُوا بِحَبْلِ اللَّهِ جَمِيعًا وَلَا تَفَرَّقُوا﴾ — آل عمران: 103‖«إِنَّ اللَّهَ يُحِبُّ إِذَا عَمِلَ أَحَدُكُمْ عَمَلًا أَنْ يُتْقِنَهُ» — رواه البيهقي',0,'','y'],
 ];
 
 function faqStem(t){return t.replace(/^(وال|بال|كال|فال|لل|ا?ال)/,'')}
 function faqMatch(q){
   const toks=rn(q).replace(/\bهيا\b|\bهى\b/g,'هي').split(/\s+/).filter(Boolean).map(faqStem),res=[];
+  toks.slice().forEach(w=>{if(w.length>=5&&/^[بهح]/.test(w))toks.push(faqStem(w.slice(1)))});
   FAQ.forEach((e,i)=>{let best=0;e[0].split('|').forEach(ph=>{const ws=rn(ph).split(/\s+/).filter(Boolean).map(faqStem);if(!ws.length)return;
     if(ws.every(w=>toks.some(t=>t===w||(w.length>=4&&t.length>=4&&(t.startsWith(w)||w.startsWith(t)))))){const sc=ws.length*10+ws.join('').length+(ws.length>=3?5:0);if(sc>best)best=sc}});
     if(best)res.push({i,sc:best})});
@@ -2690,9 +3015,10 @@ function faqText(keys,skip){const res=[];FAQ.forEach((e,i)=>{if(skip.includes(i)
 function faqCard(i,n){const e=FAQ[i],ev=e[3].split('‖').map(x=>`<div class="ask-tx font-quran" style="font-size:1.02rem;margin-top:6px">${askHtml(x)}</div>`).join('');
   return askCard('',`<span class="ask-ref">F${n}</span> ${askHtml(e[1])}`,`<div class="ask-tx" style="font-weight:700">${askHtml(e[2])}</div>${e[5]?`<div class="ask-h" style="margin-top:10px">الخطوات</div><ol class="ask-steps">${e[5].split('¦').map(x=>`<li>${askHtml(x)}</li>`).join('')}</ol>`:''}<div class="ask-h" style="margin-top:10px">الدليل</div>${ev}`)}
 
-const ASK_EX=['أركان الإسلام كام ركن؟','أركان الإيمان؟','كام صلاة في اليوم؟','ما فضل الاستغفار؟','ما حكم الغيبة؟','كيف أتعامل مع الحزن والقلق؟','ما فضل بر الوالدين؟','ما حكم ترك الصلاة؟','ما فضل الصدقة؟','كيف أتوب إلى الله؟','ما حكم الكذب؟'];
+const ASK_EX=['ليه بنحس بزهق؟','ليه بنتألم؟','مش بصلي وعايز أبدأ','ازاي أسامح نفسي؟','أهلي مش فاهمني','خايف من المستقبل','حاسس بوحدة','ازاي أنظّم وقتي؟','ما هو الإسلام؟','أركان الإسلام كام ركن؟','أركان الإيمان؟','كام صلاة في اليوم؟','من هو الله؟','كيف يدخل الإنسان في الإسلام؟','ما الفرق بين الإسلام والإيمان؟','أقسام التوحيد','ما الذي يُخرج من الإسلام؟','لا إكراه في الدين','ما هو الإحسان؟','المذاهب الفقهية الأربعة','الفرق بين الفرض والسنة','كيف أحافظ على صلاة الفجر؟','كيف أخشع في صلاتي؟','كيف أرجع إلى الله؟','كيف أقوّي إيماني؟','كيف أحفظ القرآن؟','كيف أتدبّر القرآن؟','هل الإنسان مسيّر أم مخيّر؟','لماذا يوجد الشر والألم؟','لماذا لا نرى الله؟','حقوق المرأة في الإسلام','معنى الجهاد في الإسلام','الفرق بين الصحيح والضعيف من الحديث','أساسيات يجب أن يعرفها كل مسلم','ما فضل الاستغفار؟','ما حكم الغيبة؟','كيف أتعامل مع الحزن والقلق؟','ما فضل بر الوالدين؟','ما حكم ترك الصلاة؟','كيف أتوب إلى الله؟','هل النبي ﷺ يعلم الغيب؟','الحكمة من العبادات'];
 const ASK_STOP=new Set('هل ما ماذا من في على عن الى ان هو هي هم انا انت لو لما ليه ليش ازاي كيف حكم يجوز ينفع يصح ممكن عايز عاوز اعمل يعني كده دا ده دي اللي الذي التي كل بعد قبل مع او ثم لا لم لن قد كان يكون له لها به بها فيه فيها هذا هذه ذلك تلك اي ايه اين متي كم لماذا عند الي حتي حاجه شيء شي افضل فضل اتعامل اقول اعرف اسلام الاسلام اسلامي دين ديني شرعا شرعي كام كم هي هيا ماهي ماهو مين طريقه طريقة كيفيه خطوات شرح ازاي'.split(' ').map(x=>rn(x)));
 const ASK_TOPIC={
+ 'زهق':['الذكر','الطمانينه','الفراغ'],'ملل':['الذكر','الطمانينه','الفراغ'],'وحده':['قريب','الانس','الصحبه'],'ادمان':['المسكر','الخمر','التهلكه'],'مخدرات':['المسكر','الخمر','التهلكه'],'ذنب':['الذنوب','المغفره','التوبه'],'يئس':['القنوط','الرحمه','التوبه'],'فتور':['الفتره','المداومه','ادومها'],
  'حزن':['الحزن','الهم','الغم','الكرب'],'قلق':['الهم','الكرب','الطمانينه'],'اكتئاب':['الحزن','الهم','الكرب'],'خوف':['الخوف','الامن'],'ضيق':['الضيق','الكرب','الفرج'],
  'غيبه':['الغيبه','اغتاب'],'نميمه':['النميمه','نمام'],'كذب':['الكذب','الصدق'],'حسد':['الحسد','الحاسد'],'غضب':['الغضب'],'كبر':['الكبر'],
  'استغفار':['الاستغفار','استغفر','المغفره'],'توبه':['التوبه','تاب','المغفره'],'دعاء':['الدعاء','ادعو','استجاب'],'صدقه':['الصدقه','تصدق','الانفاق'],
@@ -2763,8 +3089,295 @@ async function askGo(q0,wide){
   if(!ft.length&&!qs.length&&!hs.length)h+=askCard('warn','مالقيتش نص مناسب','<div class="ask-tx">ماوصلتش لنصوص دالّة على سؤالك بالكلمات دي. جرّب تصيغه بكلمات تانية، أو اسأل عالم ثقة.</div>');
   if(H.missing>0)h+=`<div class="ask-sub" style="text-align:center">لنتائج أوسع من السنة، نزّل كتب الحديث الستة من تبويب «الأحاديث والأذكار» — البحث حاليًا في الأربعينات اللي في التطبيق${H.missing<7?' وبعض الكتب المنزّلة':''}.</div>`;
   out.innerHTML=h;askSave(q)}
-function askExRender(){let hist=[];try{hist=JSON.parse(ls.get('askHist')||'[]')}catch(e){}const L=hist.length?hist:ASK_EX;const el=$('askEx');el.innerHTML='';L.slice(0,8).forEach(x=>{const b=document.createElement('button');b.textContent=(hist.length?'🕘 ':'')+x;b.onclick=()=>askGo(x);el.appendChild(b)})}
+
+function askShowFaq(i){
+  $('askOut').innerHTML=faqCard(i,1)+(FAQ[i][4]?askCard('warn','⚠️ تنبيه',ASK_DISC):'')+'<div class="ask-act"><button class="mini" onclick="askBrowse()">📚 كل المواضيع</button><button class="mini" onclick="askRandom()">🎲 موضوع تاني</button></div>';
+  try{$('askOut').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){}}
+function askRandom(){let seen=[];try{seen=JSON.parse(ls.get('askSeen')||'[]')}catch(e){}
+  let pool=FAQ.map((_,i)=>i).filter(i=>!seen.includes(i));if(!pool.length){seen=[];pool=FAQ.map((_,i)=>i)}
+  const i=pool[Math.floor(Math.random()*pool.length)];seen.push(i);try{ls.set('askSeen',JSON.stringify(seen.slice(-300)))}catch(e){}askShowFaq(i)}
+function askBrowse(tag){
+  const out=$('askOut'),T={y:'💬 أسئلة الشباب',f:'🤍 لو بعيد عن ربنا'};
+  out.innerHTML='<div class="ask-card"><div class="ask-h">'+(tag?T[tag]:'📚 كل المواضيع')+' (<span id="askBrN"></span>)</div><div class="ask-br" style="margin-bottom:8px"><button class="mini'+(!tag?' on':'')+'" onclick="askBrowse()">الكل</button><button class="mini'+(tag==='y'?' on':'')+'" onclick="askBrowse(\'y\')">💬 الشباب</button><button class="mini'+(tag==='f'?' on':'')+'" onclick="askBrowse(\'f\')">🤍 لو بعيد عن ربنا</button></div><input class="input-select" id="askBrQ" placeholder="🔍 فلتر المواضيع" style="width:100%;margin-bottom:10px"><div class="ask-br" id="askBrL"></div></div>';
+  const L=$('askBrL'),draw=q=>{L.innerHTML='';const k=rn(q||'');let n=0;FAQ.forEach((e,i)=>{if(tag&&!(e[6]||'').includes(tag))return;if(k&&!rn(e[1]+' '+e[0]).includes(k))return;n++;const b=document.createElement('button');b.className='mini';b.type='button';b.textContent=e[1];b.onclick=()=>askShowFaq(i);L.appendChild(b)});$('askBrN').textContent=nAr(n);if(!n)L.innerHTML='<span class="srch-none">مفيش موضوع بالاسم ده</span>'};
+  $('askBrQ').oninput=e=>draw(e.target.value);draw('')}
+function askExRender(){let hist=[];try{hist=JSON.parse(ls.get('askHist')||'[]')}catch(e){}const L=hist.length?hist:ASK_EX.slice().sort(()=>Math.random()-.5);const el=$('askEx');el.innerHTML='';L.slice(0,8).forEach(x=>{const b=document.createElement('button');b.textContent=(hist.length?'🕘 ':'')+x;b.onclick=()=>askGo(x);el.appendChild(b)})}
 setTimeout(()=>{try{ls.del('aiKey');ls.del('askEndpoint');askExRender()}catch(e){}},0);
+
+
+/* ============ اختبر نفسك في دينك ============ */
+const QZ={cats:{
+  all:{n:'اختبار شامل',d:'مزيج من كل المجالات',ic:'M12 3l2.4 5.6 6 .5-4.6 4 1.4 5.9L12 15.9 6.8 19l1.4-5.9-4.6-4 6-.5z'},
+  quran:{n:'آيات القرآن',d:'أكمل الآية • أي سورة • ترتيب السور',ic:'M4 5c3-1 6-1 8 1 2-2 5-2 8-1v13c-3-1-6-1-8 1-2-2-5-2-8-1zM12 6v13'},
+  hadith:{n:'الأحاديث النبوية',d:'أكمل الحديث • من رواه',ic:'M6 4h9a3 3 0 013 3v13H9a3 3 0 01-3-3zM9 8h6M9 12h6M9 16h4'},
+  aqeeda:{n:'العقيدة والفقه',d:'أركان وعبادات وأحكام',ic:'M12 4v16M6 8h12M6 8l-3 6a3 3 0 006 0zM18 8l-3 6a3 3 0 006 0zM8 20h8'},
+  sira:{n:'السيرة والأنبياء',d:'الأنبياء والصحابة والسيرة',ic:'M20 14.5A8 8 0 019.5 4 8 8 0 1020 14.5z'},
+  names:{n:'أسماء الله الحسنى',d:'المعاني والأسماء',ic:'M12 2v4M12 18v4M2 12h4M18 12h4M5 5l3 3M16 16l3 3M19 5l-3 3M8 16l-3 3'}},
+  ranks:[[0,'بداية الطريق'],[40,'طالب علم'],[150,'مجتهد'],[350,'متمكّن'],[700,'نجم المعرفة']],
+  AY:[7,286,200,176,120,165,206,75,129,109,123,111,43,52,99,128,111,110,98,135,112,78,118,64,77,227,93,88,69,60,34,30,73,54,45,83,182,88,75,85,54,53,89,59,37,35,38,29,18,45,60,49,62,55,78,96,29,22,24,13,14,11,11,18,12,12,30,52,52,44,28,28,20,56,40,31,50,40,46,42,29,19,36,25,22,17,19,26,30,20,15,21,11,8,8,19,5,8,8,11,11,8,3,9,5,4,7,3,6,3,5,4,5,6],
+  S:null,run:null};
+const qzShuf=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const qzPick=(a,n)=>qzShuf(a).slice(0,n);
+const qzCl=s=>String(s).replace(/[ۖ-ۜ۟-۪ۨ-ۭ۝]/g,'').replace(/\s+/g,' ').trim();
+const qzIsMark=w=>!w.replace(/[ۖ-ۭ\s]/g,'').length;
+function qzStats(){try{return Object.assign({ans:0,cor:0,best:0,sbest:0,runs:0,cats:{}},JSON.parse(ls.get('qzStats')||'{}'))}catch(e){return{ans:0,cor:0,best:0,sbest:0,runs:0,cats:{}}}}
+function qzSaveStats(s){try{ls.set('qzStats',JSON.stringify(s))}catch(e){}}
+function qzSeen(){try{return new Set(JSON.parse(ls.get('qzSeen')||'[]'))}catch(e){return new Set()}}
+function qzMarkSeen(ids){try{const a=[...qzSeen(),...ids];ls.set('qzSeen',JSON.stringify(a.slice(-500)))}catch(e){}}
+function qzRank(c){let r=0;QZ.ranks.forEach((x,i)=>{if(c>=x[0])r=i});const nx=QZ.ranks[r+1];return{i:r,n:QZ.ranks[r][1],next:nx?nx[0]-c:0,nn:nx?nx[1]:''}}
+
+/* ---- مصادر البيانات (مبنية من محتوى التطبيق نفسه) ---- */
+function qzData(){
+  if(QZ.S)return QZ.S;
+  const D={verses:[],hads:[],faqs:[],names:[]};
+  const seenV=new Set(),seenH=new Set();
+  const addV=(t,sur,ref)=>{t=qzCl(t);const k=t.slice(0,40);if(!t||seenV.has(k))return;seenV.add(k);D.verses.push({t,s:sur,ref})};
+  const addH=(t,src,id)=>{t=String(t).replace(/^«|»$/g,'').trim();if(!t||/\.\.\./.test(t))return;const k=t.slice(0,40);if(seenH.has(k))return;seenH.add(k);D.hads.push({t,src,id})};
+  FAQ.forEach((e,i)=>{
+    D.faqs.push(i);
+    String(e[3]||'').split('‖').forEach(ev=>{ev=ev.trim();
+      let m=ev.match(/^﴿(.+?)﴾\s*—\s*([^:]+):\s*([\d\-]+)\s*$/);
+      if(m){m[1].split('۝').forEach(seg=>{seg=seg.trim();if(seg)addV(seg,m[2].trim(),m[2].trim()+': '+m[3])});return}
+      m=ev.match(/^«(.+?)»\s*—\s*(.+)$/);
+      if(m){let src=m[2].replace(/\([^)]*\)/g,'').trim();addH(m[1],src,i)}
+    })});
+  try{DOSE.verses.forEach(v=>{const m=v.s.match(/^سورة\s*([^:]+):\s*([\d\-]+)/);if(m)v.t.split('۝').forEach(seg=>addV(seg.trim(),m[1].trim(),m[1].trim()+': '+m[2]))});
+    DOSE.hadiths.forEach(h=>addH(h.t,String(h.s).replace(/\([^)]*\)/g,'').trim(),-1))}catch(e){}
+  try{const sm=smallData();
+    ['nawawi','qudsi'].forEach(id=>(sm[id]||[]).forEach(h=>{const m=String(h[1]).match(/"\s*([^"]{60,600}?)\s*"/);if(m)addH(m[1],BOOKS[id].n+' — رقم '+nAr(h[0]),-1)}))}catch(e){}
+  try{ASMA.forEach(a=>D.names.push({n:a[0],m:a[1]}))}catch(e){}
+  D.st=(typeof STORIES!=='undefined'?STORIES:[]).filter(s=>s.x&&s.x.length>80);
+  QZ.S=D;return D}
+const qzSur=()=>SURAH_NAMES;
+function qzOpts(correct,pool,n=3,same){ // يرجع 4 خيارات مختلفة وفهرس الصحيح
+  const seen=new Set([qzCl(correct)]);const w=[];
+  for(const x of qzShuf(pool)){const k=qzCl(x);if(!k||seen.has(k))continue;seen.add(k);w.push(x);if(w.length>=n)break}
+  if(w.length<n)return null;
+  const opts=qzShuf([correct,...w]);return{opts,ans:opts.indexOf(correct)}}
+const qzMk=(o)=>o&&o.opts?o:null;
+
+/* ---- مولّدات الأسئلة: كل واحد يرجع سؤالًا جديدًا في كل مرة ---- */
+const QG={
+  verseComplete(){const D=qzData();const cand=D.verses.map(v=>({v,w:v.t.split(/\s+/).filter(x=>x&&!qzIsMark(x))})).filter(x=>x.w.length>=6&&x.w.length<=40);if(!cand.length)return null;
+    const c=qzShuf(cand)[0],n=c.w.length,k=Math.max(3,Math.min(n-2,Math.round(n*(.45+Math.random()*.15))));
+    const head=c.w.slice(0,k).join(' '),tail=c.w.slice(k).join(' '),tl=n-k;
+    const pool=cand.filter(x=>x!==c).map(x=>{const L=x.w.length;const kk=Math.max(1,L-tl);return x.w.slice(kk).join(' ')}).filter(t=>t.split(' ').length>=Math.max(1,tl-1)&&t.split(' ').length<=tl+2);
+    const o=qzOpts(tail,pool);if(!o)return null;
+    return{cat:'quran',kind:'verse',lab:'أكمل الآية',q:'أكمل الآية الكريمة:',txt:'﴿ '+head+' … ﴾',full:'﴿ '+c.w.join(' ')+' ﴾',opts:o.opts,ans:o.ans,exp:'الآية من سورة '+c.v.s+' — '+c.v.ref.split(': ')[1],id:'vc:'+c.w.slice(0,5).join(' ')}},
+  verseSurah(){const D=qzData();const cand=D.verses.filter(v=>v.t.split(/\s+/).length>=4&&v.t.split(/\s+/).length<=22&&qzSur().includes(v.s.replace(/^سورة\s*/,'')));if(!cand.length)return null;
+    const v=qzShuf(cand)[0],nm=v.s.replace(/^سورة\s*/,'');const o=qzOpts(nm,qzSur());if(!o)return null;
+    return{cat:'quran',kind:'verse',lab:'من أي سورة؟',q:'هذه الآية من أي سورة؟',txt:'﴿ '+v.t+' ﴾',opts:o.opts.map(x=>'سورة '+x),ans:o.ans,exp:'قال تعالى في سورة '+nm+' — الآية '+v.ref.split(': ')[1],id:'vs:'+v.t.slice(0,30)}},
+  surahOrder(){const S=qzSur(),i=Math.floor(Math.random()*114),t=Math.floor(Math.random()*4);
+    if(t===0){const o=qzOpts(String(i+1),Array.from({length:114},(_,k)=>String(k+1)).filter(x=>Math.abs(x-(i+1))<=12));if(!o)return null;return{cat:'quran',kind:'mcq',lab:'ترتيب السور',q:'ما ترتيب سورة «'+S[i]+'» في المصحف؟',opts:o.opts.map(nAr),ans:o.ans,exp:'سورة '+S[i]+' هي السورة رقم '+nAr(i+1)+' في ترتيب المصحف.',id:'so:'+i}}
+    if(t===1){const o=qzOpts(S[i],S);if(!o)return null;return{cat:'quran',kind:'mcq',lab:'ترتيب السور',q:'ما اسم السورة رقم '+nAr(i+1)+' في المصحف؟',opts:o.opts.map(x=>'سورة '+x),ans:o.ans,exp:'السورة رقم '+nAr(i+1)+' هي سورة '+S[i]+'.',id:'sn:'+i}}
+    if(t===2){const c=QZ.AY[i],pool=[];for(let d=1;d<=20&&pool.length<30;d++){[c-d,c+d].forEach(x=>{if(x>1)pool.push(String(x))})}const o=qzOpts(String(c),pool);if(!o)return null;return{cat:'quran',kind:'mcq',lab:'عدد الآيات',q:'كم عدد آيات سورة «'+S[i]+'»؟',opts:o.opts.map(nAr),ans:o.ans,exp:'سورة '+S[i]+' عدد آياتها '+nAr(c)+' آية.',id:'sa:'+i}}
+    const j=Math.random()<.5&&i<113?i+1:i>0?i-1:i+1;const after=j>i;const o=qzOpts(S[j],S);if(!o)return null;
+    return{cat:'quran',kind:'mcq',lab:'ترتيب السور',q:after?'ما السورة التي تأتي بعد سورة «'+S[i]+'» مباشرة؟':'ما السورة التي تسبق سورة «'+S[i]+'» مباشرة؟',opts:o.opts.map(x=>'سورة '+x),ans:o.ans,exp:'سورة '+S[j]+' '+(after?'تلي':'تسبق')+' سورة '+S[i]+'.',id:'sx:'+i+after}},
+  hadithComplete(){const D=qzData();const cand=D.hads.map(h=>({h,w:h.t.split(/\s+/).filter(Boolean)})).filter(x=>x.w.length>=8&&x.w.length<=45);if(!cand.length)return null;
+    const c=qzShuf(cand)[0],n=c.w.length,k=Math.max(3,Math.min(n-3,Math.round(n*(.4+Math.random()*.2))));
+    const head=c.w.slice(0,k).join(' '),tail=c.w.slice(k).join(' '),tl=n-k;
+    const pool=cand.filter(x=>x!==c).map(x=>x.w.slice(Math.max(1,x.w.length-tl)).join(' ')).filter(t=>{const L=t.split(' ').length;return L>=Math.max(2,tl-2)&&L<=tl+2});
+    const o=qzOpts(tail,pool);if(!o)return null;
+    return{cat:'hadith',kind:'hadith',lab:'أكمل الحديث',q:'أكمل الحديث الشريف:',txt:'«'+head+' …»',full:'«'+c.w.join(' ')+'»',opts:o.opts,ans:o.ans,exp:c.h.src,faq:c.h.id,id:'hc:'+c.w.slice(0,5).join(' ')}},
+  hadithSource(){const D=qzData();const OK=/^(متفق عليه|رواه (مسلم|البخاري|الترمذي|أبو داود|ابن ماجه|أحمد|النسائي))$/;const cand=D.hads.filter(h=>OK.test(h.src)&&h.t.split(/\s+/).length>=6&&h.t.split(/\s+/).length<=40);if(!cand.length)return null;
+    const h=qzShuf(cand)[0];const o=qzOpts(h.src,['متفق عليه','رواه مسلم','رواه البخاري','رواه الترمذي','رواه أبو داود','رواه ابن ماجه','رواه أحمد','رواه النسائي']);if(!o)return null;
+    return{cat:'hadith',kind:'hadith',lab:'مصدر الحديث',q:'من أخرج هذا الحديث؟',txt:'«'+h.t+'»',opts:o.opts,ans:o.ans,exp:'الحديث: '+h.src,faq:h.id,id:'hs:'+h.t.slice(0,30)}},
+  faqTopic(){const D=qzData();const idx=qzShuf(D.faqs.filter(i=>{const a=FAQ[i][2];return a&&a.length>60&&FAQ[i][1].length<60}));if(!idx.length)return null;
+    const i=idx[0],e=FAQ[i];let ans=e[2].split(/(?<=[.؟!:])\s/)[0];if(ans.length<50)ans=e[2].slice(0,170);if(ans.length>190)ans=ans.slice(0,180).replace(/\s\S*$/,'')+'…';
+    const norm=s=>rn(s).replace(/\s+/g,'');const key=norm(e[1].replace(/^(ال|ما|كيف|هل|لماذا)\s*/,'')).slice(0,6);if(key.length>=4&&norm(ans).includes(key)&&Math.random()<.7)return null;
+    const pool=D.faqs.filter(j=>j!==i).map(j=>FAQ[j][1]);const o=qzOpts(e[1],pool);if(!o)return null;
+    return{cat:'aqeeda',kind:'mcq',lab:'من علوم الدين',q:'أي موضوع يتحدث عنه هذا النص؟',txt:ans,opts:o.opts,ans:o.ans,exp:e[1],faq:i,id:'ft:'+i}},
+  story(){const D=qzData();if(D.st.length<6)return null;const s=qzShuf(D.st)[0];
+    const core=String(s.t).split(/\s+(?:عليه|عليها|عليهم|رضي|رضى|رضوان)/)[0].trim();let x=String(s.x);
+    if(core.length>=3){x=x.split(core).join('…')}const first=core.split(' ')[0];if(first.length>=4)x=x.split(first).join('…');
+    x=x.length>230?x.slice(0,220).replace(/\s\S*$/,'')+'…':x;
+    const same=D.st.filter(z=>z!==s&&z.k===s.k).map(z=>z.t),o=qzOpts(s.t,same.length>=5?same:D.st.map(z=>z.t));if(!o)return null;
+    return{cat:'sira',kind:'mcq',lab:s.k==='c'?'الصحابة':s.k==='p'?'الأنبياء':'قصص القرآن',q:'صاحب هذه القصة هو:',txt:x,opts:o.opts,ans:o.ans,exp:s.t,id:'st:'+s.id}},
+  asmaMean(){const D=qzData();if(D.names.length<10)return null;const a=qzShuf(D.names)[0];const o=qzOpts(a.m,D.names.map(x=>x.m));if(!o)return null;
+    return{cat:'names',kind:'mcq',lab:'أسماء الله الحسنى',q:'ما معنى اسم الله «'+a.n+'»؟',opts:o.opts,ans:o.ans,exp:a.n+': '+a.m,id:'am:'+a.n}},
+  asmaName(){const D=qzData();if(D.names.length<10)return null;const a=qzShuf(D.names.filter(x=>{const c=rn(x.n).replace(/^ال/,'').slice(0,4);return c.length>=3&&!rn(x.m).includes(c)}))[0];if(!a)return null;
+    const o=qzOpts(a.n,D.names.map(x=>x.n));if(!o)return null;
+    return{cat:'names',kind:'mcq',lab:'أسماء الله الحسنى',q:'أي اسم من أسماء الله الحسنى معناه:',txt:a.m,opts:o.opts,ans:o.ans,exp:a.n+': '+a.m,id:'an:'+a.n}},
+  bank(cat){const L=QB.filter(b=>!cat||b[0]===cat);if(!L.length)return null;const b=qzShuf(L)[0];
+    const opts=qzShuf([b[2],...b[3]]);return{cat:{aq:'aqeeda',fq:'aqeeda',sr:'sira',qr:'quran'}[b[0]]||'aqeeda',kind:'mcq',lab:{aq:'العقيدة',fq:'الفقه والعبادات',sr:'السيرة والأنبياء',qr:'علوم القرآن'}[b[0]],q:b[1],opts,ans:opts.indexOf(b[2]),exp:b[4]||'',id:'qb:'+b[1].slice(0,30)}}
+};
+/* بنك أسئلة معلومات أساسية (تتبدّل خياراته وترتيبه كل مرة) */
+const QB=[
+['aq','كم عدد أركان الإسلام؟','خمسة',['أربعة','ستة','سبعة'],'بُني الإسلام على خمس: الشهادتان، والصلاة، والزكاة، وصوم رمضان، وحج البيت.'],
+['aq','كم عدد أركان الإيمان؟','ستة',['خمسة','سبعة','أربعة'],'الإيمان بالله وملائكته وكتبه ورسله واليوم الآخر والقدر خيره وشره.'],
+['aq','أي مما يلي ليس من أركان الإسلام الخمسة؟','الجهاد',['الزكاة','صوم رمضان','حج البيت'],'أركان الإسلام: الشهادتان والصلاة والزكاة والصوم والحج.'],
+['aq','ما الركن الأول من أركان الإيمان؟','الإيمان بالله',['الإيمان بالملائكة','الإيمان بالكتب','الإيمان باليوم الآخر'],''],
+['aq','ما أعلى مراتب الدين؟','الإحسان',['الإسلام','الإيمان','التوكل'],'مراتب الدين: الإسلام ثم الإيمان ثم الإحسان.'],
+['aq','من الملك الموكّل بالوحي إلى الأنبياء؟','جبريل عليه السلام',['ميكائيل عليه السلام','إسرافيل عليه السلام','مالك خازن النار'],''],
+['aq','من الملك الذي ينفخ في الصُّور؟','إسرافيل عليه السلام',['جبريل عليه السلام','ميكائيل عليه السلام','رضوان خازن الجنة'],''],
+['aq','ما الكتاب الذي أُنزل على عيسى عليه السلام؟','الإنجيل',['التوراة','الزبور','صحف إبراهيم'],''],
+['aq','ما الكتاب الذي أُنزل على داود عليه السلام؟','الزبور',['التوراة','الإنجيل','القرآن'],''],
+['aq','ما الكتاب الذي أُنزل على موسى عليه السلام؟','التوراة',['الإنجيل','الزبور','القرآن'],''],
+['aq','كم عدد الأنبياء المذكورين بأسمائهم في القرآن؟','خمسة وعشرون',['عشرة','أربعون','مئة وعشرون'],''],
+['aq','كم عدد أولي العزم من الرسل؟','خمسة',['ثلاثة','سبعة','عشرة'],'نوح وإبراهيم وموسى وعيسى ومحمد عليهم الصلاة والسلام.'],
+['aq','من الأنبياء الآتية أسماؤهم ليس من أولي العزم؟','يوسف عليه السلام',['نوح عليه السلام','إبراهيم عليه السلام','موسى عليه السلام'],''],
+['aq','من خاتم الأنبياء والمرسلين؟','محمد ﷺ',['عيسى عليه السلام','إبراهيم عليه السلام','موسى عليه السلام'],'﴿وَلَٰكِن رَّسُولَ اللَّهِ وَخَاتَمَ النَّبِيِّينَ﴾ — الأحزاب: 40'],
+['aq','من يُلقَّب بأبي الأنبياء؟','إبراهيم عليه السلام',['نوح عليه السلام','آدم عليه السلام','إسحاق عليه السلام'],''],
+['aq','ما معنى «لا إله إلا الله»؟','لا معبود بحق إلا الله',['لا خالق إلا الله فقط','لا رازق إلا الله فقط','لا أحد يعلم الغيب'],'معناها إفراد الله وحده بالعبادة.'],
+['aq','ما أعظم الذنوب عند الله؟','الشرك بالله',['الكذب','السرقة','عقوق الوالدين'],'﴿إِنَّ الشِّرْكَ لَظُلْمٌ عَظِيمٌ﴾ — لقمان: 13'],
+['fq','كم ركعة في صلاة الفجر؟','ركعتان',['ثلاث ركعات','أربع ركعات','ركعة واحدة'],''],
+['fq','كم ركعة في صلاة المغرب؟','ثلاث ركعات',['ركعتان','أربع ركعات','خمس ركعات'],''],
+['fq','كم عدد الصلوات المفروضة في اليوم والليلة؟','خمس صلوات',['ثلاث صلوات','أربع صلوات','ست صلوات'],''],
+['fq','متى يبدأ وقت صلاة الظهر؟','بعد زوال الشمس عن وسط السماء',['عند الشروق','عند الغروب','بعد منتصف الليل'],''],
+['fq','أي الصلوات الآتية ليس فيها ركوع ولا سجود؟','صلاة الجنازة',['صلاة العيد','صلاة الجمعة','صلاة الكسوف'],'صلاة الجنازة قيام وتكبيرات ودعاء وتسليم.'],
+['fq','كم تكبيرة في صلاة الجنازة؟','أربع تكبيرات',['ثلاث تكبيرات','خمس تكبيرات','تكبيرة واحدة'],''],
+['fq','كم نسبة الزكاة الواجبة في النقود وعروض التجارة إذا بلغت النصاب وحال عليها الحول؟','ربع العُشر (٢٫٥٪)',['العُشر (١٠٪)','الخُمس (٢٠٪)','نصف العُشر (٥٪)'],''],
+['fq','ما الوجبة التي تسبق الفجر في الصيام؟','السحور',['الإفطار','العشاء','الغداء'],'«تَسَحَّرُوا فَإِنَّ فِي السَّحُورِ بَرَكَةً» — متفق عليه'],
+['fq','ما الركن الأعظم في الحج؟','الوقوف بعرفة',['طواف الوداع','رمي الجمرات','المبيت بمنى'],'«الْحَجُّ عَرَفَةُ» — رواه الترمذي وغيره'],
+['fq','كم عدد أشواط الطواف حول الكعبة؟','سبعة أشواط',['خمسة أشواط','ثلاثة أشواط','عشرة أشواط'],''],
+['fq','كم مرة يسعى الحاج بين الصفا والمروة؟','سبع مرات',['خمس مرات','ثلاث مرات','تسع مرات'],''],
+['fq','في أي يوم يكون الوقوف بعرفة؟','التاسع من ذي الحجة',['الثامن من ذي الحجة','العاشر من ذي الحجة','الأول من ذي الحجة'],''],
+['fq','في أي شهر هجري يقع عيد الفطر؟','شوال',['رمضان','ذو الحجة','محرم'],''],
+['fq','كم ركعة في صلاة الجمعة؟','ركعتان',['أربع ركعات','ثلاث ركعات','ست ركعات'],''],
+['fq','كم عدد فروض الوضوء المنصوص عليها في آية المائدة؟','أربعة',['ثلاثة','خمسة','ستة'],'غسل الوجه واليدين إلى المرفقين ومسح الرأس وغسل الرجلين إلى الكعبين.'],
+['fq','أي مما يلي ينقض الوضوء؟','خروج الريح',['قص الأظافر','شرب الماء','النظر إلى المصحف'],''],
+['fq','بماذا يكون التيمم؟','التراب الطاهر (الصعيد الطيب)',['الماء البارد','الرمل المبتلّ بالنجاسة','لا يكون إلا بالماء'],''],
+['fq','أول ما يُحاسَب عليه العبد يوم القيامة من الأعمال هو:','الصلاة',['الصيام','الزكاة','الحج'],'«أَوَّلُ مَا يُحَاسَبُ بِهِ الْعَبْدُ يَوْمَ الْقِيَامَةِ مِنْ عَمَلِهِ صَلَاتُهُ» — رواه الترمذي وأبو داود والنسائي'],
+['fq','ماذا يقول من عطس؟','الحمد لله',['سبحان الله','لا إله إلا الله','الله أكبر'],''],
+['fq','ماذا يقول السامع للعاطس إذا حمد الله؟','يرحمك الله',['بارك الله فيك','جزاك الله خيرًا','لا شيء'],''],
+['fq','أي الأيام يُستحب صيامها كل أسبوع؟','الاثنين والخميس',['السبت والأحد','الأربعاء فقط','الجمعة وحدها'],''],
+['fq','أي يوم يُستحب صيامه من شهر محرم؟','يوم عاشوراء (العاشر)',['الأول','الخامس عشر','الأخير'],''],
+['fq','كم ركعة في صلاة عيد الفطر؟','ركعتان',['أربع ركعات','ثلاث ركعات','ركعة واحدة'],''],
+['sr','في أي عام وُلد النبي ﷺ؟','عام الفيل',['عام الحزن','عام الوفود','عام الجماعة'],''],
+['sr','ما اسم أم النبي ﷺ؟','آمنة بنت وهب',['خديجة بنت خويلد','فاطمة بنت أسد','حليمة السعدية'],''],
+['sr','ما اسم والد النبي ﷺ؟','عبد الله بن عبد المطلب',['أبو طالب','عبد المطلب','العباس'],''],
+['sr','من الذي كفل النبي ﷺ بعد وفاة جده عبد المطلب؟','عمه أبو طالب',['عمه العباس','عمه حمزة','أبو بكر'],''],
+['sr','من أول زوجات النبي ﷺ؟','خديجة بنت خويلد',['عائشة بنت أبي بكر','حفصة بنت عمر','سودة بنت زمعة'],''],
+['sr','كم كان عمر النبي ﷺ حين نزل عليه الوحي؟','أربعين سنة',['ثلاثين سنة','خمسًا وعشرين سنة','ستين سنة'],''],
+['sr','في أي مكان نزل الوحي على النبي ﷺ أول مرة؟','غار حراء',['غار ثور','المسجد الحرام','جبل أحد'],''],
+['sr','إلى أي مدينة هاجر النبي ﷺ؟','المدينة المنورة (يثرب)',['الطائف','الحبشة','اليمن'],''],
+['sr','ما أول مسجد بُني في الإسلام؟','مسجد قباء',['المسجد النبوي','المسجد الأقصى','مسجد القبلتين'],'﴿لَّمَسْجِدٌ أُسِّسَ عَلَى التَّقْوَىٰ مِنْ أَوَّلِ يَوْمٍ﴾ — التوبة: 108'],
+['sr','ما أول غزوة كبرى انتصر فيها المسلمون؟','غزوة بدر',['غزوة أحد','غزوة الخندق','غزوة حنين'],'وقعت في رمضان من السنة الثانية للهجرة.'],
+['sr','في أي سنة هجرية كانت حجة الوداع؟','العاشرة',['الثامنة','الخامسة','الثانية'],''],
+['sr','في أي سنة هجرية توفي النبي ﷺ؟','الحادية عشرة',['العاشرة','الثانية عشرة','التاسعة'],''],
+['sr','كم كان عمر النبي ﷺ عند وفاته؟','ثلاثًا وستين سنة',['خمسًا وخمسين سنة','سبعين سنة','أربعين سنة'],''],
+['sr','من الخليفة الأول بعد النبي ﷺ؟','أبو بكر الصديق',['عمر بن الخطاب','عثمان بن عفان','علي بن أبي طالب'],''],
+['sr','من الخليفة الثاني؟','عمر بن الخطاب',['أبو بكر الصديق','عثمان بن عفان','علي بن أبي طالب'],''],
+['sr','من الخليفة الثالث؟','عثمان بن عفان',['عمر بن الخطاب','علي بن أبي طالب','أبو بكر الصديق'],''],
+['sr','من الخليفة الرابع من الخلفاء الراشدين؟','علي بن أبي طالب',['عثمان بن عفان','عمر بن الخطاب','طلحة بن عبيد الله'],''],
+['sr','بأي لقب اشتهر عمر بن الخطاب رضي الله عنه؟','الفاروق',['الصدّيق','ذو النورين','سيف الله'],''],
+['sr','بأي لقب اشتهر أبو بكر رضي الله عنه؟','الصدّيق',['الفاروق','أمين الأمة','ذو النورين'],''],
+['sr','بأي لقب اشتهر عثمان بن عفان رضي الله عنه؟','ذو النورين',['الفاروق','الصدّيق','سيف الله'],''],
+['sr','بأي لقب اشتهر خالد بن الوليد رضي الله عنه؟','سيف الله المسلول',['أمين الأمة','الفاروق','حبر الأمة'],''],
+['sr','من مؤذّن النبي ﷺ؟','بلال بن رباح',['سعد بن أبي وقاص','عمار بن ياسر','زيد بن ثابت'],''],
+['sr','أي نبي ابتلعه الحوت؟','يونس عليه السلام',['أيوب عليه السلام','يوسف عليه السلام','هود عليه السلام'],''],
+['sr','أي نبي أُلقي في النار فكانت بردًا وسلامًا؟','إبراهيم عليه السلام',['موسى عليه السلام','نوح عليه السلام','يونس عليه السلام'],''],
+['sr','أي نبي صنع الله له الفلك (السفينة) ونجّاه بها؟','نوح عليه السلام',['هود عليه السلام','صالح عليه السلام','لوط عليه السلام'],''],
+['sr','أي نبي أُلقي في الجُبّ ثم صار عزيز مصر؟','يوسف عليه السلام',['يعقوب عليه السلام','إسحاق عليه السلام','موسى عليه السلام'],''],
+['sr','أي نبي ألان الله له الحديد؟','داود عليه السلام',['سليمان عليه السلام','موسى عليه السلام','إدريس عليه السلام'],''],
+['sr','أي نبي سخّر الله له الريح والجن؟','سليمان عليه السلام',['داود عليه السلام','إبراهيم عليه السلام','عيسى عليه السلام'],''],
+['sr','أي نبي كلّمه الله تكليمًا؟','موسى عليه السلام',['عيسى عليه السلام','إبراهيم عليه السلام','يحيى عليه السلام'],'﴿وَكَلَّمَ اللَّهُ مُوسَىٰ تَكْلِيمًا﴾ — النساء: 164'],
+['sr','أي نبي اشتهر بالصبر على المرض؟','أيوب عليه السلام',['زكريا عليه السلام','يحيى عليه السلام','إلياس عليه السلام'],''],
+['sr','إلى أي مسجد كان الإسراء بالنبي ﷺ؟','المسجد الأقصى',['مسجد قباء','المسجد النبوي','مسجد الخيف'],''],
+['sr','ما القبلة الأولى للمسلمين قبل الكعبة؟','بيت المقدس',['مسجد قباء','المسجد النبوي','لا قبلة'],''],
+['qr','ما أول ما نزل من القرآن الكريم؟','﴿اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ﴾',['﴿يَا أَيُّهَا الْمُدَّثِّرُ﴾','﴿الْحَمْدُ لِلَّهِ رَبِّ الْعَالَمِينَ﴾','﴿قُلْ هُوَ اللَّهُ أَحَدٌ﴾'],''],
+['qr','ما أطول سورة في القرآن؟','البقرة',['آل عمران','النساء','الأعراف'],''],
+['qr','ما أقصر سورة في القرآن؟','الكوثر',['الإخلاص','العصر','النصر'],''],
+['qr','أي سورة تُسمّى «أم الكتاب»؟','الفاتحة',['البقرة','الإخلاص','يس'],''],
+['qr','أي سورة لا تبدأ بالبسملة؟','التوبة',['الأنفال','يونس','النمل'],''],
+['qr','أي سورة تعدل ثلث القرآن؟','الإخلاص',['الفاتحة','الكافرون','الناس'],'«قُلْ هُوَ اللَّهُ أَحَدٌ تَعْدِلُ ثُلُثَ الْقُرْآنِ» — رواه مسلم'],
+['qr','ما أعظم آية في القرآن الكريم؟','آية الكرسي',['آية الدَّيْن','آخر آية في البقرة','آية النور'],'«أَيُّ آيَةٍ فِي كِتَابِ اللَّهِ أَعْظَمُ؟ ... اللَّهُ لَا إِلَٰهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ» — رواه مسلم'],
+['qr','كم عدد سور القرآن الكريم؟','١١٤ سورة',['١١٠ سور','١٢٠ سورة','١٠٠ سورة'],''],
+['qr','كم عدد أجزاء القرآن الكريم؟','٣٠ جزءًا',['٢٠ جزءًا','٤٠ جزءًا','٦٠ جزءًا'],''],
+['qr','في أي شهر أُنزل القرآن؟','رمضان',['شعبان','ذو الحجة','محرم'],'﴿شَهْرُ رَمَضَانَ الَّذِي أُنزِلَ فِيهِ الْقُرْآنُ﴾ — البقرة: 185'],
+['qr','من أول من جمع القرآن في صحف؟','أبو بكر الصديق رضي الله عنه',['عثمان بن عفان رضي الله عنه','علي بن أبي طالب رضي الله عنه','عمر بن عبد العزيز'],''],
+['qr','في عهد من نُسخت المصاحف ووُزّعت على الأمصار؟','عثمان بن عفان رضي الله عنه',['أبو بكر رضي الله عنه','عمر بن الخطاب رضي الله عنه','معاوية رضي الله عنه'],'']
+];
+/* ---- بناء جلسة اختبار ---- */
+function qzBuild(cat,N){
+  const plan={all:[['verseComplete',2],['verseSurah',1],['surahOrder',1],['hadithComplete',2],['hadithSource',1],['faqTopic',2],['story',1],['asmaMean',1],['asmaName',1],['bank',3]],
+    quran:[['verseComplete',4],['verseSurah',3],['surahOrder',3],['bank:qr',2]],
+    hadith:[['hadithComplete',5],['hadithSource',4]],
+    aqeeda:[['faqTopic',5],['bank:aq',3],['bank:fq',4]],
+    sira:[['story',4],['bank:sr',6]],
+    names:[['asmaMean',1],['asmaName',1]]}[cat]||[];
+  const seen=qzSeen(),out=[],ids=new Set();let guard=0;
+  const bag=[];plan.forEach(([g,w])=>{for(let i=0;i<w;i++)bag.push(g)});
+  while(out.length<N&&guard++<N*60){
+    const g=bag[Math.floor(Math.random()*bag.length)];let q=null;
+    try{q=g.startsWith('bank')?QG.bank(g.split(':')[1]):QG[g]()}catch(e){q=null}
+    if(!q||q.ans<0||q.opts.length!==4||ids.has(q.id))continue;
+    if(seen.has(q.id)&&guard<N*25)continue; // فضّل الأسئلة الجديدة
+    ids.add(q.id);out.push(q)}
+  return out}
+
+/* ---- واجهة الاختبار ---- */
+const QZI={x:'<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>',
+  ok:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>',
+  no:'<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M7 7l10 10M17 7L7 17"/></svg>',
+  fire:'<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2c.6 3-1.2 4.6-2.6 6.3C8 10 7 11.4 7 13.6A5 5 0 0017 14c0-2-.9-3.2-1.8-4.4-.5.9-1.1 1.4-1.9 1.6.6-3.4-.3-6.6-1.3-9.2z"/></svg>',
+  chev:'<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>',
+  cap:'<svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 9.5L12 5l9.5 4.5L12 14z"/><path d="M6.5 11.8V16c0 1.2 2.5 2.5 5.5 2.5s5.5-1.3 5.5-2.5v-4.2"/><path d="M21.5 9.5V15"/></svg>'};
+const qzIc=p=>`<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="${p}"/></svg>`;
+const qzLet=['أ','ب','ج','د'];
+const qzEsc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function qzRing(pct,size,sw,label,sub){const r=(size-sw)/2,c=2*Math.PI*r;
+  return `<div class="qz-ring" style="width:${size}px;height:${size}px"><svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}"><defs><linearGradient id="qzg${size}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dc93"/><stop offset="1" stop-color="#3ddc97"/></linearGradient></defs><circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--qz-line)" stroke-width="${sw}"/><circle class="qz-rf" cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="url(#qzg${size})" stroke-width="${sw}" stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c}" data-to="${c*(1-pct/100)}" transform="rotate(-90 ${size/2} ${size/2})"/></svg><div class="qz-rc"><b>${label}</b>${sub?`<small>${sub}</small>`:''}</div></div>`}
+function qzAnim(){requestAnimationFrame(()=>requestAnimationFrame(()=>{document.querySelectorAll('#qzView .qz-rf').forEach(e=>{e.style.strokeDashoffset=e.dataset.to})}))}
+const qzBody=()=>$('qzBody');
+function qzEntryRefresh(){const e=$('qzEntrySub');if(!e)return;const s=qzStats(),r=qzRank(s.cor);e.textContent=s.ans?`${r.n} • ${nAr(s.cor)} إجابة صحيحة`:'أسئلة متجددة من القرآن والحديث والفقه والسيرة';}
+function qzOpen(){const v=$('qzView');if(v.parentNode!==document.body)document.body.appendChild(v);v.classList.add('open');document.body.style.overflow='hidden';qzHome();v.scrollTop=0}
+function qzClose(force){if(QZ.run&&QZ.run.live&&!force&&!confirm('تخرج من الاختبار؟ التقدم الحالي مش هيتسجّل.'))return;QZ.run=null;$('qzView').classList.remove('open');document.body.style.overflow='';qzEntryRefresh()}
+function qzTop(left){return `<header class="qz-top"><button class="qz-x" onclick="qzClose()" aria-label="إغلاق">${QZI.x}</button><div class="qz-ttl">اختبر نفسك في دينك</div>${left||'<span class="qz-sp"></span>'}</header>`}
+let qzSel={cat:'all',n:10};
+function qzHome(){QZ.run=null;const s=qzStats(),r=qzRank(s.cor),acc=s.ans?Math.round(s.cor/s.ans*100):0;
+  const catHtml=Object.keys(QZ.cats).map(k=>`<button class="qz-cat${qzSel.cat===k?' on':''}" data-k="${k}" onclick="qzSel.cat='${k}';qzHome()"><span class="qz-ci">${qzIc(QZ.cats[k].ic)}</span><b>${QZ.cats[k].n}</b><small>${QZ.cats[k].d}</small></button>`).join('');
+  const prog=r.next?Math.round((s.cor-QZ.ranks[r.i][0])/(QZ.ranks[r.i+1][0]-QZ.ranks[r.i][0])*100):100;
+  qzBody().innerHTML=qzTop()+`<section class="qz-hero"><div class="qz-hl">${qzRing(acc,104,8,s.ans?nAr(acc)+'٪':'—','دقة إجاباتك')}</div>
+  <div class="qz-hr"><div class="qz-rk"><span>مستواك</span><b>${r.n}</b></div><div class="qz-pb"><i style="width:${prog}%"></i></div><div class="qz-rn">${r.next?`باقي ${nAr(r.next)} إجابة صحيحة للوصول إلى «${r.nn}»`:'وصلت لأعلى مستوى، بارك الله فيك'}</div></div></section>
+  <section class="qz-st"><div><b>${nAr(s.ans)}</b><small>سؤال أجبته</small></div><div><b>${nAr(s.cor)}</b><small>إجابة صحيحة</small></div><div><b>${nAr(s.best)}٪</b><small>أفضل نتيجة</small></div><div><b>${nAr(s.runs)}</b><small>اختبار أكملته</small></div></section>
+  <div class="qz-lbl">اختر المجال</div><div class="qz-cats">${catHtml}</div>
+  <div class="qz-lbl">عدد الأسئلة</div><div class="qz-seg">${[10,20,30].map(n=>`<button class="${qzSel.n===n?'on':''}" onclick="qzSel.n=${n};qzHome()">${nAr(n)} سؤال</button>`).join('')}</div>
+  <button class="qz-cta" onclick="qzStart()"><span>ابدأ الاختبار</span>${QZI.chev}</button>
+  <p class="qz-note">كل اختبار بيتولّد من جديد: أسئلة وخيارات وترتيب مختلف، وبنفضّل اللي ماجاوبتهوش قبل كده. الأسئلة مبنية على نصوص القرآن والسنة الموجودة في التطبيق.</p>`;
+  qzAnim()}
+function qzStart(){const qs=qzBuild(qzSel.cat,qzSel.n);if(qs.length<5){toast('مفيش أسئلة كفاية للمجال ده دلوقتي');return}
+  QZ.run={cat:qzSel.cat,N:qs.length,qs,i:0,score:0,streak:0,bestStreak:0,wrong:[],per:{},t0:Date.now(),live:true,done:false};qzMarkSeen(qs.map(q=>q.id));qzRender()}
+function qzRender(){const R=QZ.run,q=R.qs[R.i];R.done=false;R.sel=-1;
+  const txtCls=q.kind==='verse'?'qz-tx qz-v font-quran':q.kind==='hadith'?'qz-tx qz-h font-quran':'qz-tx';
+  qzBody().innerHTML=qzTop(`<span class="qz-streak${R.streak>=2?' hot':''}" title="إجابات صحيحة متتالية">${QZI.fire}<b>${nAr(R.streak)}</b></span>`)+
+  `<div class="qz-prog"><span>سؤال ${nAr(R.i+1)} من ${nAr(R.N)}</span><div class="qz-pb"><i style="width:${(R.i)/R.N*100}%"></i></div></div>
+  <article class="qz-card" id="qzCard"><div class="qz-chip">${qzEsc(q.lab)}</div><h2 class="qz-q">${qzEsc(q.q)}</h2>${q.txt?`<div class="${txtCls}">${qzEsc(q.txt)}</div>`:''}
+  <div class="qz-opts" role="listbox">${q.opts.map((o,k)=>`<button class="qz-opt" role="option" style="animation-delay:${k*55}ms" onclick="qzAnswer(${k})"><span class="qz-lt">${qzLet[k]}</span><span class="qz-ot${q.kind==='verse'||q.kind==='hadith'?' font-quran':''}">${qzEsc(o)}</span><span class="qz-mk"></span></button>`).join('')}</div>
+  <div class="qz-fb" id="qzFb" aria-live="polite"></div></article>
+  <div class="qz-foot"><button class="qz-cta" id="qzNext" disabled onclick="qzNext()"><span>${R.i+1>=R.N?'عرض النتيجة':'السؤال التالي'}</span>${QZI.chev}</button></div>`;
+  $('qzView').scrollTop=0;qzAnim()}
+function qzAnswer(k){const R=QZ.run;if(!R||R.done)return;R.done=true;const q=R.qs[R.i],ok=k===q.ans;
+  const bs=[...document.querySelectorAll('#qzCard .qz-opt')];
+  bs.forEach((b,i)=>{b.disabled=true;if(i===q.ans){b.classList.add('ok');b.querySelector('.qz-mk').innerHTML=QZI.ok}else if(i===k){b.classList.add('bad');b.querySelector('.qz-mk').innerHTML=QZI.no}else b.classList.add('dim')});
+  R.per[q.cat]=R.per[q.cat]||[0,0];R.per[q.cat][0]++;
+  if(ok){R.score++;R.streak++;R.bestStreak=Math.max(R.bestStreak,R.streak);R.per[q.cat][1]++;try{navigator.vibrate&&navigator.vibrate(18)}catch(e){}}
+  else{R.streak=0;R.wrong.push({q,k});try{navigator.vibrate&&navigator.vibrate([30,40,30])}catch(e){}}
+  const st=document.querySelector('#qzView .qz-streak');if(st){st.querySelector('b').textContent=nAr(R.streak);st.classList.toggle('hot',R.streak>=2)}
+  const fb=$('qzFb'),good=['أحسنت','بارك الله فيك','ما شاء الله','وفّقك الله'][Math.floor(Math.random()*4)];
+  fb.className='qz-fb show '+(ok?'ok':'bad');
+  fb.innerHTML=`<div class="qz-fh"><span class="qz-fi">${ok?QZI.ok:QZI.no}</span><b>${ok?good:'الإجابة الصحيحة:'}</b></div>${ok?'':`<div class="qz-ca${q.kind==='verse'||q.kind==='hadith'?' font-quran':''}">${qzEsc(q.opts[q.ans])}</div>`}${q.full&&!ok?`<div class="qz-full font-quran">${qzEsc(q.full)}</div>`:''}${q.exp?`<div class="qz-ex">${qzEsc(q.exp)}</div>`:''}${q.faq>=0&&q.faq!=null?`<button class="qz-lnk" onclick="qzOpenFaq(${q.faq})">اقرأ الموضوع بالتفصيل ›</button>`:''}`;
+  const nx=$('qzNext');nx.disabled=false;setTimeout(()=>{try{fb.scrollIntoView({behavior:'smooth',block:'nearest'})}catch(e){}},120)}
+function qzOpenFaq(i){qzClose(true);try{goTab('ask');setTimeout(()=>askShowFaq(i),150)}catch(e){}}
+function qzNext(){const R=QZ.run;if(!R||!R.done)return;if(R.i+1>=R.N)return qzFinish();R.i++;qzRender()}
+function qzFinish(){const R=QZ.run;R.live=false;const pct=Math.round(R.score/R.N*100),s=qzStats(),secs=Math.round((Date.now()-R.t0)/1000);
+  s.ans+=R.N;s.cor+=R.score;s.runs++;s.best=Math.max(s.best,pct);s.sbest=Math.max(s.sbest||0,R.bestStreak);Object.keys(R.per).forEach(c=>{const a=s.cats[c]||[0,0];s.cats[c]=[a[0]+R.per[c][0],a[1]+R.per[c][1]]});qzSaveStats(s);
+  R.fin={pct,secs,rank:qzRank(s.cor).n};QZ.last={pct,score:R.score,N:R.N,cat:R.cat};qzDrawResult()}
+function qzDrawResult(){const R=QZ.run,F=R.fin,pct=F.pct;
+  const g=pct>=90?['ممتاز','ما شاء الله، مستواك رائع. استمر في التعلّم.']:pct>=75?['جيد جدًا','أحسنت، قريب جدًا من الإتقان.']:pct>=50?['جيد','بداية طيبة، راجع ما أخطأت فيه واختبر نفسك مرة أخرى.']:['ابدأ من جديد','لا بأس، كل متعلّم بدأ من هنا. راجع الإجابات وكرّر المحاولة.'];
+  const catRows=Object.keys(R.per).map(c=>{const a=R.per[c],p=Math.round(a[1]/a[0]*100);return `<div class="qz-br"><span>${QZ.cats[c].n}</span><div class="qz-pb"><i style="width:${p}%"></i></div><b>${nAr(a[1])}/${nAr(a[0])}</b></div>`}).join('');
+  const m=Math.floor(F.secs/60),sc=F.secs%60;
+  qzBody().innerHTML=qzTop()+`<section class="qz-res"><div class="qz-rg">${qzRing(pct,150,10,nAr(R.score)+'/'+nAr(R.N),nAr(pct)+'٪')}</div><h2 class="qz-gt">${g[0]}</h2><p class="qz-gs">${g[1]}</p></section>
+  <section class="qz-st three"><div><b>${nAr(R.bestStreak)}</b><small>أطول سلسلة صحيحة</small></div><div><b>${nAr(m)}:${nAr(String(sc).padStart(2,'0'))}</b><small>الزمن</small></div><div><b>${F.rank}</b><small>مستواك الآن</small></div></section>
+  <div class="qz-lbl">أداؤك حسب المجال</div><section class="qz-brs">${catRows}</section>
+  <div class="qz-acts">${R.wrong.length?`<button class="qz-cta ghost" onclick="qzReview()"><span>راجع أخطاءك (${nAr(R.wrong.length)})</span>${QZI.chev}</button>`:''}<button class="qz-cta" onclick="qzStart()"><span>اختبار جديد</span>${QZI.chev}</button><div class="qz-two"><button class="qz-sm" onclick="qzHome()">الرئيسية</button><button class="qz-sm" onclick="qzShare()">مشاركة النتيجة</button></div></div>`;
+  $('qzView').scrollTop=0;qzAnim()}
+function qzReview(){const R=QZ.run;qzBody().innerHTML=qzTop()+`<div class="qz-lbl" style="margin-top:6px">مراجعة الأخطاء</div>`+R.wrong.map(({q,k},i)=>`<article class="qz-card rv"><div class="qz-chip">${qzEsc(q.lab)}</div><h2 class="qz-q">${qzEsc(q.q)}</h2>${q.txt?`<div class="qz-tx ${q.kind==='verse'?'qz-v':q.kind==='hadith'?'qz-h':''} ${q.kind!=='mcq'?'font-quran':''}">${qzEsc(q.txt)}</div>`:''}<div class="qz-rv bad"><small>إجابتك</small><span class="${q.kind==='verse'||q.kind==='hadith'?'font-quran':''}">${qzEsc(q.opts[k])}</span></div><div class="qz-rv ok"><small>الصحيح</small><span class="${q.kind==='verse'||q.kind==='hadith'?'font-quran':''}">${qzEsc(q.opts[q.ans])}</span></div>${q.exp?`<div class="qz-ex">${qzEsc(q.exp)}</div>`:''}${q.faq>=0&&q.faq!=null?`<button class="qz-lnk" onclick="qzOpenFaq(${q.faq})">اقرأ الموضوع بالتفصيل ›</button>`:''}</article>`).join('')+`<div class="qz-foot static"><button class="qz-cta" onclick="qzFinishBack()"><span>رجوع للنتيجة</span>${QZI.chev}</button></div>`;$('qzView').scrollTop=0}
+function qzFinishBack(){qzDrawResult()}
+function qzShare(){const L=QZ.last;if(!L)return;const t=`جاوبت ${nAr(L.score)} من ${nAr(L.N)} (${nAr(L.pct)}٪) في «اختبر نفسك في دينك» على تطبيق ملاذ. جرّب نفسك!`;
+  if(navigator.share){navigator.share({text:t}).catch(()=>{})}else if(navigator.clipboard){navigator.clipboard.writeText(t).then(()=>toast('اتنسخت النتيجة'))}else toast(t)}
+document.addEventListener('keydown',e=>{const v=$('qzView');if(!v||!v.classList.contains('open'))return;if(e.key==='Escape')qzClose();const R=QZ.run;if(R&&R.live){if(['1','2','3','4'].includes(e.key)&&!R.done)qzAnswer(+e.key-1);else if((e.key==='Enter')&&R.done)qzNext()}});
+setTimeout(()=>{try{qzEntryRefresh()}catch(e){}},0);
 
 function toggleAdhanUnlock(){initAudioContext()}
 function extraTick(now){try{ramTick(now)}catch(e){}try{ntfTick(now)}catch(e){}
