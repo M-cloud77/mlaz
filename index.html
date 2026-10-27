@@ -975,6 +975,47 @@ body.light-mode .qz-tx{background:rgba(255,255,255,.7)}
 .qz-rv .font-quran{font-size:1.15rem;line-height:2}
 @media(max-width:380px){.qz-hero{flex-direction:column;text-align:center}.qz-st b{font-size:.9rem}.qz-cat{padding:12px}.qz-br{grid-template-columns:80px 1fr 40px}}
 @media(prefers-reduced-motion:reduce){#qzView *{animation:none!important;transition:none!important}}
+
+/* ===== رمضان: عدّادين (الفجر + المغرب) + أيقونة التاب ===== */
+.ram-dual{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0 2px;direction:rtl}
+.rd-box{display:flex;flex-direction:column;align-items:center;gap:2px;padding:12px 6px;border-radius:16px;border:1px solid var(--border-light);background:rgba(255,255,255,.04);transition:all .3s}
+.rd-box .rd-t{font-size:.78rem;color:var(--text-muted)}
+.rd-box b{font-size:clamp(1.15rem,5.6vw,1.7rem);font-weight:800;color:var(--text-main);direction:ltr;letter-spacing:.03em;font-variant-numeric:tabular-nums}
+.rd-box em{font-style:normal;font-size:.78rem;color:var(--text-muted)}
+.rd-box.on{border-color:var(--gold-accent);background:linear-gradient(160deg,rgba(232,184,74,.16),rgba(232,184,74,.04));box-shadow:0 0 18px rgba(232,184,74,.18)}
+.rd-box.on b{color:var(--gold-light)}
+.tab-btn.ram-tab{background:linear-gradient(135deg,#2b2163,#46338f)!important;color:#ffe3a0!important;border:1px solid rgba(232,196,110,.75)!important;font-weight:700;box-shadow:0 2px 10px rgba(70,51,143,.35);animation:none;display:inline-flex;align-items:center;gap:6px;opacity:1}
+.tab-btn.ram-tab::before{content:"";width:15px;height:15px;flex:none;background:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23ffd978' d='M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5a.6.6 0 0 0-.8-.7A9.6 9.6 0 1 0 21.2 15.4a.6.6 0 0 0-.7-.8z'/%3E%3Cpath fill='%23ffd978' d='M17.6 4.2l.7 1.7 1.7.7-1.7.7-.7 1.7-.7-1.7-1.7-.7 1.7-.7z'/%3E%3C/svg%3E")}
+.tab-btn.ram-tab.active{box-shadow:0 0 0 2px rgba(232,196,110,.9),0 4px 16px rgba(70,51,143,.45)}
+.ram-hero{padding:14px 12px 12px;border-radius:20px}.ram-moon{font-size:2.3rem}.ram-hero h2{font-size:1.5rem;margin:2px 0}
+body.light-mode .rd-box{background:rgba(255,255,255,.7);border-color:rgba(120,90,30,.2)}
+body.light-mode .rd-box.on{background:linear-gradient(160deg,#fff3cf,#fffaf0);border-color:#b8860b;box-shadow:0 4px 14px rgba(150,110,20,.18)}
+body.light-mode .rd-box.on b{color:#7a5200}
+
+/* ===== الوضع الهادئ (الفاتح): عاجي + أخضر زمردي عميق + ذهب قديم ===== */
+body.light-mode{--bg-deep:#f4f0e6;--bg-card:#fffdf8;--border-gold:rgba(150,112,30,.38);--border-light:rgba(40,52,50,.11);--text-main:#1c2a2d;--text-muted:#5b696b;--gold-primary:#9a7220;--gold-light:#7b5a12;--gold-accent:#b28b2e;--emerald-green:#1a7860;--sky-blue:#28709b;--purple-accent:#5a4aa3;--rose-red:#b3405a;--shadow-glow:0 4px 18px rgba(70,55,20,.09)}
+body.light-mode{background-color:#f4f0e6;background-image:radial-gradient(ellipse at 50% -8%,rgba(178,139,46,.16),transparent 55%),radial-gradient(ellipse at 0% 100%,rgba(26,120,96,.08),transparent 50%),radial-gradient(ellipse at 100% 100%,rgba(40,112,155,.07),transparent 50%);background-attachment:fixed}
+body.light-mode .card{background:#fffdf8;border:1px solid rgba(40,52,50,.09);border-top:3px solid #b28b2e;box-shadow:0 2px 4px rgba(70,55,20,.05),0 10px 26px rgba(70,55,20,.08)}
+body.light-mode .card-title{color:#6f5010}
+body.light-mode .hero-title{color:#7b5a12;background:none;-webkit-text-fill-color:#7b5a12;text-shadow:none}
+body.light-mode .header h1,body.light-mode .header .hero-title{filter:none}
+body.light-mode .nav-tabs{background:rgba(255,253,248,.92);border:1px solid rgba(150,112,30,.28);box-shadow:0 4px 16px rgba(70,55,20,.08)}
+body.light-mode .tab-btn{color:#3b4a4d;opacity:1}
+body.light-mode .tab-btn.active{background:linear-gradient(135deg,#1a7860,#14604c);color:#fff;border-color:#14604c;box-shadow:0 3px 10px rgba(20,96,76,.3)}
+body.light-mode .tab-btn.ram-tab{color:#ffe3a0!important}
+body.light-mode .tab-btn.ram-tab.active{background:linear-gradient(135deg,#2b2163,#46338f)!important;color:#ffe3a0!important}
+body.light-mode .theme-btn{background:#fffdf8;color:#5c430c;border:1px solid rgba(150,112,30,.55);box-shadow:0 2px 8px rgba(70,55,20,.08)}
+body.light-mode .btn-action,body.light-mode .refresh-btn,body.light-mode .journal-btn{background:linear-gradient(135deg,#1a7860,#14604c)!important;color:#fff!important;text-shadow:none;box-shadow:0 4px 12px rgba(20,96,76,.28)}
+body.light-mode .mini{background:#fffdf8;color:#3b4a4d;border-color:rgba(40,52,50,.18)}
+body.light-mode .mini.on,body.light-mode .cbtn.on{background:#14604c!important;color:#fff!important;border-color:#14604c!important}
+body.light-mode .input-select,body.light-mode .journal-textarea{background:#fff;color:#1c2a2d;border-color:rgba(40,52,50,.2)}
+body.light-mode .prayer-item{background:#faf6ec;border-color:rgba(40,52,50,.1)}
+body.light-mode .prayer-item.next,body.light-mode .prayer-item.active{background:#fff4d6;border-color:#b28b2e}
+body.light-mode .qz-entry{background:linear-gradient(135deg,#fffdf8,#f3ead2);border-color:rgba(150,112,30,.5)}
+body.light-mode .ram-hero{background:radial-gradient(circle at 50% 0%,rgba(255,214,120,.28),transparent 62%),linear-gradient(160deg,#2b2163,#1a1740)}
+body.light-mode .ram-card{background:linear-gradient(160deg,#f2eefb,#fff7e3)}
+body.light-mode .ram-cd{color:#7b5200;text-shadow:none}
+body.light-mode ::selection{background:rgba(26,120,96,.25)}
 </style>
 </head>
 <body>
@@ -1000,7 +1041,7 @@ body.light-mode .qz-tx{background:rgba(255,255,255,.7)}
 <button class="tab-btn" onclick="switchTab('ask',event)">🤖 اسأل ملاذ</button>
 <button class="tab-btn" onclick="switchTab('stories',event)">📜 قصص وسيرة</button>
 <button class="tab-btn" onclick="switchTab('khutab',event)">🎙️ مقاطع ترجّعك لربنا</button>
-<button class="tab-btn ram-tab" onclick="switchTab('ramadan',event)">🌙 رمضان</button>
+<button class="tab-btn ram-tab" onclick="switchTab('ramadan',event)">رمضان</button>
 <button class="tab-btn" onclick="switchTab('relax',event)">🎧 الاسترخاء والتنفس</button>
 <button class="tab-btn" onclick="switchTab('journal',event)">📝 الفضفضة والامتنان</button>
 </nav>
@@ -1174,7 +1215,7 @@ body.light-mode .qz-tx{background:rgba(255,255,255,.7)}
 </select>
 </div>
 <div class="q-tools">
-<label>🔊 قوة الصوت <input type="range" id="boost" min="100" max="300" step="25" value="200" oninput="applyBoost()"> <b id="boostVal">200%</b></label>
+<label>🔊 قوة الصوت <input type="range" id="boost" min="25" max="300" step="25" value="200" oninput="applyBoost()"> <b id="boostVal">200%</b></label>
 <label>🔠 حجم الخط <input type="range" id="qsize" min="1.2" max="2.8" step="0.1" value="1.8" oninput="applySize()"></label>
 <label>😴 مؤقّت النوم <select id="sleepSel" onchange="setSleep()"><option value="0">بدون</option><option value="15">15 دقيقة</option><option value="30">30 دقيقة</option><option value="60">ساعة</option></select></label>
 <label><input type="checkbox" id="autoNext"> تشغيل السورة التالية تلقائيًا</label>
@@ -1441,7 +1482,7 @@ body.light-mode .qz-tx{background:rgba(255,255,255,.7)}
 <section id="ramadan" class="tab-content">
 <div class="ram-hero"><div class="ram-moon">🌙</div><h2>رمضان كريم</h2><p id="ramSub"></p></div>
 <div class="card ram-card" id="ramCard"><div class="card-header"><span class="card-title">🌙 رمضان كريم</span><small id="ramDay" style="color:var(--gold-light)"></small></div>
-<div class="ram-clock"><div id="ramLbl" class="ram-lbl"></div><div id="ramCd" class="ram-cd">--:--:--</div><div id="ramTimes" class="ram-times"></div></div>
+<div class="ram-clock"><div id="ramLbl" class="ram-lbl"></div><div id="ramCd" class="ram-cd">--:--:--</div><div id="ramDual" class="ram-dual" style="display:none"><div class="rd-box" id="rdF"><span class="rd-t">الإمساك • الفجر</span><b id="ramCdF">--:--:--</b><em id="ramTF"></em></div><div class="rd-box" id="rdM"><span class="rd-t">الإفطار • المغرب</span><b id="ramCdM">--:--:--</b><em id="ramTM"></em></div></div><div id="ramTimes" class="ram-times"></div></div>
 <div id="ramChecks" class="ram-checks"></div><div id="ramGrid" class="ram-grid"></div>
 <div id="ramTip" class="ram-tip"></div>
 <details class="ram-set"><summary>📅 ضبط ميعاد بداية رمضان</summary><div class="row" style="justify-content:center;gap:8px;margin-top:8px;flex-wrap:wrap"><input type="date" id="ramStartIn" class="input-select" style="max-width:170px"><button class="mini on" onclick="ramStartSave()">حفظ</button><button class="mini" onclick="ramStartAuto()">الافتراضي</button></div><div class="hij-note" style="margin-top:6px">لما دار الإفتاء تعلن الرؤية، غيّر التاريخ هنا والعدّادات هتتظبط.</div></details>
@@ -1527,7 +1568,7 @@ const status=t=>{$('qStatus').textContent=t};
 const fmtT=t=>isFinite(t)?Math.floor(t/60)+':'+String(Math.floor(t%60)).padStart(2,'0'):'0:00';
 const norm=t=>t.replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآٱ]/g,'ا').replace(/ة/g,'ه').replace(/ى/g,'ي');
 
-function applyBoost(){const v=+$('boost').value;$('boostVal').innerText=v+'%';ls.set('boost',v);if(gainNode)gainNode.gain.value=v/100}
+function applyBoost(){const v=+$('boost').value;$('boostVal').innerText=v+'%';ls.set('boost',v);if(gainNode)gainNode.gain.value=v/100;try{eA.forEach(a=>a.volume=Math.min(1,v/100))}catch(e){}if(typeof elMode!=='undefined'&&elMode&&volFixed()&&v<100)$('boostVal').innerText='غير متاح على الجهاز ده'}
 function applySize(){const v=$('qsize').value;document.documentElement.style.setProperty('--q-size',v+'rem');ls.set('qsize',v)}
 function setSleep(){clearTimeout(sleepT);const m=+$('sleepSel').value;if(m)sleepT=setTimeout(()=>{pauseQuran();status('تم إيقاف التلاوة (مؤقّت النوم) 🌙');$('sleepSel').value='0'},m*60000)}
 function pauseQuran(){if(elMode)eA.forEach(a=>a.pause());if(qCtx&&qCtx.state==='running'){qCtx.suspend();$('playBtn').textContent='▶'}}
@@ -1572,7 +1613,7 @@ function elSrc(a,i,n=0){const u=urlsFor(i);a.dataset.i=i;a.dataset.n=n;
     return caches.match(u[0],{cacheName:OFFC}).then(h=>h?h.blob():null).then(b=>{if(a.dataset.i!=i||a.dataset.n!=0)return;if(a._ou){try{URL.revokeObjectURL(a._ou)}catch(e){}a._ou=null}if(b){a._ou=URL.createObjectURL(b);a.src=a._ou}else a.src=u[0]}).catch(()=>{a.src=u[0]})}
   a.src=u[Math.min(n,u.length-1)]}
 function elPlay(i){
-  elMode=true;$('boostVal').textContent='غير متاح';
+  elMode=true;applyBoost();
   sched.forEach(x=>{try{x.src.stop()}catch(e){}});sched=[];
   cur=i;hl(i);playing=true;
   ls.set('lastPos',JSON.stringify({n:surahNo,i,ed:curEd}));
@@ -2326,12 +2367,24 @@ const RADIOS=[
  {g:'t',id:'gar',n:'تفسير غريب القرآن',d:'معاني الكلمات',u:[Q+'gareeb-quran']},
  {g:'t',id:'fat',n:'الفتاوى العامة',d:'فتاوى متنوعة',u:[Q+'fatwa']}
 ];
-const RAD={au:null,cur:null,on:false,tab:'r',tries:0,timer:null,sleepAt:0,sleepT:null,tok:0,stall:null};
-function radioAudio(){if(!RAD.au){const a=new Audio();a.preload='none';a.addEventListener('playing',()=>{clearTimeout(RAD.stall);RAD.tries=0;radioUI('live')});
-  a.addEventListener('waiting',()=>{if(RAD.on)radioUI('buf')});
-  a.addEventListener('error',()=>{if(RAD.on)radioNext()});a.addEventListener('ended',()=>{if(RAD.on)radioNext()});
-  a.addEventListener('stalled',()=>{if(RAD.on){clearTimeout(RAD.stall);RAD.stall=setTimeout(()=>{if(RAD.on&&(a.paused||a.readyState<3))radioNext()},12000)}});
-  RAD.au=a}return RAD.au}
+const RAD={au:null,cur:null,on:false,tab:'r',tries:0,noCors:{},timer:null,sleepAt:0,sleepT:null,tok:0,stall:null};
+function volFixed(){if(RAD.ios===undefined){try{const t=new Audio();t.volume=.5;RAD.ios=t.volume!==.5}catch(e){RAD.ios=false}}return RAD.ios}
+function radioAudio(cors){
+  cors=!!cors;if(RAD.au&&RAD.cors===cors)return RAD.au;
+  if(RAD.au){const o=RAD.au;RAD.au=null;try{o.pause();o.removeAttribute('src');o.load()}catch(e){}}
+  const a=new Audio();a.preload='none';if(cors)a.crossOrigin='anonymous';
+  const mine=f=>()=>{if(a===RAD.au)f()};
+  a.addEventListener('playing',mine(()=>{clearTimeout(RAD.stall);RAD.tries=0;radioUI('live')}));
+  a.addEventListener('waiting',mine(()=>{if(RAD.on)radioUI('buf')}));
+  a.addEventListener('error',mine(()=>{if(!RAD.on)return;
+    if(RAD.cors){const u=RAD.cands&&RAD.cands[RAD.ci];if(u){RAD.noCors[u]=1;radioTry(RAD.tok);if(!RAD.warned){RAD.warned=1;toast('المحطة دي مش بتسمح بالتحكم في الصوت من التطبيق، استخدم أزرار التلفون')}return}}
+    radioNext()}));
+  a.addEventListener('ended',mine(()=>{if(RAD.on)radioNext()}));
+  a.addEventListener('stalled',mine(()=>{if(RAD.on){clearTimeout(RAD.stall);RAD.stall=setTimeout(()=>{if(RAD.on&&(a.paused||a.readyState<3))radioNext()},12000)}}));
+  RAD.au=a;RAD.cors=cors;RAD.gain=null;
+  if(cors){try{initAudioContext();const sc=audioCtx.createMediaElementSource(a),g=audioCtx.createGain();sc.connect(g);g.connect(audioCtx.destination);RAD.gain=g}catch(e){RAD.gain=null}}
+  return a}
+function radioApplyVol(){const v=(+$('rdVol').value||100)/100;if(RAD.gain)RAD.gain.gain.value=v;else if(RAD.au)RAD.au.volume=v}
 async function radioCairoLookup(){
   const out=[];const hosts=['de1','nl1','at1'];
   for(const h of hosts){try{const ctl=new AbortController();const t=setTimeout(()=>ctl.abort(),4000);
@@ -2340,6 +2393,7 @@ async function radioCairoLookup(){
   return out}
 async function radioPlay(id){
   const st=RADIOS.find(x=>x.id===id);if(!st)return;
+  try{initAudioContext()}catch(e){}
   try{if(typeof playing!=='undefined'&&playing&&qCtx&&qCtx.state==='running')togglePlay()}catch(e){}
   try{if(!adhan.paused)stopAdhan()}catch(e){}
   const my=++RAD.tok;RAD.cur=st;RAD.on=true;RAD.tries=0;ls.set('radioLast',id);radioUI('conn');radioRenderList();
@@ -2347,9 +2401,9 @@ async function radioPlay(id){
   if(st.cairo){const dyn=await radioCairoLookup();if(my!==RAD.tok)return;c=dyn.concat(c.filter(u=>!dyn.includes(u)))}
   RAD.cands=c;RAD.ci=0;radioTry(my)}
 function radioTry(my){
-  if(my!==RAD.tok||!RAD.on)return;const a=radioAudio(),u=RAD.cands[RAD.ci];
+  if(my!==RAD.tok||!RAD.on)return;const u=RAD.cands[RAD.ci],a=radioAudio(u&&volFixed()&&(+$('rdVol').value<100)&&!RAD.noCors[u]);
   if(!u){RAD.on=false;radioUI('fail');return}
-  a.src=u+(u.includes('?')?'&':'?')+'_='+Date.now();a.volume=(+$('rdVol').value||100)/100;
+  a.src=u+(u.includes('?')?'&':'?')+'_='+Date.now();radioApplyVol();
   clearTimeout(RAD.stall);RAD.stall=setTimeout(()=>{if(RAD.on&&my===RAD.tok&&(a.paused||a.readyState<3))radioNext()},14000);
   const p=a.play();if(p&&p.catch)p.catch(e=>{if(e&&e.name==='NotAllowedError'){RAD.on=false;radioUI('blocked')}else if(RAD.on&&my===RAD.tok)radioNext()});
   radioMeta()}
@@ -2361,7 +2415,7 @@ function radioNext(){
   radioTry(my)}
 function radioStop(){RAD.on=false;RAD.tok++;clearTimeout(RAD.stall);try{RAD.au&&(RAD.au.pause(),RAD.au.removeAttribute('src'),RAD.au.load())}catch(e){}radioUI('off')}
 function radioToggle(){if(RAD.on){radioStop();return}const id=RAD.cur?RAD.cur.id:(ls.get('radioLast')||'cairo');radioPlay(id)}
-function radioVol(){if(RAD.au)RAD.au.volume=(+$('rdVol').value||100)/100}
+function radioVol(){const v=+$('rdVol').value;if(RAD.au&&RAD.on&&volFixed()&&!RAD.gain&&v<100){radioTry(RAD.tok);return}radioApplyVol()}
 function radioSleep(m){clearTimeout(RAD.sleepT);RAD.sleepAt=0;$('rdSl').textContent='';m=+m;if(!m)return;RAD.sleepAt=Date.now()+m*60000;
   RAD.sleepT=setTimeout(()=>{radioStop();$('rdSleep').value='0';$('rdSl').textContent='اتقفل الراديو تلقائيًا 😴';RAD.sleepAt=0},m*60000);$('rdSl').textContent=`هيتقفل تلقائيًا بعد ${m} دقيقة`}
 function radioUI(s){
@@ -5175,18 +5229,22 @@ function ramRender(){
 function ramTick(now){
   const c=$('ramCard');if(!c)return;const sec=Math.floor(now.getTime()/1000);if(sec===_rs)return;_rs=sec;
   if(!RAMIN){
-    if(!RAMN)return;const tgt=toDate(times.Fajr,RAMN.i);let s=Math.max(0,Math.floor((tgt-now)/1000));
+    $('ramDual').style.display='none';$('ramCd').style.display='';if(!RAMN)return;const tgt=toDate(times.Fajr,RAMN.i);let s=Math.max(0,Math.floor((tgt-now)/1000));
     const d=Math.floor(s/86400),h=Math.floor(s%86400/3600),mi=Math.floor(s%3600/60),se=s%60,p=v=>String(v).padStart(2,'0');
     $('ramLbl').textContent='🌙 أول يوم صيام (بإذن الله) بعد';$('ramCd').textContent=`${nAr(d)} يوم • ${p(h)}:${p(mi)}:${p(se)}`;{const e=dayAt(RAMN.dt,-1);$('ramTimes').textContent=`أول تراويح مساء ${e.toLocaleDateString('ar-EG',{weekday:'long',day:'numeric',month:'long'})} • الموعد يتأكد برؤية الهلال`}return;
   }
-  const f=toDate(times.Fajr),m=toDate(times.Maghrib);let nx,lbl;
+  const f=toDate(times.Fajr),m=toDate(times.Maghrib);let lbl;
   {const k1='ramf_'+dayKey()+'_m',k2='ramf_'+dayKey()+'_s';
    if(now>=m&&now-m<90000&&!ls.get(k1)){ls.set(k1,'1');toast('🌙 حان وقت الإفطار، تقبّل الله صيامك ودعاءك')}
    if(f-now>0&&f-now<=1800000&&!ls.get(k2)){ls.set(k2,'1');toast('⏰ باقي نص ساعة على الإمساك')}}
-  if(now<f){nx=f;lbl='🍽️ وقت السحور • الإمساك بعد'}else if(now<m){nx=m;lbl='🌿 أنت صائم • الإفطار بعد'}else{nx=toDate(times.Fajr,1);lbl='🌙 تقبّل الله صيامك • الإمساك بعد'}
-  let s=Math.max(0,Math.floor((nx-now)/1000));const h=Math.floor(s/3600),mi=Math.floor(s%3600/60),se=s%60,p=v=>String(v).padStart(2,'0');
-  $('ramLbl').textContent=lbl;$('ramCd').textContent=`${p(h)}:${p(mi)}:${p(se)}`;
-  $('ramTimes').textContent=`الفجر ${times.Fajr} • المغرب ${times.Maghrib}`;
+  const nf=now<f?f:toDate(times.Fajr,1),nm=now<m?m:toDate(times.Maghrib,1);
+  if(now<f)lbl='🍽️ وقت السحور';else if(now<m)lbl='🌿 أنت صائم، تقبّل الله منك';else lbl='🌙 تقبّل الله صيامك';
+  const fmt=t=>{const s=Math.max(0,Math.floor(t/1000)),p=v=>String(v).padStart(2,'0');return p(Math.floor(s/3600))+':'+p(Math.floor(s%3600/60))+':'+p(s%60)};
+  $('ramDual').style.display='';$('ramCd').style.display='none';
+  $('ramLbl').textContent=lbl;$('ramCdF').textContent=fmt(nf-now);$('ramCdM').textContent=fmt(nm-now);
+  {const ar=x=>String(x).replace(/\d/g,d=>'٠١٢٣٤٥٦٧٨٩'[d]);$('ramTF').textContent=ar(times.Fajr);$('ramTM').textContent=ar(times.Maghrib)}
+  $('rdF').classList.toggle('on',nf-now<=nm-now);$('rdM').classList.toggle('on',nm-now<nf-now);
+  $('ramTimes').textContent='';
 }
 
 let _ramNext=null;
